@@ -29,7 +29,11 @@
     <div>
       <p class="eyebrow">Module · prefix <code>GTFS:</code></p>
       <h1>GTFS service</h1>
-      <p class="lead">GTFS (General Transit Feed Specification) is the open standard that public transport agencies use to publish their scheduled services. A GTFS feed is a set of text files, one per kind of object: the agencies, the routes, the trips run on each route, the stops, the times at which each trip serves each stop, and the calendars of the days of service. Optional files add fares, transfers and, with the GTFS-Flex extension, on-demand services such as booking rules.</p><p>The GTFS module represents a GTFS feed in OWL: each file becomes a class (for example <a class="t k-c m-gtfs" href="#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…">Stops</a> for stops.txt) and each field a datatype property; the identifiers that link the files become object properties, such as <a class="t k-op m-gtfs" href="#belongsToTrip" title="GTFS:belongsToTrip: Links a stop time to the trip it belongs to.">belongsToTrip</a> or <a class="t k-op m-gtfs" href="#hasRoute" title="GTFS:hasRoute: Links a trip to the route it belongs to.">hasRoute</a>. In this ontology, it describes the regular public transport network of La Rochelle, and the stops of the on-demand service are GTFS stops too.</p>
+      <p class="lead">The GTFS module provides a semantic representation of public transport services based on the General Transit Feed Specification (GTFS) standard. It describes the structure and operation of the transport network through transport agencies, routes, trips, stops, service calendars, schedules, fares and transfer rules. It also incorporates concepts related to flexible transport services, including booking rules and pickup and drop-off areas.
+
+By representing GTFS data in OWL and integrating GeoSPARQL, the module establishes explicit relationships between transport services and their geographical environment.
+
+Within the Urban-Mobility-Ontology, this module represents the public transport supply and connects it to passenger demand. It supports the identification of potential connections between scheduled and on-demand transport services, the exploration of alternative travel options and the integration of DRT services into the existing public transport network.</p>
     </div>
   </div>
 </section>
