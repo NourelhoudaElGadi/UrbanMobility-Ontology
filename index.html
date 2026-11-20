@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban-Mobility-Ontology</title>
+<meta name="description" content="A semantic knowledge base for urban mobility and public transportation, with a specific focus on Demand-Responsive Transport (DRT) services operated by autonomous shuttles.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700;800&family=Overpass+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-lines" aria-hidden="true"><i class="m-drt"></i><i class="m-gtfs"></i><i class="m-infra"></i><i class="m-event"></i></span><span>Urban-Mobility-Ontology</span></a>
+    <nav class="mainnav" aria-label="Documentation sections"><a href="index.html" class="active">Overview</a><a href="drt.html" class=" m-drt"><span class="line-badge m-drt xs" aria-hidden="true">D</span>DRT</a><a href="gtfs.html" class=" m-gtfs"><span class="line-badge m-gtfs xs" aria-hidden="true">G</span>GTFS</a><a href="infrastructure.html" class=" m-infra"><span class="line-badge m-infra xs" aria-hidden="true">I</span>Infrastructure</a><a href="event.html" class=" m-event"><span class="line-badge m-event xs" aria-hidden="true">E</span>Events</a></nav>
+    <div class="search" role="search">
+      <label class="sr" for="q">Find a class or property</label>
+      <input id="q" type="search" placeholder="Find a term…" autocomplete="off" spellcheck="false" aria-controls="q-results" aria-expanded="false">
+      <ul id="q-results" class="q-results" role="listbox" hidden></ul>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero home-hero">
+  <div class="wrap">
+    <div class="lines" aria-hidden="true"><i class="m-drt"></i><i class="m-gtfs"></i><i class="m-infra"></i><i class="m-event"></i></div>
+    <p class="eyebrow">Ontology · version 1.0.0</p>
+    <h1>Urban-Mobility-Ontology</h1>
+    <p class="lead">A semantic knowledge base for urban mobility and public transportation, with a specific focus on Demand-Responsive Transport (DRT) services operated by autonomous shuttles.</p>
+    <p class="actions"><a class="btn primary" href="#modules">Browse the modules</a><a class="btn" href="#downloads">Download</a><a class="btn" href="https://doi.org/10.5281/zenodo.20054329">Zenodo record</a></p>
+    <div class="authors"><ul class="au-list"><li><span class="au">Nourelhouda El Gadi</span><sup>1,2</sup> <a class="orcid" href="https://orcid.org/0009-0000-4334-4557" target="_blank" rel="noopener" aria-label="ORCID of Nourelhouda El Gadi">ORCID 0009-0000-4334-4557</a></li><li><span class="au">Esma Talhi</span><sup>1,3</sup> <a class="orcid" href="https://orcid.org/0000-0002-7792-8953" target="_blank" rel="noopener" aria-label="ORCID of Esma Talhi">ORCID 0000-0002-7792-8953</a></li><li><span class="au">Alain Bouju</span><sup>2</sup> <a class="orcid" href="https://orcid.org/0000-0002-1599-9326" target="_blank" rel="noopener" aria-label="ORCID of Alain Bouju">ORCID 0000-0002-1599-9326</a></li></ul><ul class="aff-list"><li><sup>1</sup> EIGSI, La Rochelle, France</li><li><sup>2</sup> L3i laboratory, La Rochelle Université, La Rochelle, France</li><li><sup>3</sup> LaBRI, Univ. Bordeaux, CNRS, Bordeaux INP, UMR 5800, Talence, France</li></ul></div>
+  </div>
+</section>
+<div class="band"><div class="wrap">
+    <section class="block narrow" id="introduction"><h2>Introduction</h2><p>Public transport systems rely on a wide range of heterogeneous data sources, including urban road networks, geospatial data, schedules, disruptions, traffic conditions, and passengers&#x27; mobility needs. These data are generally scattered across different sources and described using distinct models, limiting their interoperability and their use for decision support. This challenge is particularly significant in the context of Demand-Responsive Transport (DRT), especially when operated by autonomous shuttles, which require effective coordination with the broader public transport system.</p><p>The proposed ontology provides a common semantic layer for representing knowledge related to demand-responsive public transport. It connects user demand (bookings, passengers, journeys, etc.) with the regular public transport supply represented using the General Transit Feed Specification (GTFS) standard, a multi-scale model of urban infrastructure, and events that may disrupt transport services and the urban network. Spatial and temporal dimensions are represented using existing standard models, namely GeoSPARQL and OWL-Time, respectively. The representation of events and disruptions relies on the reuse of the Simple Event Model (SEM) and the Transport Disruption Ontology (Dtx).</p><p>The ontology was developed following an approach inspired by METHONTOLOGY and implemented in OWL using the Protégé ontology editor. It is populated with OpenStreetMap data covering part of the urban network in the La Rochelle metropolitan area (France), GTFS data from the local public transport network, DRT requests in La Rochelle, and simulated disruption data.</p><p>This ontology was developed within the framework of the YeloFlex project, an experimental initiative aimed at implementing a demand-responsive transport service operated by autonomous shuttles in the La Rochelle metropolitan area.</p>
+      </section>
+    <section class="block" id="modules"><h2>Four modules</h2><p class="sub">Each module has its own namespace and prefix, its own file and its own page, where every class and property has an entry you can link to.</p><div class="mod-grid"><article class="mod-card m-drt"><span class="line-badge m-drt lg" aria-hidden="true">D</span><div><h3><a href="drt.html">DRT core</a></h3><p class="pfx-line">prefix <code>DRT:</code><code class="ns-small">http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#</code></p><p>Main module: the demand of the on-demand service (customers, reservations, passengers, rides and trips), linked to the other modules.</p><p class="mod-reuse">Reuses: <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html" target="_blank" rel="noopener">Transport Disruption ontology (Dtx)<span class="ext-mark" aria-hidden="true">↗</span></a>, <a class="t ext" href="https://www.w3.org/TR/owl-time/" target="_blank" rel="noopener">OWL-Time<span class="ext-mark" aria-hidden="true">↗</span></a></p><p class="mod-count">12 classes · 29 object properties · 67 datatype properties</p><a class="go" href="drt.html">Browse the 108 terms →</a></div></article><article class="mod-card m-gtfs"><span class="line-badge m-gtfs lg" aria-hidden="true">G</span><div><h3><a href="gtfs.html">GTFS service</a></h3><p class="pfx-line">prefix <code>GTFS:</code><code class="ns-small">http://www.semanticweb.org/hp/ontologies/2024/transport#</code></p><p>Scheduled public transport in the GTFS standard: agencies, routes, trips, stops, stop times, calendars, fares and booking rules.</p><p class="mod-reuse">Reuses: <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html" target="_blank" rel="noopener">GeoSPARQL 1.1<span class="ext-mark" aria-hidden="true">↗</span></a></p><p class="mod-count">27 classes · 46 object properties · 160 datatype properties</p><a class="go" href="gtfs.html">Browse the 233 terms →</a></div></article><article class="mod-card m-infra"><span class="line-badge m-infra lg" aria-hidden="true">I</span><div><h3><a href="infrastructure.html">Urban infrastructure</a></h3><p class="pfx-line">prefix <code>Infrastructure:</code><code class="ns-small">http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#</code></p><p>Urban environment at three levels of granularity: micro (road segments, streets…), meso (neighbourhoods…) and macro (municipalities).</p><p class="mod-reuse">Reuses: <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html" target="_blank" rel="noopener">GeoSPARQL 1.1<span class="ext-mark" aria-hidden="true">↗</span></a></p><p class="mod-count">38 classes · 23 object properties · 96 datatype properties</p><a class="go" href="infrastructure.html">Browse the 157 terms →</a></div></article><article class="mod-card m-event"><span class="line-badge m-event lg" aria-hidden="true">E</span><div><h3><a href="event.html">Events and impacts</a></h3><p class="pfx-line">prefix <code>Events:</code><code class="ns-small">http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#</code></p><p>Disruptive events and their impacts on travel plans and the urban network.</p><p class="mod-reuse">Reuses: <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" target="_blank" rel="noopener">Simple Event Model (SEM)<span class="ext-mark" aria-hidden="true">↗</span></a>, <a class="t ext" href="http://motools.sourceforge.net/event/event.html" target="_blank" rel="noopener">Event Ontology (c4dm)<span class="ext-mark" aria-hidden="true">↗</span></a>, <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html" target="_blank" rel="noopener">Transport Disruption ontology (Dtx)<span class="ext-mark" aria-hidden="true">↗</span></a>, <a class="t ext" href="https://www.w3.org/TR/owl-time/" target="_blank" rel="noopener">OWL-Time<span class="ext-mark" aria-hidden="true">↗</span></a></p><p class="mod-count">2 classes · 4 object properties · 0 datatype properties</p><a class="go" href="event.html">Browse the 6 terms →</a></div></article></div></section>
+    <section class="block" id="architecture"><h2>How the modules fit together</h2>
+      <figure class="diagram"><div class="diagram-scroll"><div class="diagram-inner" style="min-width:1100px"><svg class="dg" role="img" aria-label="How the four modules and the reused ontologies are connected"
+ viewBox="0.00 0.00 1375.60 677.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(10.8 666.8)">
+<title>How the four modules and the reused ontologies are connected</title>
+<g id="clust1" class="cluster cl m&#45;drt">
+<title>cluster_drt</title>
+<path fill="transparent" stroke="#c2410c" stroke-width="1.2" stroke-dasharray="5,2" d="M250,-372C250,-372 508,-372 508,-372 514,-372 520,-378 520,-384 520,-384 520,-636 520,-636 520,-642 514,-648 508,-648 508,-648 250,-648 250,-648 244,-648 238,-642 238,-636 238,-636 238,-384 238,-384 238,-378 244,-372 250,-372"/>
+<text text-anchor="start" x="349" y="-633.8" font-family="Overpass" font-weight="bold" font-size="14.00" fill="#c2410c">DRT core</text>
+</g>
+<g id="clust2" class="cluster cl m&#45;gtfs">
+<title>cluster_gtfs</title>
+<path fill="transparent" stroke="#1d5fa8" stroke-width="1.2" stroke-dasharray="5,2" d="M20,-268C20,-268 218,-268 218,-268 224,-268 230,-274 230,-280 230,-280 230,-636 230,-636 230,-642 224,-648 218,-648 218,-648 20,-648 20,-648 14,-648 8,-642 8,-636 8,-636 8,-280 8,-280 8,-274 14,-268 20,-268"/>
+<text text-anchor="start" x="77" y="-633.8" font-family="Overpass" font-weight="bold" font-size="14.00" fill="#1d5fa8">GTFS service</text>
+</g>
+<g id="clust3" class="cluster cl m&#45;infra">
+<title>cluster_infra</title>
+<path fill="transparent" stroke="#2f7d32" stroke-width="1.2" stroke-dasharray="5,2" d="M540,-8C540,-8 841,-8 841,-8 847,-8 853,-14 853,-20 853,-20 853,-439 853,-439 853,-445 847,-451 841,-451 841,-451 540,-451 540,-451 534,-451 528,-445 528,-439 528,-439 528,-20 528,-20 528,-14 534,-8 540,-8"/>
+<text text-anchor="start" x="622.5" y="-436.8" font-family="Overpass" font-weight="bold" font-size="14.00" fill="#2f7d32">Urban infrastructure</text>
+</g>
+<g id="clust4" class="cluster cl m&#45;event">
+<title>cluster_event</title>
+<path fill="transparent" stroke="#8a2f9e" stroke-width="1.2" stroke-dasharray="5,2" d="M1191,-481C1191,-481 1310,-481 1310,-481 1316,-481 1322,-487 1322,-493 1322,-493 1322,-636 1322,-636 1322,-642 1316,-648 1310,-648 1310,-648 1191,-648 1191,-648 1185,-648 1179,-642 1179,-636 1179,-636 1179,-493 1179,-493 1179,-487 1185,-481 1191,-481"/>
+<text text-anchor="start" x="1187" y="-633.8" font-family="Overpass" font-weight="bold" font-size="14.00" fill="#8a2f9e">Events and impacts</text>
+</g>
+<g id="clust5" class="cluster cl m&#45;std">
+<title>cluster_std</title>
+<path fill="transparent" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5,2" d="M873,-184C873,-184 1159,-184 1159,-184 1165,-184 1171,-190 1171,-196 1171,-196 1171,-636 1171,-636 1171,-642 1165,-648 1159,-648 1159,-648 873,-648 873,-648 867,-648 861,-642 861,-636 861,-636 861,-196 861,-196 861,-190 867,-184 873,-184"/>
+<text text-anchor="start" x="956" y="-633.8" font-family="Overpass" font-weight="bold" font-size="14.00" fill="#64748b">Reused ontologies</text>
+</g>
+
+<g id="node1" class="node own m&#45;drt">
+<title>DRT:Customer</title>
+<g id="a_node1"><a href="drt.html#Customer" xlink:title="DRT:Customer: A person who books DRT trips. The customer makes the reservation and may travel or book for other passengers.">
+<path fill="#fdeee6" stroke="#c2410c" stroke-width="1.4" d="M320,-519C320,-519 260,-519 260,-519 256,-519 252,-515 252,-511 252,-511 252,-503 252,-503 252,-499 256,-495 260,-495 260,-495 320,-495 320,-495 324,-495 328,-499 328,-503 328,-503 328,-511 328,-511 328,-515 324,-519 320,-519"/>
+<text text-anchor="start" x="261" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">Customer</text>
+</a>
+</g>
+</g>
+
+<g id="node2" class="node own m&#45;drt">
+<title>DRT:Reservation</title>
+<g id="a_node2"><a href="drt.html#Reservation" xlink:title="DRT:Reservation: A booking for the on&#45;demand transport service, made by a customer for one or more passengers. It states the…">
+<path fill="#fdeee6" stroke="#c2410c" stroke-width="1.4" d="M431,-611C431,-611 359,-611 359,-611 355,-611 351,-607 351,-603 351,-603 351,-595 351,-595 351,-591 355,-587 359,-587 359,-587 431,-587 431,-587 435,-587 439,-591 439,-595 439,-595 439,-603 439,-603 439,-607 435,-611 431,-611"/>
+<text text-anchor="start" x="360" y="-595.6" font-family="Overpass" font-size="13.00" fill="#14212b">Reservation</text>
+</a>
+</g>
+</g>
+
+<g id="edge2" class="edge op">
+<title>DRT:Reservation&#45;&gt;DRT:Customer</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M350.87,-595.26C330.74,-591.6 308.44,-583.71 295,-567 285.95,-555.75 285.33,-539.09 286.61,-526.34"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="289.04,-526.61 287.53,-519.35 284.18,-525.97 289.04,-526.61"/>
+<g id="a_edge2_0"><a href="drt.html#madeBy" xlink:title="DRT:madeBy: Links a reservation to the customer who made it.">
+<text text-anchor="start" x="296" y="-550.2" font-family="Overpass" font-size="11.00" fill="#5a6977">madeBy</text>
+</a>
+</g>
+</g>
+
+<g id="node3" class="node own m&#45;drt">
+<title>DRT:Passenger</title>
+<g id="a_node3"><a href="drt.html#Passenger" xlink:title="DRT:Passenger: A person who travels on a DRT trip under a reservation.">
+<path fill="#fdeee6" stroke="#c2410c" stroke-width="1.4" d="M421.5,-519C421.5,-519 358.5,-519 358.5,-519 354.5,-519 350.5,-515 350.5,-511 350.5,-511 350.5,-503 350.5,-503 350.5,-499 354.5,-495 358.5,-495 358.5,-495 421.5,-495 421.5,-495 425.5,-495 429.5,-499 429.5,-503 429.5,-503 429.5,-511 429.5,-511 429.5,-515 425.5,-519 421.5,-519"/>
+<text text-anchor="start" x="359.5" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">Passenger</text>
+</a>
+</g>
+</g>
+
+<g id="edge3" class="edge op">
+<title>DRT:Reservation&#45;&gt;DRT:Passenger</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M367.22,-586.88C358.89,-582.08 350.71,-575.55 346,-567 340,-556.1 340.27,-550.05 346,-539 349.16,-532.91 354.13,-527.76 359.61,-523.52"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="361.36,-525.28 365.69,-519.26 358.55,-521.27 361.36,-525.28"/>
+<g id="a_edge3_1"><a href="drt.html#hasPassenger" xlink:title="DRT:hasPassenger: Links a reservation to a passenger who travels under it.">
+<text text-anchor="start" x="347" y="-550.2" font-family="Overpass" font-size="11.00" fill="#5a6977">hasPassenger</text>
+</a>
+</g>
+</g>
+
+<g id="node4" class="node own m&#45;drt">
+<title>DRT:Ride</title>
+<g id="a_node4"><a href="drt.html#Ride" xlink:title="DRT:Ride: A vehicle run of the DRT service. A ride is operated by one driver with one shuttle on a DRT line, and…">
+<path fill="#fdeee6" stroke="#c2410c" stroke-width="1.4" d="M498,-519C498,-519 460,-519 460,-519 456,-519 452,-515 452,-511 452,-511 452,-503 452,-503 452,-499 456,-495 460,-495 460,-495 498,-495 498,-495 502,-495 506,-499 506,-503 506,-503 506,-511 506,-511 506,-515 502,-519 498,-519"/>
+<text text-anchor="start" x="465.5" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">Ride</text>
+</a>
+</g>
+</g>
+
+<g id="edge4" class="edge op">
+<title>DRT:Reservation&#45;&gt;DRT:Ride</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M405.3,-586.96C419.91,-571.31 446.76,-542.55 463.7,-524.39"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="465.63,-525.92 468.62,-519.13 462.05,-522.57 465.63,-525.92"/>
+<g id="a_edge4_2"><a href="drt.html#assigned_to" xlink:title="DRT:assigned_to: Links a reservation to the ride (vehicle run) to which it is assigned.">
+<text text-anchor="start" x="450.5" y="-550.2" font-family="Overpass" font-size="11.00" fill="#5a6977">assigned_to</text>
+</a>
+</g>
+</g>
+
+<g id="node6" class="node own m&#45;gtfs">
+<title>GTFS:BookingRule</title>
+<g id="a_node6"><a href="gtfs.html#BookingRule" xlink:title="GTFS:BookingRule: The booking rules of a service that must be booked in advance, such as on&#45;demand transport: how, when and how…">
+<path fill="#e8f0fa" stroke="#1d5fa8" stroke-width="1.4" d="M208,-519C208,-519 130,-519 130,-519 126,-519 122,-515 122,-511 122,-511 122,-503 122,-503 122,-499 126,-495 130,-495 130,-495 208,-495 208,-495 212,-495 216,-499 216,-503 216,-503 216,-511 216,-511 216,-515 212,-519 208,-519"/>
+<text text-anchor="start" x="131" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">BookingRule</text>
+</a>
+</g>
+</g>
+
+<g id="edge9" class="edge op">
+<title>DRT:Reservation&#45;&gt;GTFS:BookingRule</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M350.95,-594.56C303.84,-590.21 232.83,-581.47 210,-567 194.57,-557.22 183.37,-539.32 176.62,-525.79"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="178.7,-524.46 173.49,-519.18 174.27,-526.55 178.7,-524.46"/>
+<g id="a_edge9_3"><a href="drt.html#complies_with" xlink:title="DRT:complies_with: Links a reservation to a booking rule that it must comply with, for example a minimum…">
+<text text-anchor="start" x="211" y="-550.2" font-family="Overpass" font-size="11.00" fill="#5a6977">complies_with</text>
+</a>
+</g>
+</g>
+
+<g id="node26" class="node ext">
+<title>Dtx:Plan</title>
+<g id="a_node26"><a href="https://transportdisruption.github.io/transportdisruption.html#d4e4574" xlink:title="Dtx:Plan: Plan provides an extension point for users of the ontology to describe an agent&#39;s plan that may be impacted by an event." target="_blank">
+<path fill="#eef1f5" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5,2" d="M1049,-519C1049,-519 997,-519 997,-519 993,-519 989,-515 989,-511 989,-511 989,-503 989,-503 989,-499 993,-495 997,-495 997,-495 1049,-495 1049,-495 1053,-495 1057,-499 1057,-503 1057,-503 1057,-511 1057,-511 1057,-515 1053,-519 1049,-519"/>
+<text text-anchor="middle" x="1023" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">Dtx:Plan</text>
+</a>
+</g>
+</g>
+
+<g id="edge26" class="edge sub">
+<title>DRT:Reservation&#45;&gt;Dtx:Plan</title>
+<g id="a_edge26"><a xlink:title="subclass of">
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M439.03,-596.55C538.16,-593.04 776.3,-583.16 855,-567 902.82,-557.18 955.57,-537.03 988.97,-523.02"/>
+<polygon fill="none" stroke="#8795a1" stroke-width="1.1" points="990.44,-526.2 998.27,-519.07 987.7,-519.76 990.44,-526.2"/>
+</a>
+</g>
+</g>
+
+<g id="node27" class="node ext">
+<title>time:Interval</title>
+<g id="a_node27"><a href="https://www.w3.org/TR/owl-time/#time:Interval" xlink:title="time:Interval: A temporal entity with an extent or duration" target="_blank">
+<path fill="#eef1f5" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5,2" d="M958.5,-519C958.5,-519 883.5,-519 883.5,-519 879.5,-519 875.5,-515 875.5,-511 875.5,-511 875.5,-503 875.5,-503 875.5,-499 879.5,-495 883.5,-495 883.5,-495 958.5,-495 958.5,-495 962.5,-495 966.5,-499 966.5,-503 966.5,-503 966.5,-511 966.5,-511 966.5,-515 962.5,-519 958.5,-519"/>
+<text text-anchor="middle" x="921" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">time:Interval</text>
+</a>
+</g>
+</g>
+
+<g id="edge10" class="edge op">
+<title>DRT:Reservation&#45;&gt;time:Interval</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M439.13,-590.2C503.81,-578.8 628.14,-556.99 734,-539 779.17,-531.33 830.51,-522.83 867.96,-516.68"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="868.75,-519.03 875.26,-515.48 867.95,-514.19 868.75,-519.03"/>
+<g id="a_edge10_4"><a href="drt.html#hasPickupTimeWindow" xlink:title="DRT:hasPickupTimeWindow: Links a reservation to the time interval in which the passenger must be picked up.">
+<text text-anchor="start" x="737.5" y="-557.2" font-family="Overpass" font-size="11.00" fill="#5a6977">hasPickupTimeWindow</text>
+</a>
+</g>
+<g id="a_edge10_5"><a href="drt.html#hasDropoffTimeWindow" xlink:title="DRT:hasDropoffTimeWindow: Links a reservation to the time interval in which the passenger must be dropped off.">
+<text text-anchor="start" x="735" y="-543.2" font-family="Overpass" font-size="11.00" fill="#5a6977">hasDropoffTimeWindow</text>
+</a>
+</g>
+</g>
+
+<g id="node5" class="node own m&#45;drt">
+<title>DRT:Trips</title>
+<g id="a_node5"><a href="drt.html#Trips" xlink:title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a drop&#45;off stop…">
+<path fill="#fdeee6" stroke="#c2410c" stroke-width="1.4" d="M341,-410C341,-410 303,-410 303,-410 299,-410 295,-406 295,-402 295,-402 295,-394 295,-394 295,-390 299,-386 303,-386 303,-386 341,-386 341,-386 345,-386 349,-390 349,-394 349,-394 349,-402 349,-402 349,-406 345,-410 341,-410"/>
+<text text-anchor="start" x="307.5" y="-394.6" font-family="Overpass" font-size="13.00" fill="#14212b">Trips</text>
+</a>
+</g>
+</g>
+
+<g id="edge5" class="edge op">
+<title>DRT:Ride&#45;&gt;DRT:Trips</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M462.2,-494.73C452.73,-488.37 440.69,-480.26 430,-473 400.1,-452.69 365.66,-429.05 343.87,-414.06"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="345.23,-412.02 338.07,-410.07 342.45,-416.06 345.23,-412.02"/>
+<g id="a_edge5_6"><a href="drt.html#includesTrip" xlink:title="DRT:includesTrip: Links a ride to a passenger trip that it includes.">
+<text text-anchor="start" x="431.5" y="-463.2" font-family="Overpass" font-size="11.00" fill="#5a6977">includesTrip</text>
+</a>
+</g>
+</g>
+
+<g id="node7" class="node own m&#45;gtfs">
+<title>GTFS:Routes</title>
+<g id="a_node7"><a href="gtfs.html#Routes" xlink:title="GTFS:Routes: A public transit line: a group of trips shown to riders as a single service.">
+<path fill="#e8f0fa" stroke="#1d5fa8" stroke-width="1.4" d="M149.5,-410C149.5,-410 106.5,-410 106.5,-410 102.5,-410 98.5,-406 98.5,-402 98.5,-402 98.5,-394 98.5,-394 98.5,-390 102.5,-386 106.5,-386 106.5,-386 149.5,-386 149.5,-386 153.5,-386 157.5,-390 157.5,-394 157.5,-394 157.5,-402 157.5,-402 157.5,-406 153.5,-410 149.5,-410"/>
+<text text-anchor="start" x="107.5" y="-394.6" font-family="Overpass" font-size="13.00" fill="#14212b">Routes</text>
+</a>
+</g>
+</g>
+
+<g id="edge7" class="edge op">
+<title>DRT:Ride&#45;&gt;GTFS:Routes</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M465.41,-494.96C458.28,-489.8 449.14,-484.11 440,-481 400.72,-467.64 388.09,-478.72 347,-473 295.89,-465.89 281.9,-467.49 233,-451 204.35,-441.34 173.58,-425.37 152.8,-413.67"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="153.98,-411.53 146.69,-410.19 151.56,-415.78 153.98,-411.53"/>
+<g id="a_edge7_7"><a href="drt.html#operatesOn" xlink:title="DRT:operatesOn: Links a ride to the DRT line (route) on which it operates.">
+<text text-anchor="start" x="348" y="-463.2" font-family="Overpass" font-size="11.00" fill="#5a6977">operatesOn</text>
+</a>
+</g>
+</g>
+
+<g id="node13" class="node own m&#45;infra">
+<title>Infrastructure:DRT_Shuttle</title>
+<g id="a_node13"><a href="infrastructure.html#DRT_Shuttle" xlink:title="Infrastructure:DRT_Shuttle: A vehicle temporarily assigned to the demand&#45;responsive transport (DRT) service. It can stop playing this…">
+<path fill="#e9f4ea" stroke="#2f7d32" stroke-width="1.4" d="M803.5,-410C803.5,-410 728.5,-410 728.5,-410 724.5,-410 720.5,-406 720.5,-402 720.5,-402 720.5,-394 720.5,-394 720.5,-390 724.5,-386 728.5,-386 728.5,-386 803.5,-386 803.5,-386 807.5,-386 811.5,-390 811.5,-394 811.5,-394 811.5,-402 811.5,-402 811.5,-406 807.5,-410 803.5,-410"/>
+<text text-anchor="start" x="729.5" y="-394.6" font-family="Overpass" font-size="13.00" fill="#14212b">DRT_Shuttle</text>
+</a>
+</g>
+</g>
+
+<g id="edge6" class="edge op">
+<title>DRT:Ride&#45;&gt;Infrastructure:DRT_Shuttle</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M506.03,-499.89C543.07,-491.11 611.35,-473.49 667,-451 693.2,-440.41 721.61,-425.05 741.25,-413.77"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="742.73,-415.75 747.55,-410.12 740.27,-411.51 742.73,-415.75"/>
+<g id="a_edge6_8"><a href="drt.html#usesVehicle" xlink:title="DRT:usesVehicle: Links a ride to the DRT shuttle that performs it.">
+<text text-anchor="start" x="643" y="-463.2" font-family="Overpass" font-size="11.00" fill="#5a6977">usesVehicle</text>
+</a>
+</g>
+</g>
+
+<g id="node10" class="node own m&#45;gtfs feature">
+<title>GTFS:Stops</title>
+<g id="a_node10"><a href="gtfs.html#Stops" xlink:title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular network and DRT stops are…">
+<path fill="#e8f0fa" stroke="#1d5fa8" stroke-width="1.4" d="M204,-310C204,-310 166,-310 166,-310 162,-310 158,-306 158,-302 158,-302 158,-294 158,-294 158,-290 162,-286 166,-286 166,-286 204,-286 204,-286 208,-286 212,-290 212,-294 212,-294 212,-302 212,-302 212,-306 208,-310 204,-310"/>
+<path fill="none" stroke="#1d5fa8" stroke-width="1.4" d="M205.33,-314C205.33,-314 164.67,-314 164.67,-314 159.33,-314 154,-308.67 154,-303.33 154,-303.33 154,-292.67 154,-292.67 154,-287.33 159.33,-282 164.67,-282 164.67,-282 205.33,-282 205.33,-282 210.67,-282 216,-287.33 216,-292.67 216,-292.67 216,-303.33 216,-303.33 216,-308.67 210.67,-314 205.33,-314"/>
+<text text-anchor="start" x="168" y="-294.6" font-family="Overpass" font-size="13.00" fill="#14212b">Stops</text>
+</a>
+</g>
+</g>
+
+<g id="edge8" class="edge op">
+<title>DRT:Trips&#45;&gt;GTFS:Stops</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M306.55,-385.95C283.55,-369.5 240,-338.35 211.76,-318.14"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="213.09,-316.08 205.98,-314 210.24,-320.07 213.09,-316.08"/>
+<g id="a_edge8_9"><a href="drt.html#Departs_from" xlink:title="DRT:Departs_from: Links a DRT trip to the stop where the passenger is picked up.">
+<text text-anchor="start" x="271.5" y="-352.2" font-family="Overpass" font-size="11.00" fill="#5a6977">Departs_from</text>
+</a>
+</g>
+<g id="a_edge8_10"><a href="drt.html#Arrives_at" xlink:title="DRT:Arrives_at: Links a DRT trip to the stop where the passenger is dropped off.">
+<text text-anchor="start" x="279" y="-338.2" font-family="Overpass" font-size="11.00" fill="#5a6977">Arrives_at</text>
+</a>
+</g>
+</g>
+
+<g id="node11" class="node own m&#45;gtfs">
+<title>GTFS:Agency</title>
+<g id="a_node11"><a href="gtfs.html#Agency" xlink:title="GTFS:Agency: A transit agency whose services are described in the feed.">
+<path fill="#e8f0fa" stroke="#1d5fa8" stroke-width="1.4" d="M123.5,-310C123.5,-310 76.5,-310 76.5,-310 72.5,-310 68.5,-306 68.5,-302 68.5,-302 68.5,-294 68.5,-294 68.5,-290 72.5,-286 76.5,-286 76.5,-286 123.5,-286 123.5,-286 127.5,-286 131.5,-290 131.5,-294 131.5,-294 131.5,-302 131.5,-302 131.5,-306 127.5,-310 123.5,-310"/>
+<text text-anchor="start" x="77.5" y="-294.6" font-family="Overpass" font-size="13.00" fill="#14212b">Agency</text>
+</a>
+</g>
+</g>
+
+<g id="edge15" class="edge op">
+<title>GTFS:Routes&#45;&gt;GTFS:Agency</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M122.99,-385.82C120.08,-379.03 116.51,-370.13 114,-362 109.41,-347.14 105.68,-329.88 103.23,-317.19"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="105.64,-316.72 101.94,-310.3 100.82,-317.63 105.64,-316.72"/>
+<g id="a_edge15_11"><a href="gtfs.html#hasAgency" xlink:title="GTFS:hasAgency: Links a route to the agency that operates it.">
+<text text-anchor="start" x="115.5" y="-345.2" font-family="Overpass" font-size="11.00" fill="#5a6977">hasAgency</text>
+</a>
+</g>
+</g>
+
+<g id="node8" class="node own m&#45;gtfs">
+<title>GTFS:Trips</title>
+<g id="a_node8"><a href="gtfs.html#Trips" xlink:title="GTFS:Trips: A journey of a vehicle along a route at a given time, serving a sequence of stops.">
+<path fill="#e8f0fa" stroke="#1d5fa8" stroke-width="1.4" d="M92,-519C92,-519 54,-519 54,-519 50,-519 46,-515 46,-511 46,-511 46,-503 46,-503 46,-499 50,-495 54,-495 54,-495 92,-495 92,-495 96,-495 100,-499 100,-503 100,-503 100,-511 100,-511 100,-515 96,-519 92,-519"/>
+<text text-anchor="start" x="58.5" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">Trips</text>
+</a>
+</g>
+</g>
+
+<g id="edge14" class="edge op">
+<title>GTFS:Trips&#45;&gt;GTFS:Routes</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M84.66,-494.94C90.49,-488.9 97.3,-481.03 102,-473 112.4,-455.22 119.59,-432.62 123.73,-417.1"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="126.16,-417.49 125.52,-410.1 121.41,-416.28 126.16,-417.49"/>
+<g id="a_edge14_12"><a href="gtfs.html#hasRoute" xlink:title="GTFS:hasRoute: Links a trip to the route it belongs to.">
+<text text-anchor="start" x="110" y="-463.2" font-family="Overpass" font-size="11.00" fill="#5a6977">hasRoute</text>
+</a>
+</g>
+</g>
+
+<g id="node9" class="node own m&#45;gtfs">
+<title>GTFS:StopTimes</title>
+<g id="a_node9"><a href="gtfs.html#StopTimes" xlink:title="GTFS:StopTimes: The scheduled time at which a trip serves a stop: arrival time, departure time and position of the stop in…">
+<path fill="#e8f0fa" stroke="#1d5fa8" stroke-width="1.4" d="M98.5,-611C98.5,-611 35.5,-611 35.5,-611 31.5,-611 27.5,-607 27.5,-603 27.5,-603 27.5,-595 27.5,-595 27.5,-591 31.5,-587 35.5,-587 35.5,-587 98.5,-587 98.5,-587 102.5,-587 106.5,-591 106.5,-595 106.5,-595 106.5,-603 106.5,-603 106.5,-607 102.5,-611 98.5,-611"/>
+<text text-anchor="start" x="36.5" y="-595.6" font-family="Overpass" font-size="13.00" fill="#14212b">StopTimes</text>
+</a>
+</g>
+</g>
+
+<g id="edge13" class="edge op">
+<title>GTFS:StopTimes&#45;&gt;GTFS:Trips</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M67.74,-586.96C68.74,-571.85 70.57,-544.51 71.78,-526.31"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="74.24,-526.27 72.26,-519.13 69.35,-525.95 74.24,-526.27"/>
+<g id="a_edge13_13"><a href="gtfs.html#belongsToTrip" xlink:title="GTFS:belongsToTrip: Links a stop time to the trip it belongs to.">
+<text text-anchor="start" x="72.5" y="-550.2" font-family="Overpass" font-size="11.00" fill="#5a6977">belongsToTrip</text>
+</a>
+</g>
+</g>
+
+<g id="edge12" class="edge op">
+<title>GTFS:StopTimes&#45;&gt;GTFS:Stops</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M60.9,-586.91C53.09,-572 39.95,-544.42 35,-519 29.88,-492.73 31.03,-484.21 40,-459 60.8,-400.58 56.82,-376.48 102,-334 109.05,-327.37 128.69,-318.97 147.1,-312.06"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="148.08,-314.31 153.8,-309.58 146.38,-309.71 148.08,-314.31"/>
+<g id="a_edge12_14"><a href="gtfs.html#servesStop" xlink:title="GTFS:servesStop: Links a stop time to the stop that it serves.">
+<text text-anchor="start" x="41.5" y="-463.2" font-family="Overpass" font-size="11.00" fill="#5a6977">servesStop</text>
+</a>
+</g>
+</g>
+
+<g id="node16" class="node own m&#45;infra feature">
+<title>Infrastructure:Streets</title>
+<g id="a_node16"><a href="infrastructure.html#Streets" xlink:title="Infrastructure:Streets: A street used by vehicles and pedestrians, made of one or more road segments.">
+<path fill="#e9f4ea" stroke="#2f7d32" stroke-width="1.4" d="M609,-222C609,-222 565,-222 565,-222 561,-222 557,-218 557,-214 557,-214 557,-206 557,-206 557,-202 561,-198 565,-198 565,-198 609,-198 609,-198 613,-198 617,-202 617,-206 617,-206 617,-214 617,-214 617,-218 613,-222 609,-222"/>
+<path fill="none" stroke="#2f7d32" stroke-width="1.4" d="M610.33,-226C610.33,-226 563.67,-226 563.67,-226 558.33,-226 553,-220.67 553,-215.33 553,-215.33 553,-204.67 553,-204.67 553,-199.33 558.33,-194 563.67,-194 563.67,-194 610.33,-194 610.33,-194 615.67,-194 621,-199.33 621,-204.67 621,-204.67 621,-215.33 621,-215.33 621,-220.67 615.67,-226 610.33,-226"/>
+<text text-anchor="start" x="566" y="-206.6" font-family="Overpass" font-size="13.00" fill="#14212b">Streets</text>
+</a>
+</g>
+</g>
+
+<g id="edge11" class="edge op">
+<title>GTFS:Stops&#45;&gt;Infrastructure:Streets</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M216.21,-290.32C288.11,-274.94 465.4,-237.01 545.97,-219.78"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="546.66,-222.14 552.99,-218.28 545.63,-217.34 546.66,-222.14"/>
+<g id="a_edge11_15"><a href="drt.html#is_located_on_Streets" xlink:title="DRT:is_located_on_Streets: Links a stop to the street on which it is located.">
+<text text-anchor="start" x="423.5" y="-250.2" font-family="Overpass" font-size="11.00" fill="#5a6977">is_located_on_Streets</text>
+</a>
+</g>
+</g>
+
+<g id="node24" class="node ext">
+<title>sem:Actor</title>
+<g id="a_node24"><a href="https://semanticweb.cs.vu.nl/2009/11/sem/" xlink:title="sem:Actor: Actors are entities that take part in an Event, either actively or passively. Actors do not necessarily have to be…" target="_blank">
+<path fill="#eef1f5" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5,2" d="M945,-222C945,-222 883,-222 883,-222 879,-222 875,-218 875,-214 875,-214 875,-206 875,-206 875,-202 879,-198 883,-198 883,-198 945,-198 945,-198 949,-198 953,-202 953,-206 953,-206 953,-214 953,-214 953,-218 949,-222 945,-222"/>
+<text text-anchor="middle" x="914" y="-206.6" font-family="Overpass" font-size="13.00" fill="#14212b">sem:Actor</text>
+</a>
+</g>
+</g>
+
+<g id="edge31" class="edge sub">
+<title>GTFS:Agency&#45;&gt;sem:Actor</title>
+<g id="a_edge31"><a xlink:title="subclass of">
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M113,-285.74C121.08,-279.41 132,-271.99 143,-268 232.88,-235.4 261.63,-252.8 357,-246 579.28,-230.15 637.69,-259.48 858,-226 861.18,-225.52 864.45,-224.92 867.72,-224.24"/>
+<polygon fill="none" stroke="#8795a1" stroke-width="1.1" points="868.52,-227.65 877.5,-222.02 866.97,-220.83 868.52,-227.65"/>
+</a>
+</g>
+</g>
+
+<g id="node12" class="node own m&#45;infra">
+<title>Infrastructure:vehicle</title>
+<g id="a_node12"><a href="infrastructure.html#vehicle" xlink:title="Infrastructure:vehicle: A motorised or non&#45;motorised means of transport used on roads to move people or goods.">
+<path fill="#e9f4ea" stroke="#2f7d32" stroke-width="1.4" d="M831,-310C831,-310 787,-310 787,-310 783,-310 779,-306 779,-302 779,-302 779,-294 779,-294 779,-290 783,-286 787,-286 787,-286 831,-286 831,-286 835,-286 839,-290 839,-294 839,-294 839,-302 839,-302 839,-306 835,-310 831,-310"/>
+<text text-anchor="start" x="788" y="-294.6" font-family="Overpass" font-size="13.00" fill="#14212b">vehicle</text>
+</a>
+</g>
+</g>
+
+<g id="edge20" class="edge op">
+<title>Infrastructure:vehicle&#45;&gt;Infrastructure:Streets</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M795.63,-285.94C787.93,-279.98 777.84,-272.88 768,-268 722.48,-245.43 666.12,-229.37 628.5,-220.16"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="628.61,-217.67 621.23,-218.41 627.46,-222.43 628.61,-217.67"/>
+<g id="a_edge20_16"><a href="infrastructure.html#RunsOnStreet" xlink:title="Infrastructure:RunsOnStreet: Links a vehicle to a street on which it runs.">
+<text text-anchor="start" x="750" y="-250.2" font-family="Overpass" font-size="11.00" fill="#5a6977">RunsOnStreet</text>
+</a>
+</g>
+</g>
+
+<g id="edge32" class="edge sub">
+<title>Infrastructure:vehicle&#45;&gt;sem:Actor</title>
+<g id="a_edge32"><a xlink:title="subclass of">
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M822.73,-285.76C840.41,-271.27 871.36,-245.92 892.26,-228.8"/>
+<polygon fill="none" stroke="#8795a1" stroke-width="1.1" points="894.75,-231.29 900.27,-222.25 890.32,-225.87 894.75,-231.29"/>
+</a>
+</g>
+</g>
+
+<g id="edge27" class="edge sub">
+<title>Infrastructure:DRT_Shuttle&#45;&gt;Infrastructure:vehicle</title>
+<g id="a_edge27"><a xlink:title="subclass of">
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M770.93,-385.76C778.03,-369.59 791.23,-339.49 800.07,-319.35"/>
+<polygon fill="none" stroke="#8795a1" stroke-width="1.1" points="803.31,-320.67 804.12,-310.11 796.9,-317.86 803.31,-320.67"/>
+</a>
+</g>
+</g>
+
+<g id="node14" class="node own m&#45;infra feature">
+<title>Infrastructure:Road_segment</title>
+<g id="a_node14"><a href="infrastructure.html#Road_segment" xlink:title="Infrastructure:Road_segment: A portion of road between two reference points, such as intersections or stops. Its identity is determined by…">
+<path fill="#e9f4ea" stroke="#2f7d32" stroke-width="1.4" d="M644,-410C644,-410 554,-410 554,-410 550,-410 546,-406 546,-402 546,-402 546,-394 546,-394 546,-390 550,-386 554,-386 554,-386 644,-386 644,-386 648,-386 652,-390 652,-394 652,-394 652,-402 652,-402 652,-406 648,-410 644,-410"/>
+<path fill="none" stroke="#2f7d32" stroke-width="1.4" d="M645.33,-414C645.33,-414 552.67,-414 552.67,-414 547.33,-414 542,-408.67 542,-403.33 542,-403.33 542,-392.67 542,-392.67 542,-387.33 547.33,-382 552.67,-382 552.67,-382 645.33,-382 645.33,-382 650.67,-382 656,-387.33 656,-392.67 656,-392.67 656,-403.33 656,-403.33 656,-408.67 650.67,-414 645.33,-414"/>
+<text text-anchor="start" x="555" y="-394.6" font-family="Overpass" font-size="13.00" fill="#14212b">Road_segment</text>
+</a>
+</g>
+</g>
+
+<g id="edge1" class="edge op std">
+<title>Infrastructure:Road_segment&#45;&gt;GTFS:Stops</title>
+<path fill="none" stroke="#a3adb8" stroke-width="1.1" d="M559.09,-381.91C548.16,-378.22 536.23,-374.59 525,-372 490.94,-364.15 481.28,-368.82 447,-362 400.47,-352.74 390.07,-345.32 344,-334 302.92,-323.9 255.52,-313.65 223.24,-306.87"/>
+<polygon fill="#a3adb8" stroke="#a3adb8" stroke-width="1.1" points="223.53,-304.43 216.18,-305.39 222.53,-309.23 223.53,-304.43"/>
+<g id="a_edge1_17"><a href="https://docs.ogc.org/is/22-047r1/22-047r1.html#sf_relations" xlink:title="geosparql:sfIntersects">
+<text text-anchor="start" x="448.5" y="-345.2" font-family="Overpass" font-size="11.00" fill="#7b8794">geosparql:sfIntersects</text>
+</a>
+</g>
+</g>
+
+<g id="node15" class="node own m&#45;infra feature">
+<title>Infrastructure:Intersection</title>
+<g id="a_node15"><a href="infrastructure.html#Intersection" xlink:title="Infrastructure:Intersection: A junction where several streets meet, where vehicles and pedestrians follow signage to take the right…">
+<path fill="#e9f4ea" stroke="#2f7d32" stroke-width="1.4" d="M745,-310C745,-310 673,-310 673,-310 669,-310 665,-306 665,-302 665,-302 665,-294 665,-294 665,-290 669,-286 673,-286 673,-286 745,-286 745,-286 749,-286 753,-290 753,-294 753,-294 753,-302 753,-302 753,-306 749,-310 745,-310"/>
+<path fill="none" stroke="#2f7d32" stroke-width="1.4" d="M746.33,-314C746.33,-314 671.67,-314 671.67,-314 666.33,-314 661,-308.67 661,-303.33 661,-303.33 661,-292.67 661,-292.67 661,-287.33 666.33,-282 671.67,-282 671.67,-282 746.33,-282 746.33,-282 751.67,-282 757,-287.33 757,-292.67 757,-292.67 757,-303.33 757,-303.33 757,-308.67 751.67,-314 746.33,-314"/>
+<text text-anchor="start" x="674" y="-294.6" font-family="Overpass" font-size="13.00" fill="#14212b">Intersection</text>
+</a>
+</g>
+</g>
+
+<g id="edge17" class="edge op">
+<title>Infrastructure:Road_segment&#45;&gt;Infrastructure:Intersection</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M610.16,-381.91C620.58,-368.41 637.04,-348.57 654,-334 660.64,-328.29 668.29,-322.84 675.73,-318.01"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="677.3,-319.92 681.9,-314.11 674.68,-315.78 677.3,-319.92"/>
+<g id="a_edge17_18"><a href="infrastructure.html#connectedToIntersection" xlink:title="Infrastructure:connectedToIntersection: Links a road segment to an intersection at one of its ends.">
+<text text-anchor="start" x="655.5" y="-345.2" font-family="Overpass" font-size="11.00" fill="#5a6977">connectedToIntersection</text>
+</a>
+</g>
+</g>
+
+<g id="edge16" class="edge op">
+<title>Infrastructure:Road_segment&#45;&gt;Infrastructure:Streets</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M593.27,-381.98C587.33,-365.57 578.45,-338.36 575,-314 572.13,-293.76 572.88,-288.33 575,-268 576.21,-256.4 578.76,-243.67 581.21,-233.2"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="583.6,-233.73 582.87,-226.35 578.84,-232.57 583.6,-233.73"/>
+<g id="a_edge16_19"><a href="infrastructure.html#IsPartOfStreet" xlink:title="Infrastructure:IsPartOfStreet: Links a road segment to the street it belongs to. It specialises the spatial relation…">
+<text text-anchor="start" x="576.5" y="-295.2" font-family="Overpass" font-size="11.00" fill="#5a6977">IsPartOfStreet</text>
+</a>
+</g>
+</g>
+
+<g id="node17" class="node own m&#45;infra feature">
+<title>Infrastructure:Neighborhood</title>
+<g id="a_node17"><a href="infrastructure.html#Neighborhood" xlink:title="Infrastructure:Neighborhood: A geographically delimited urban area that comprises streets, points of interest and other urban…">
+<path fill="#e9f4ea" stroke="#2f7d32" stroke-width="1.4" d="M641.5,-136C641.5,-136 554.5,-136 554.5,-136 550.5,-136 546.5,-132 546.5,-128 546.5,-128 546.5,-120 546.5,-120 546.5,-116 550.5,-112 554.5,-112 554.5,-112 641.5,-112 641.5,-112 645.5,-112 649.5,-116 649.5,-120 649.5,-120 649.5,-128 649.5,-128 649.5,-132 645.5,-136 641.5,-136"/>
+<path fill="none" stroke="#2f7d32" stroke-width="1.4" d="M642.83,-140C642.83,-140 553.17,-140 553.17,-140 547.83,-140 542.5,-134.67 542.5,-129.33 542.5,-129.33 542.5,-118.67 542.5,-118.67 542.5,-113.33 547.83,-108 553.17,-108 553.17,-108 642.83,-108 642.83,-108 648.17,-108 653.5,-113.33 653.5,-118.67 653.5,-118.67 653.5,-129.33 653.5,-129.33 653.5,-134.67 648.17,-140 642.83,-140"/>
+<text text-anchor="start" x="555.5" y="-120.6" font-family="Overpass" font-size="13.00" fill="#14212b">Neighborhood</text>
+</a>
+</g>
+</g>
+
+<g id="edge18" class="edge op">
+<title>Infrastructure:Streets&#45;&gt;Infrastructure:Neighborhood</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M588.97,-193.98C590.66,-181.04 593.13,-162.18 595.06,-147.44"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="597.53,-147.43 596.01,-140.17 592.68,-146.79 597.53,-147.43"/>
+<g id="a_edge18_20"><a href="infrastructure.html#IsPartOfNeighborhood" xlink:title="Infrastructure:IsPartOfNeighborhood: Links a street to the neighbourhood it belongs to.">
+<text text-anchor="start" x="594" y="-164.2" font-family="Overpass" font-size="11.00" fill="#5a6977">IsPartOfNeighborhood</text>
+</a>
+</g>
+</g>
+
+<g id="node18" class="node own m&#45;infra feature">
+<title>Infrastructure:Municipalities</title>
+<g id="a_node18"><a href="infrastructure.html#Municipalities" xlink:title="Infrastructure:Municipalities: A municipality: the territory of a city or a town, delimited in space and represented by a polygon or a…">
+<path fill="#e9f4ea" stroke="#2f7d32" stroke-width="1.4" d="M639,-50C639,-50 557,-50 557,-50 553,-50 549,-46 549,-42 549,-42 549,-34 549,-34 549,-30 553,-26 557,-26 557,-26 639,-26 639,-26 643,-26 647,-30 647,-34 647,-34 647,-42 647,-42 647,-46 643,-50 639,-50"/>
+<path fill="none" stroke="#2f7d32" stroke-width="1.4" d="M640.33,-54C640.33,-54 555.67,-54 555.67,-54 550.33,-54 545,-48.67 545,-43.33 545,-43.33 545,-32.67 545,-32.67 545,-27.33 550.33,-22 555.67,-22 555.67,-22 640.33,-22 640.33,-22 645.67,-22 651,-27.33 651,-32.67 651,-32.67 651,-43.33 651,-43.33 651,-48.67 645.67,-54 640.33,-54"/>
+<text text-anchor="start" x="558" y="-34.6" font-family="Overpass" font-size="13.00" fill="#14212b">Municipalities</text>
+</a>
+</g>
+</g>
+
+<g id="edge19" class="edge op">
+<title>Infrastructure:Neighborhood&#45;&gt;Infrastructure:Municipalities</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M598,-107.98C598,-95.04 598,-76.18 598,-61.44"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="600.45,-61.17 598,-54.17 595.55,-61.17 600.45,-61.17"/>
+<g id="a_edge19_21"><a href="infrastructure.html#isPartOfMunicipalities" xlink:title="Infrastructure:isPartOfMunicipalities: Links a neighbourhood to the municipality it belongs to.">
+<text text-anchor="start" x="599.5" y="-78.2" font-family="Overpass" font-size="11.00" fill="#5a6977">isPartOfMunicipalities</text>
+</a>
+</g>
+</g>
+
+<g id="node19" class="node own m&#45;event">
+<title>Events:impact</title>
+<g id="a_node19"><a href="event.html#impact" xlink:title="Events:impact: An effect of an event. The module separates the effects on the travel plans of agents (Dtx:DisruptiveImpact)…">
+<path fill="#f5ebf8" stroke="#8a2f9e" stroke-width="1.4" d="M1243,-519C1243,-519 1201,-519 1201,-519 1197,-519 1193,-515 1193,-511 1193,-511 1193,-503 1193,-503 1193,-499 1197,-495 1201,-495 1201,-495 1243,-495 1243,-495 1247,-495 1251,-499 1251,-503 1251,-503 1251,-511 1251,-511 1251,-515 1247,-519 1243,-519"/>
+<text text-anchor="start" x="1202" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">impact</text>
+</a>
+</g>
+</g>
+
+<g id="edge24" class="edge op">
+<title>Events:impact&#45;&gt;sem:Actor</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M1223.18,-494.73C1226.74,-454.09 1232.94,-313.87 1158,-246 1129.75,-220.41 1022.67,-213.49 960.15,-211.64"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="960.19,-209.19 953.12,-211.45 960.05,-214.09 960.19,-209.19"/>
+<g id="a_edge24_22"><a href="event.html#AffectsActor" xlink:title="Events:AffectsActor: Links an impact to an actor that it affects, such as a passenger, a vehicle or an…">
+<text text-anchor="start" x="1217.5" y="-345.2" font-family="Overpass" font-size="11.00" fill="#5a6977">AffectsActor</text>
+</a>
+</g>
+</g>
+
+<g id="node20" class="node own m&#45;event">
+<title>Events:PlaceImpact</title>
+<g id="a_node20"><a href="event.html#PlaceImpact" xlink:title="Events:PlaceImpact: An impact of an event on a place of the transport network, such as a blocked road segment, a closed street or…">
+<path fill="#f5ebf8" stroke="#8a2f9e" stroke-width="1.4" d="M1287.5,-611C1287.5,-611 1212.5,-611 1212.5,-611 1208.5,-611 1204.5,-607 1204.5,-603 1204.5,-603 1204.5,-595 1204.5,-595 1204.5,-591 1208.5,-587 1212.5,-587 1212.5,-587 1287.5,-587 1287.5,-587 1291.5,-587 1295.5,-591 1295.5,-595 1295.5,-595 1295.5,-603 1295.5,-603 1295.5,-607 1291.5,-611 1287.5,-611"/>
+<text text-anchor="start" x="1213.5" y="-595.6" font-family="Overpass" font-size="13.00" fill="#14212b">PlaceImpact</text>
+</a>
+</g>
+</g>
+
+<g id="edge28" class="edge sub">
+<title>Events:PlaceImpact&#45;&gt;Events:impact</title>
+<g id="a_edge28"><a xlink:title="subclass of">
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M1247.71,-586.99C1245.11,-575.03 1240.5,-555.44 1235,-539 1233.83,-535.52 1232.46,-531.88 1231.04,-528.36"/>
+<polygon fill="none" stroke="#8795a1" stroke-width="1.1" points="1234.22,-526.89 1227.1,-519.04 1227.77,-529.61 1234.22,-526.89"/>
+</a>
+</g>
+</g>
+
+<g id="node23" class="node ext">
+<title>sem:Place</title>
+<g id="a_node23"><a href="https://semanticweb.cs.vu.nl/2009/11/sem/" xlink:title="sem:Place: Places are locations where an Event happens. They do not need to be physical places and hence do not necessarily need…" target="_blank">
+<path fill="#eef1f5" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5,2" d="M1129,-410C1129,-410 1067,-410 1067,-410 1063,-410 1059,-406 1059,-402 1059,-402 1059,-394 1059,-394 1059,-390 1063,-386 1067,-386 1067,-386 1129,-386 1129,-386 1133,-386 1137,-390 1137,-394 1137,-394 1137,-402 1137,-402 1137,-406 1133,-410 1129,-410"/>
+<text text-anchor="middle" x="1098" y="-394.6" font-family="Overpass" font-size="13.00" fill="#14212b">sem:Place</text>
+</a>
+</g>
+</g>
+
+<g id="edge23" class="edge op">
+<title>Events:PlaceImpact&#45;&gt;sem:Place</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M1255.44,-586.67C1265.2,-564.51 1282.83,-514.7 1262,-481 1236.48,-439.7 1183.16,-418.51 1144.22,-408.12"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="1144.52,-405.67 1137.13,-406.3 1143.3,-410.41 1144.52,-405.67"/>
+<g id="a_edge23_23"><a href="event.html#ImpactsOnPlace" xlink:title="Events:ImpactsOnPlace: Links a place impact to the place that it affects, such as a road segment or a stop.">
+<text text-anchor="start" x="1272.5" y="-504.2" font-family="Overpass" font-size="11.00" fill="#5a6977">ImpactsOnPlace</text>
+</a>
+</g>
+</g>
+
+<g id="node21" class="node ext">
+<title>event:Event</title>
+<g id="a_node21"><a href="http://motools.sourceforge.net/event/event.html#term_Event" xlink:title="event:Event (reused ontology)" target="_blank">
+<path fill="#eef1f5" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5,2" d="M1149,-611C1149,-611 1079,-611 1079,-611 1075,-611 1071,-607 1071,-603 1071,-603 1071,-595 1071,-595 1071,-591 1075,-587 1079,-587 1079,-587 1149,-587 1149,-587 1153,-587 1157,-591 1157,-595 1157,-595 1157,-603 1157,-603 1157,-607 1153,-611 1149,-611"/>
+<text text-anchor="middle" x="1114" y="-595.6" font-family="Overpass" font-size="13.00" fill="#14212b">event:Event</text>
+</a>
+</g>
+</g>
+
+<g id="edge21" class="edge op">
+<title>event:Event&#45;&gt;Events:impact</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M1127.3,-586.87C1133.98,-581.12 1142.1,-573.87 1149,-567 1160.82,-555.23 1161.32,-549.85 1174,-539 1180.71,-533.26 1188.57,-527.76 1195.95,-523.03"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="1197.37,-525.03 1202.01,-519.25 1194.77,-520.87 1197.37,-525.03"/>
+<g id="a_edge21_24"><a href="event.html#HasImpact" xlink:title="Events:HasImpact: Links an event to an impact that it causes.">
+<text text-anchor="start" x="1175" y="-550.2" font-family="Overpass" font-size="11.00" fill="#5a6977">HasImpact</text>
+</a>
+</g>
+</g>
+
+<g id="node22" class="node ext">
+<title>sem:Event</title>
+<g id="a_node22"><a href="https://semanticweb.cs.vu.nl/2009/11/sem/" xlink:title="sem:Event: Events are things that happen. This comprises everything from historical events to web site sessions and mythical…" target="_blank">
+<path fill="#eef1f5" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5,2" d="M1149,-519C1149,-519 1087,-519 1087,-519 1083,-519 1079,-515 1079,-511 1079,-511 1079,-503 1079,-503 1079,-499 1083,-495 1087,-495 1087,-495 1149,-495 1149,-495 1153,-495 1157,-499 1157,-503 1157,-503 1157,-511 1157,-511 1157,-515 1153,-519 1149,-519"/>
+<text text-anchor="middle" x="1118" y="-503.6" font-family="Overpass" font-size="13.00" fill="#14212b">sem:Event</text>
+</a>
+</g>
+</g>
+
+<g id="edge30" class="edge sub">
+<title>event:Event&#45;&gt;sem:Event</title>
+<g id="a_edge30"><a xlink:title="subclass of">
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M1114.49,-586.96C1115.13,-572.66 1116.25,-547.41 1117.05,-529.31"/>
+<polygon fill="none" stroke="#8795a1" stroke-width="1.1" points="1120.56,-529.27 1117.51,-519.13 1113.56,-528.96 1120.56,-529.27"/>
+</a>
+</g>
+</g>
+
+<g id="edge22" class="edge op">
+<title>sem:Event&#45;&gt;sem:Place</title>
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M1107.1,-494.8C1102.07,-488.84 1096.63,-481.08 1094,-473 1088.02,-454.6 1090.44,-432.28 1093.46,-417"/>
+<polygon fill="#8795a1" stroke="#8795a1" stroke-width="1.1" points="1095.87,-417.47 1094.96,-410.11 1091.08,-416.43 1095.87,-417.47"/>
+<g id="a_edge22_25"><a href="event.html#HasLocation" xlink:title="Events:HasLocation: Links an event to the place where it occurs, such as a road segment or a stop.">
+<text text-anchor="start" x="1095.5" y="-463.2" font-family="Overpass" font-size="11.00" fill="#5a6977">HasLocation</text>
+</a>
+</g>
+</g>
+
+<g id="node25" class="node ext">
+<title>Dtx:DisruptiveImpact</title>
+<g id="a_node25"><a href="https://transportdisruption.github.io/transportdisruption.html#d4e2064" xlink:title="Dtx:DisruptiveImpact: A disruptive impact the action of one or more events causing or tending to prevent an agent&#39;s planned travel from…" target="_blank">
+<path fill="#eef1f5" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5,2" d="M1041,-611C1041,-611 915,-611 915,-611 911,-611 907,-607 907,-603 907,-603 907,-595 907,-595 907,-591 911,-587 915,-587 915,-587 1041,-587 1041,-587 1045,-587 1049,-591 1049,-595 1049,-595 1049,-603 1049,-603 1049,-607 1045,-611 1041,-611"/>
+<text text-anchor="middle" x="978" y="-595.6" font-family="Overpass" font-size="13.00" fill="#14212b">Dtx:DisruptiveImpact</text>
+</a>
+</g>
+</g>
+
+<g id="edge29" class="edge sub">
+<title>Dtx:DisruptiveImpact&#45;&gt;Events:impact</title>
+<g id="a_edge29"><a xlink:title="subclass of">
+<path fill="none" stroke="#8795a1" stroke-width="1.1" d="M1021.92,-586.96C1041.97,-581.56 1065.89,-574.58 1087,-567 1116.22,-556.51 1122.55,-551.43 1151,-539 1162.84,-533.82 1175.8,-528.17 1187.36,-523.12"/>
+<polygon fill="none" stroke="#8795a1" stroke-width="1.1" points="1188.93,-526.25 1196.7,-519.04 1186.13,-519.84 1188.93,-526.25"/>
+</a>
+</g>
+</g>
+
+<g id="edge25" class="edge op std">
+<title>Dtx:DisruptiveImpact&#45;&gt;Dtx:Plan</title>
+<path fill="none" stroke="#a3adb8" stroke-width="1.1" d="M983.52,-586.96C991.14,-571.72 1004.99,-544.03 1014.09,-525.82"/>
+<polygon fill="#a3adb8" stroke="#a3adb8" stroke-width="1.1" points="1016.5,-526.48 1017.44,-519.13 1012.12,-524.29 1016.5,-526.48"/>
+<g id="a_edge25_26"><a href="https://transportdisruption.github.io/transportdisruption.html#d4e271" xlink:title="Dtx:impactsOn">
+<text text-anchor="start" x="1008.5" y="-550.2" font-family="Overpass" font-size="11.00" fill="#7b8794">Dtx:impactsOn</text>
+</a>
+</g>
+</g>
+</g>
+</svg></div></div><figcaption><a href="diagrams/overview.svg" target="_blank" rel="noopener">Open the diagram full size</a>.</figcaption></figure>
+    </section>
+</div></div>
+<div class="wrap with-side">
+  <aside class="side"><nav aria-label="On this page"><p class="side-title">On this page</p><ol>
+    <li><a href="#introduction">Introduction</a></li><li><a href="#modules">Four modules</a></li><li><a href="#architecture">How the modules fit together</a></li>
+    <li><a href="#kg">Knowledge graph</a></li><li><a href="#figures">Figures</a></li><li><a href="#cqs">Competency questions</a></li><li><a href="#examples">Examples</a></li>
+    <li><a href="#reuse">Reused ontologies</a></li><li><a href="#namespaces">Namespaces</a></li><li><a href="#downloads">Downloads</a></li>
+    <li><a href="#data">Data sources</a></li><li><a href="#cite">How to cite</a></li></ol></nav></aside>
+  <div class="content">
+    <section class="block" id="kg"><h2>Knowledge graph</h2><p class="sub">The modules are populated with data of the La Rochelle area (see <a href="#data">data sources</a>): the knowledge graph holds 1,302,871 triples (modules and instances). Number of instances per class:</p><div class="tbl-wrap"><table class="kg"><tbody><tr><th scope="row"><a href="drt.html"><span class="line-badge m-drt xs" aria-hidden="true">D</span>DRT core</a></th><td class="kgc"><a class="t k-c m-drt" href="drt.html#Passenger" title="DRT:Passenger: A person who travels on a DRT trip under a reservation."><span class="pfx">DRT:</span>Passenger</a> <span class="num">222</span> <a class="t k-c m-drt" href="drt.html#Reservation" title="DRT:Reservation: A booking for the on-demand transport service, made by a customer for one or more…"><span class="pfx">DRT:</span>Reservation</a> <span class="num">222</span> <a class="t k-c m-drt" href="drt.html#Trips" title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a…"><span class="pfx">DRT:</span>Trips</a> <span class="num">222</span> <a class="t k-c m-drt" href="drt.html#Ride" title="DRT:Ride: A vehicle run of the DRT service. A ride is operated by one driver with one shuttle on a…"><span class="pfx">DRT:</span>Ride</a> <span class="num">100</span> <a class="t k-c m-drt" href="drt.html#Customer" title="DRT:Customer: A person who books DRT trips. The customer makes the reservation and may travel or book…"><span class="pfx">DRT:</span>Customer</a> <span class="num">42</span> <a class="t k-c m-drt" href="drt.html#Driver" title="DRT:Driver: A person who drives the vehicle during a ride or, for an autonomous shuttle, supervises…"><span class="pfx">DRT:</span>Driver</a> <span class="num">5</span></td></tr><tr><th scope="row"><a href="gtfs.html"><span class="line-badge m-gtfs xs" aria-hidden="true">G</span>GTFS service</a></th><td class="kgc"><a class="t k-c m-gtfs" href="gtfs.html#StopTimes" title="GTFS:StopTimes: The scheduled time at which a trip serves a stop: arrival time, departure time and…"><span class="pfx">GTFS:</span>StopTimes</a> <span class="num">133,993</span> <a class="t k-c m-gtfs" href="gtfs.html#Trips" title="GTFS:Trips: A journey of a vehicle along a route at a given time, serving a sequence of stops."><span class="pfx">GTFS:</span>Trips</a> <span class="num">5,086</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a> <span class="num">1,575</span> <a class="t k-c m-gtfs" href="gtfs.html#Shapes" title="GTFS:Shapes: The path that a vehicle travels along a route, as an ordered sequence of points."><span class="pfx">GTFS:</span>Shapes</a> <span class="num">371</span> <a class="t k-c m-gtfs" href="gtfs.html#CalendarDates" title="GTFS:CalendarDates: An exception to a service calendar on a given date, for example a service added or…"><span class="pfx">GTFS:</span>CalendarDates</a> <span class="num">138</span> <a class="t k-c m-gtfs" href="gtfs.html#Routes" title="GTFS:Routes: A public transit line: a group of trips shown to riders as a single service."><span class="pfx">GTFS:</span>Routes</a> <span class="num">88</span> <a class="t k-c m-gtfs" href="gtfs.html#Calendar" title="GTFS:Calendar: The days of the week on which a service runs, between a start date and an end date."><span class="pfx">GTFS:</span>Calendar</a> <span class="num">28</span> <a class="t k-c m-gtfs" href="gtfs.html#Agency" title="GTFS:Agency: A transit agency whose services are described in the feed."><span class="pfx">GTFS:</span>Agency</a> <span class="num">1</span></td></tr><tr><th scope="row"><a href="infrastructure.html"><span class="line-badge m-infra xs" aria-hidden="true">I</span>Urban infrastructure</a></th><td class="kgc"><a class="t k-c m-infra" href="infrastructure.html#Road_segment" title="Infrastructure:Road_segment: A portion of road between two reference points, such as intersections or stops. Its…"><span class="pfx">Infrastructure:</span>Road_segment</a> <span class="num">8,120</span> <a class="t k-c m-infra" href="infrastructure.html#Intersection" title="Infrastructure:Intersection: A junction where several streets meet, where vehicles and pedestrians follow signage to…"><span class="pfx">Infrastructure:</span>Intersection</a> <span class="num">3,560</span> <a class="t k-c m-infra" href="infrastructure.html#Streets" title="Infrastructure:Streets: A street used by vehicles and pedestrians, made of one or more road segments."><span class="pfx">Infrastructure:</span>Streets</a> <span class="num">2,383</span> <a class="t k-c m-infra" href="infrastructure.html#Traffic_signs" title="Infrastructure:Traffic_signs: A road sign giving traffic information, such as a speed limit, a restriction or a…"><span class="pfx">Infrastructure:</span>Traffic_signs</a> <span class="num">288</span> <a class="t k-c m-infra" href="infrastructure.html#RondAbout" title="Infrastructure:RondAbout: A roundabout: a circular intersection where traffic flows around a central island."><span class="pfx">Infrastructure:</span>RondAbout</a> <span class="num">33</span> <a class="t k-c m-infra" href="infrastructure.html#Neighborhood" title="Infrastructure:Neighborhood: A geographically delimited urban area that comprises streets, points of interest and…"><span class="pfx">Infrastructure:</span>Neighborhood</a> <span class="num">24</span> <a class="t k-c m-infra" href="infrastructure.html#Municipalities" title="Infrastructure:Municipalities: A municipality: the territory of a city or a town, delimited in space and represented by…"><span class="pfx">Infrastructure:</span>Municipalities</a> <span class="num">8</span> <a class="t k-c m-infra" href="infrastructure.html#DRT_Shuttle" title="Infrastructure:DRT_Shuttle: A vehicle temporarily assigned to the demand-responsive transport (DRT) service. It can…"><span class="pfx">Infrastructure:</span>DRT_Shuttle</a> <span class="num">5</span> <a class="t k-c m-infra" href="infrastructure.html#Traffic_light" title="Infrastructure:Traffic_light: A traffic signal that controls the movement of vehicles and pedestrians with red, amber…"><span class="pfx">Infrastructure:</span>Traffic_light</a> <span class="num">5</span> <a class="t k-c m-infra" href="infrastructure.html#GranularityLevel" title="Infrastructure:GranularityLevel: The level of spatial granularity of an urban entity: micro (street level), meso…"><span class="pfx">Infrastructure:</span>GranularityLevel</a> <span class="num">3</span></td></tr><tr><th scope="row"><a href="event.html"><span class="line-badge m-event xs" aria-hidden="true">E</span>Events and impacts</a></th><td class="kgc"><a class="t k-c m-event" href="event.html#PlaceImpact" title="Events:PlaceImpact: An impact of an event on a place of the transport network, such as a blocked road…"><span class="pfx">Events:</span>PlaceImpact</a> <span class="num">5</span></td></tr><tr><th scope="row">Reused ontologies</th><td class="kgc"><a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#_class_geogeometry" title="http://www.opengis.net/ont/geosparql#Geometry" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>Geometry<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">16,601</span> <a class="t ext" href="https://www.w3.org/TR/owl-time/#time:Instant" title="http://www.w3.org/2006/time#Instant" target="_blank" rel="noopener"><span class="pfx">time:</span>Instant<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">10</span> <a class="t ext" href="http://motools.sourceforge.net/event/event.html#term_Event" title="http://purl.org/NET/c4dm/event.owl#Event" target="_blank" rel="noopener"><span class="pfx">event:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">5</span> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Event" target="_blank" rel="noopener"><span class="pfx">sem:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">5</span> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Time" target="_blank" rel="noopener"><span class="pfx">sem:</span>Time<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">5</span> <a class="t ext" href="https://www.w3.org/TR/owl-time/#time:Interval" title="http://www.w3.org/2006/time#Interval" target="_blank" rel="noopener"><span class="pfx">time:</span>Interval<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">5</span> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e2392" title="http://purl.org/td/transportdisruption#FallenTrees" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>FallenTrees<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">1</span> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e2522" title="http://purl.org/td/transportdisruption#Flooding" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>Flooding<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">1</span> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e3078" title="http://purl.org/td/transportdisruption#HeavyTraffic" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>HeavyTraffic<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">1</span> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e4998" title="http://purl.org/td/transportdisruption#RoadClosure" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>RoadClosure<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="num">1</span></td></tr></tbody></table></div><p>The knowledge graphs, that is the modules populated with their instances, are published on <a href="https://doi.org/10.5281/zenodo.20054329">Zenodo</a>.</p></section>
+    <section class="block" id="figures"><h2>Figures</h2>
+      <p class="sub">Terms declared in each module and instances of the module classes in the knowledge graph.</p>
+      <div class="tbl-wrap"><table class="stats"><thead><tr><th>Module</th><th>Classes</th><th>Object properties</th><th>Datatype properties</th><th>Instances</th></tr></thead><tbody><tr><th scope="row"><a href="drt.html"><span class="line-badge m-drt xs" aria-hidden="true">D</span>DRT core</a></th><td class="num">12</td><td class="num">29</td><td class="num">67</td><td class="num">813</td></tr><tr><th scope="row"><a href="gtfs.html"><span class="line-badge m-gtfs xs" aria-hidden="true">G</span>GTFS service</a></th><td class="num">27</td><td class="num">46</td><td class="num">160</td><td class="num">141,280</td></tr><tr><th scope="row"><a href="infrastructure.html"><span class="line-badge m-infra xs" aria-hidden="true">I</span>Urban infrastructure</a></th><td class="num">38</td><td class="num">23</td><td class="num">96</td><td class="num">14,429</td></tr><tr><th scope="row"><a href="event.html"><span class="line-badge m-event xs" aria-hidden="true">E</span>Events and impacts</a></th><td class="num">2</td><td class="num">4</td><td class="num">0</td><td class="num">5</td></tr><tr class="total"><th scope="row">Total</th><td class="num">79</td><td class="num">102</td><td class="num">323</td><td class="num">156,527</td></tr></tbody></table></div>
+    </section>
+    <section class="block" id="cqs"><h2>Competency questions</h2><p class="sub">The questions that guided the design, with the terms that answer them and a SPARQL query tested on the knowledge graph.</p><article class="cq" id="CQ1"><header><span class="cq-id">CQ1</span><h3>How can an on-demand transport request be represented, including its passenger, origin, destination, pickup time and drop-off time?</h3></header><p class="small">Terms involved:</p><ul class='plain chain'><li><a class="t k-c m-drt" href="drt.html#Reservation" title="DRT:Reservation: A booking for the on-demand transport service, made by a customer for one or more…"><span class="pfx">DRT:</span>Reservation</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#hasPassenger" title="DRT:hasPassenger: Links a reservation to a passenger who travels under it."><span class="pfx">DRT:</span>hasPassenger</a> <span class="arrow">→</span> <a class="t k-c m-drt" href="drt.html#Passenger" title="DRT:Passenger: A person who travels on a DRT trip under a reservation."><span class="pfx">DRT:</span>Passenger</a></li><li><a class="t k-c m-drt" href="drt.html#Passenger" title="DRT:Passenger: A person who travels on a DRT trip under a reservation."><span class="pfx">DRT:</span>Passenger</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#wait_at" title="DRT:wait_at: Links a passenger to the stop where he or she waits to be picked up."><span class="pfx">DRT:</span>wait_at</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-drt" href="drt.html#Reservation" title="DRT:Reservation: A booking for the on-demand transport service, made by a customer for one or more…"><span class="pfx">DRT:</span>Reservation</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#assigned_to" title="DRT:assigned_to: Links a reservation to the ride (vehicle run) to which it is assigned."><span class="pfx">DRT:</span>assigned_to</a> <span class="arrow">→</span> <a class="t k-c m-drt" href="drt.html#Ride" title="DRT:Ride: A vehicle run of the DRT service. A ride is operated by one driver with one shuttle on a…"><span class="pfx">DRT:</span>Ride</a></li><li><a class="t k-c m-drt" href="drt.html#Ride" title="DRT:Ride: A vehicle run of the DRT service. A ride is operated by one driver with one shuttle on a…"><span class="pfx">DRT:</span>Ride</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#includesTrip" title="DRT:includesTrip: Links a ride to a passenger trip that it includes."><span class="pfx">DRT:</span>includesTrip</a> <span class="arrow">→</span> <a class="t k-c m-drt" href="drt.html#Trips" title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a…"><span class="pfx">DRT:</span>Trips</a></li><li><a class="t k-c m-drt" href="drt.html#Trips" title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a…"><span class="pfx">DRT:</span>Trips</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#Departs_from" title="DRT:Departs_from: Links a DRT trip to the stop where the passenger is picked up."><span class="pfx">DRT:</span>Departs_from</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-drt" href="drt.html#Trips" title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a…"><span class="pfx">DRT:</span>Trips</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#Arrives_at" title="DRT:Arrives_at: Links a DRT trip to the stop where the passenger is dropped off."><span class="pfx">DRT:</span>Arrives_at</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-drt" href="drt.html#Reservation" title="DRT:Reservation: A booking for the on-demand transport service, made by a customer for one or more…"><span class="pfx">DRT:</span>Reservation</a> <span class="arrow">—</span> <a class="t k-dp m-drt" href="drt.html#selectedPickupTime" title="DRT:selectedPickupTime: Pickup time selected by the customer at booking."><span class="pfx">DRT:</span>selectedPickupTime</a> <span class="arrow">→</span> <a class="t ext" href="https://www.w3.org/TR/xmlschema11-2/#dateTime" title="http://www.w3.org/2001/XMLSchema#dateTime" target="_blank" rel="noopener"><span class="pfx">xsd:</span>dateTime<span class="ext-mark" aria-hidden="true">↗</span></a></li><li><a class="t k-c m-drt" href="drt.html#Reservation" title="DRT:Reservation: A booking for the on-demand transport service, made by a customer for one or more…"><span class="pfx">DRT:</span>Reservation</a> <span class="arrow">—</span> <a class="t k-dp m-drt" href="drt.html#selectedDropoffTime" title="DRT:selectedDropoffTime: Drop-off time selected by the customer at booking."><span class="pfx">DRT:</span>selectedDropoffTime</a> <span class="arrow">→</span> <a class="t ext" href="https://www.w3.org/TR/xmlschema11-2/#dateTime" title="http://www.w3.org/2001/XMLSchema#dateTime" target="_blank" rel="noopener"><span class="pfx">xsd:</span>dateTime<span class="ext-mark" aria-hidden="true">↗</span></a></li></ul><details class="sparql"><summary>SPARQL query</summary><pre><code>PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+
+SELECT ?reservation ?passenger ?origin ?destination ?pickup ?dropoff WHERE {
+  ?reservation a DRT:Reservation ;
+               DRT:hasPassenger ?passenger ;
+               DRT:assigned_to ?ride ;
+               DRT:selectedPickupTime ?pickup ;
+               DRT:selectedDropoffTime ?dropoff .
+  ?passenger DRT:wait_at ?origin .
+  ?ride DRT:includesTrip ?trip .
+  ?trip DRT:Departs_from ?origin ;
+        DRT:Arrives_at ?destination .
+}</code></pre><button class="copy" type="button" data-copy="PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+
+SELECT ?reservation ?passenger ?origin ?destination ?pickup ?dropoff WHERE {
+  ?reservation a DRT:Reservation ;
+               DRT:hasPassenger ?passenger ;
+               DRT:assigned_to ?ride ;
+               DRT:selectedPickupTime ?pickup ;
+               DRT:selectedDropoffTime ?dropoff .
+  ?passenger DRT:wait_at ?origin .
+  ?ride DRT:includesTrip ?trip .
+  ?trip DRT:Departs_from ?origin ;
+        DRT:Arrives_at ?destination .
+}" aria-label="Copy PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+
+SELECT ?reservation ?passenger ?origin ?destination ?pickup ?dropoff WHERE {
+  ?reservation a DRT:Reservation ;
+               DRT:hasPassenger ?passenger ;
+               DRT:assigned_to ?ride ;
+               DRT:selectedPickupTime ?pickup ;
+               DRT:selectedDropoffTime ?dropoff .
+  ?passenger DRT:wait_at ?origin .
+  ?ride DRT:includesTrip ?trip .
+  ?trip DRT:Departs_from ?origin ;
+        DRT:Arrives_at ?destination .
+}">Copy</button><p class="muted small">Tested on the knowledge graph: 334 result rows.</p></details></article><article class="cq" id="CQ2"><header><span class="cq-id">CQ2</span><h3>Which scheduled routes or services can be used as alternatives or supplements to a given on-demand transport request?</h3></header><p class="small">Terms involved:</p><ul class='plain chain'><li><a class="t k-c m-drt" href="drt.html#Trips" title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a…"><span class="pfx">DRT:</span>Trips</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#Departs_from" title="DRT:Departs_from: Links a DRT trip to the stop where the passenger is picked up."><span class="pfx">DRT:</span>Departs_from</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-drt" href="drt.html#Trips" title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a…"><span class="pfx">DRT:</span>Trips</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#Arrives_at" title="DRT:Arrives_at: Links a DRT trip to the stop where the passenger is dropped off."><span class="pfx">DRT:</span>Arrives_at</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-infra" href="infrastructure.html#Road_segment" title="Infrastructure:Road_segment: A portion of road between two reference points, such as intersections or stops. Its…"><span class="pfx">Infrastructure:</span>Road_segment</a> <span class="arrow">—</span> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#sf_relations" title="http://www.opengis.net/ont/geosparql#sfIntersects" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>sfIntersects<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-infra" href="infrastructure.html#Road_segment" title="Infrastructure:Road_segment: A portion of road between two reference points, such as intersections or stops. Its…"><span class="pfx">Infrastructure:</span>Road_segment</a> <span class="arrow">—</span> <a class="t k-op m-infra" href="infrastructure.html#IsPartOfStreet" title="Infrastructure:IsPartOfStreet: Links a road segment to the street it belongs to. It specialises the spatial relation…"><span class="pfx">Infrastructure:</span>IsPartOfStreet</a> <span class="arrow">→</span> <a class="t k-c m-infra" href="infrastructure.html#Streets" title="Infrastructure:Streets: A street used by vehicles and pedestrians, made of one or more road segments."><span class="pfx">Infrastructure:</span>Streets</a></li><li><a class="t k-c m-gtfs" href="gtfs.html#StopTimes" title="GTFS:StopTimes: The scheduled time at which a trip serves a stop: arrival time, departure time and…"><span class="pfx">GTFS:</span>StopTimes</a> <span class="arrow">—</span> <a class="t k-op m-gtfs" href="gtfs.html#servesStop" title="GTFS:servesStop: Links a stop time to the stop that it serves."><span class="pfx">GTFS:</span>servesStop</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-gtfs" href="gtfs.html#StopTimes" title="GTFS:StopTimes: The scheduled time at which a trip serves a stop: arrival time, departure time and…"><span class="pfx">GTFS:</span>StopTimes</a> <span class="arrow">—</span> <a class="t k-op m-gtfs" href="gtfs.html#belongsToTrip" title="GTFS:belongsToTrip: Links a stop time to the trip it belongs to."><span class="pfx">GTFS:</span>belongsToTrip</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Trips" title="GTFS:Trips: A journey of a vehicle along a route at a given time, serving a sequence of stops."><span class="pfx">GTFS:</span>Trips</a></li><li><a class="t k-c m-gtfs" href="gtfs.html#Trips" title="GTFS:Trips: A journey of a vehicle along a route at a given time, serving a sequence of stops."><span class="pfx">GTFS:</span>Trips</a> <span class="arrow">—</span> <a class="t k-op m-gtfs" href="gtfs.html#hasRoute" title="GTFS:hasRoute: Links a trip to the route it belongs to."><span class="pfx">GTFS:</span>hasRoute</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Routes" title="GTFS:Routes: A public transit line: a group of trips shown to riders as a single service."><span class="pfx">GTFS:</span>Routes</a></li></ul><details class="sparql"><summary>SPARQL query</summary><pre><code>PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+PREFIX GTFS: &lt;http://www.semanticweb.org/hp/ontologies/2024/transport#&gt;
+PREFIX Infrastructure: &lt;http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#&gt;
+PREFIX geosparql: &lt;http://www.opengis.net/ont/geosparql#&gt;
+
+# Scheduled routes that stop in the same street as the departure or the arrival stop of an on-demand trip
+SELECT DISTINCT ?trip ?end ?drtStop ?streetName ?route ?routeName WHERE {
+  { ?trip DRT:Departs_from ?drtStop . BIND(&quot;departure&quot; AS ?end) }
+  UNION
+  { ?trip DRT:Arrives_at ?drtStop . BIND(&quot;arrival&quot; AS ?end) }
+  ?trip a DRT:Trips .
+  # the street of the on-demand stop
+  ?segment geosparql:sfIntersects ?drtStop ;
+           Infrastructure:IsPartOfStreet ?street .
+  OPTIONAL { ?street Infrastructure:Nom_rue ?streetName }
+  # the scheduled stops in the same street, and the routes that serve them
+  ?segment2 Infrastructure:IsPartOfStreet ?street ;
+            geosparql:sfIntersects ?busStop .
+  ?stopTime GTFS:servesStop ?busStop ;
+            GTFS:belongsToTrip ?gtfsTrip .
+  ?gtfsTrip GTFS:hasRoute ?route .
+  OPTIONAL { ?route GTFS:route_short_name ?routeName }
+}
+ORDER BY ?trip ?end ?routeName</code></pre><button class="copy" type="button" data-copy="PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+PREFIX GTFS: &lt;http://www.semanticweb.org/hp/ontologies/2024/transport#&gt;
+PREFIX Infrastructure: &lt;http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#&gt;
+PREFIX geosparql: &lt;http://www.opengis.net/ont/geosparql#&gt;
+
+# Scheduled routes that stop in the same street as the departure or the arrival stop of an on-demand trip
+SELECT DISTINCT ?trip ?end ?drtStop ?streetName ?route ?routeName WHERE {
+  { ?trip DRT:Departs_from ?drtStop . BIND(&quot;departure&quot; AS ?end) }
+  UNION
+  { ?trip DRT:Arrives_at ?drtStop . BIND(&quot;arrival&quot; AS ?end) }
+  ?trip a DRT:Trips .
+  # the street of the on-demand stop
+  ?segment geosparql:sfIntersects ?drtStop ;
+           Infrastructure:IsPartOfStreet ?street .
+  OPTIONAL { ?street Infrastructure:Nom_rue ?streetName }
+  # the scheduled stops in the same street, and the routes that serve them
+  ?segment2 Infrastructure:IsPartOfStreet ?street ;
+            geosparql:sfIntersects ?busStop .
+  ?stopTime GTFS:servesStop ?busStop ;
+            GTFS:belongsToTrip ?gtfsTrip .
+  ?gtfsTrip GTFS:hasRoute ?route .
+  OPTIONAL { ?route GTFS:route_short_name ?routeName }
+}
+ORDER BY ?trip ?end ?routeName" aria-label="Copy PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+PREFIX GTFS: &lt;http://www.semanticweb.org/hp/ontologies/2024/transport#&gt;
+PREFIX Infrastructure: &lt;http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#&gt;
+PREFIX geosparql: &lt;http://www.opengis.net/ont/geosparql#&gt;
+
+# Scheduled routes that stop in the same street as the departure or the arrival stop of an on-demand trip
+SELECT DISTINCT ?trip ?end ?drtStop ?streetName ?route ?routeName WHERE {
+  { ?trip DRT:Departs_from ?drtStop . BIND(&quot;departure&quot; AS ?end) }
+  UNION
+  { ?trip DRT:Arrives_at ?drtStop . BIND(&quot;arrival&quot; AS ?end) }
+  ?trip a DRT:Trips .
+  # the street of the on-demand stop
+  ?segment geosparql:sfIntersects ?drtStop ;
+           Infrastructure:IsPartOfStreet ?street .
+  OPTIONAL { ?street Infrastructure:Nom_rue ?streetName }
+  # the scheduled stops in the same street, and the routes that serve them
+  ?segment2 Infrastructure:IsPartOfStreet ?street ;
+            geosparql:sfIntersects ?busStop .
+  ?stopTime GTFS:servesStop ?busStop ;
+            GTFS:belongsToTrip ?gtfsTrip .
+  ?gtfsTrip GTFS:hasRoute ?route .
+  OPTIONAL { ?route GTFS:route_short_name ?routeName }
+}
+ORDER BY ?trip ?end ?routeName">Copy</button><p class="muted small">Tested on the knowledge graph: 1252 result rows.</p></details></article><article class="cq" id="CQ3"><header><span class="cq-id">CQ3</span><h3>How can a disruptive event be represented by specifying its type, location, duration and impact on the transportation service?</h3></header><p class="small">Terms involved:</p><ul class='plain chain'><li><a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Event" target="_blank" rel="noopener"><span class="pfx">sem:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">—</span> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/eventType" target="_blank" rel="noopener"><span class="pfx">sem:</span>eventType<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">→</span> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e4998" title="http://purl.org/td/transportdisruption#RoadClosure" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>RoadClosure<span class="ext-mark" aria-hidden="true">↗</span></a></li><li><a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Event" target="_blank" rel="noopener"><span class="pfx">sem:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">—</span> <a class="t k-op m-event" href="event.html#HasLocation" title="Events:HasLocation: Links an event to the place where it occurs, such as a road segment or a stop."><span class="pfx">Events:</span>HasLocation</a> <span class="arrow">→</span> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Place" target="_blank" rel="noopener"><span class="pfx">sem:</span>Place<span class="ext-mark" aria-hidden="true">↗</span></a></li><li><a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Event" target="_blank" rel="noopener"><span class="pfx">sem:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">—</span> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/hasTime" target="_blank" rel="noopener"><span class="pfx">sem:</span>hasTime<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">→</span> <a class="t ext" href="https://www.w3.org/TR/owl-time/#time:Interval" title="http://www.w3.org/2006/time#Interval" target="_blank" rel="noopener"><span class="pfx">time:</span>Interval<span class="ext-mark" aria-hidden="true">↗</span></a></li><li><a class="t ext" href="http://motools.sourceforge.net/event/event.html#term_Event" title="http://purl.org/NET/c4dm/event.owl#Event" target="_blank" rel="noopener"><span class="pfx">event:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">—</span> <a class="t k-op m-event" href="event.html#HasImpact" title="Events:HasImpact: Links an event to an impact that it causes."><span class="pfx">Events:</span>HasImpact</a> <span class="arrow">→</span> <a class="t k-c m-event" href="event.html#impact" title="Events:impact: An effect of an event. The module separates the effects on the travel plans of agents…"><span class="pfx">Events:</span>impact</a></li></ul><details class="sparql"><summary>SPARQL query</summary><pre><code>PREFIX sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt;
+PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX time: &lt;http://www.w3.org/2006/time#&gt;
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+
+SELECT ?event ?type ?place ?begin ?end ?impact WHERE {
+  ?event a sem:Event ;
+         sem:eventType ?t ;
+         Events:HasLocation ?place ;
+         sem:hasTime ?interval ;
+         Events:HasImpact ?impact .
+  ?t a ?type . FILTER (?type != owl:NamedIndividual)
+  ?interval time:hasBeginning/time:inXSDDateTimeStamp ?begin ;
+            time:hasEnd/time:inXSDDateTimeStamp ?end .
+}</code></pre><button class="copy" type="button" data-copy="PREFIX sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt;
+PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX time: &lt;http://www.w3.org/2006/time#&gt;
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+
+SELECT ?event ?type ?place ?begin ?end ?impact WHERE {
+  ?event a sem:Event ;
+         sem:eventType ?t ;
+         Events:HasLocation ?place ;
+         sem:hasTime ?interval ;
+         Events:HasImpact ?impact .
+  ?t a ?type . FILTER (?type != owl:NamedIndividual)
+  ?interval time:hasBeginning/time:inXSDDateTimeStamp ?begin ;
+            time:hasEnd/time:inXSDDateTimeStamp ?end .
+}" aria-label="Copy PREFIX sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt;
+PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX time: &lt;http://www.w3.org/2006/time#&gt;
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+
+SELECT ?event ?type ?place ?begin ?end ?impact WHERE {
+  ?event a sem:Event ;
+         sem:eventType ?t ;
+         Events:HasLocation ?place ;
+         sem:hasTime ?interval ;
+         Events:HasImpact ?impact .
+  ?t a ?type . FILTER (?type != owl:NamedIndividual)
+  ?interval time:hasBeginning/time:inXSDDateTimeStamp ?begin ;
+            time:hasEnd/time:inXSDDateTimeStamp ?end .
+}">Copy</button><p class="muted small">Tested on the knowledge graph: 5 result rows.</p></details></article><article class="cq" id="CQ4"><header><span class="cq-id">CQ4</span><h3>Which on-demand ride reservations are affected by a disruption occurring in a given area and during a given time window?</h3></header><p class="small">Terms involved:</p><ul class='plain chain'><li><a class="t ext" href="http://motools.sourceforge.net/event/event.html#term_Event" title="http://purl.org/NET/c4dm/event.owl#Event" target="_blank" rel="noopener"><span class="pfx">event:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">—</span> <a class="t k-op m-event" href="event.html#HasImpact" title="Events:HasImpact: Links an event to an impact that it causes."><span class="pfx">Events:</span>HasImpact</a> <span class="arrow">→</span> <a class="t k-c m-event" href="event.html#PlaceImpact" title="Events:PlaceImpact: An impact of an event on a place of the transport network, such as a blocked road…"><span class="pfx">Events:</span>PlaceImpact</a></li><li><a class="t k-c m-event" href="event.html#PlaceImpact" title="Events:PlaceImpact: An impact of an event on a place of the transport network, such as a blocked road…"><span class="pfx">Events:</span>PlaceImpact</a> <span class="arrow">—</span> <a class="t k-op m-event" href="event.html#ImpactsOnPlace" title="Events:ImpactsOnPlace: Links a place impact to the place that it affects, such as a road segment or a stop."><span class="pfx">Events:</span>ImpactsOnPlace</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-drt" href="drt.html#Trips" title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a…"><span class="pfx">DRT:</span>Trips</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#Departs_from" title="DRT:Departs_from: Links a DRT trip to the stop where the passenger is picked up."><span class="pfx">DRT:</span>Departs_from</a> <span class="arrow">→</span> <a class="t k-c m-gtfs" href="gtfs.html#Stops" title="GTFS:Stops: A stop or a station where vehicles pick up or drop off riders. Stops of the regular…"><span class="pfx">GTFS:</span>Stops</a></li><li><a class="t k-c m-drt" href="drt.html#Trips" title="DRT:Trips: A passenger journey of the DRT service: the trip of one passenger from a pickup stop to a…"><span class="pfx">DRT:</span>Trips</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#belongsToRide" title="DRT:belongsToRide: Links a DRT trip to the ride during which it is performed."><span class="pfx">DRT:</span>belongsToRide</a> <span class="arrow">→</span> <a class="t k-c m-drt" href="drt.html#Ride" title="DRT:Ride: A vehicle run of the DRT service. A ride is operated by one driver with one shuttle on a…"><span class="pfx">DRT:</span>Ride</a></li><li><a class="t k-c m-drt" href="drt.html#Reservation" title="DRT:Reservation: A booking for the on-demand transport service, made by a customer for one or more…"><span class="pfx">DRT:</span>Reservation</a> <span class="arrow">—</span> <a class="t k-op m-drt" href="drt.html#assigned_to" title="DRT:assigned_to: Links a reservation to the ride (vehicle run) to which it is assigned."><span class="pfx">DRT:</span>assigned_to</a> <span class="arrow">→</span> <a class="t k-c m-drt" href="drt.html#Ride" title="DRT:Ride: A vehicle run of the DRT service. A ride is operated by one driver with one shuttle on a…"><span class="pfx">DRT:</span>Ride</a></li></ul><details class="sparql"><summary>SPARQL query</summary><pre><code>PREFIX sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt;
+PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX time: &lt;http://www.w3.org/2006/time#&gt;
+PREFIX GTFS: &lt;http://www.semanticweb.org/hp/ontologies/2024/transport#&gt;
+PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+SELECT DISTINCT ?event ?reservation ?stop ?pickup WHERE {
+  ?event Events:HasImpact ?impact ;
+         sem:hasTime ?interval .
+  ?interval time:hasBeginning/time:inXSDDateTimeStamp ?begin ;
+            time:hasEnd/time:inXSDDateTimeStamp ?end .
+  ?impact Events:ImpactsOnPlace ?stop .
+  ?stop a GTFS:Stops .
+  ?trip DRT:Departs_from|DRT:Arrives_at ?stop ;
+        DRT:belongsToRide ?ride .
+  ?reservation DRT:assigned_to ?ride ;
+               DRT:selectedPickupTime ?pickup .
+  FILTER (xsd:dateTime(STR(?pickup)) &gt;= xsd:dateTime(STR(?begin)) &amp;&amp;
+          xsd:dateTime(STR(?pickup)) &lt;= xsd:dateTime(STR(?end)))
+}</code></pre><button class="copy" type="button" data-copy="PREFIX sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt;
+PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX time: &lt;http://www.w3.org/2006/time#&gt;
+PREFIX GTFS: &lt;http://www.semanticweb.org/hp/ontologies/2024/transport#&gt;
+PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+SELECT DISTINCT ?event ?reservation ?stop ?pickup WHERE {
+  ?event Events:HasImpact ?impact ;
+         sem:hasTime ?interval .
+  ?interval time:hasBeginning/time:inXSDDateTimeStamp ?begin ;
+            time:hasEnd/time:inXSDDateTimeStamp ?end .
+  ?impact Events:ImpactsOnPlace ?stop .
+  ?stop a GTFS:Stops .
+  ?trip DRT:Departs_from|DRT:Arrives_at ?stop ;
+        DRT:belongsToRide ?ride .
+  ?reservation DRT:assigned_to ?ride ;
+               DRT:selectedPickupTime ?pickup .
+  FILTER (xsd:dateTime(STR(?pickup)) &gt;= xsd:dateTime(STR(?begin)) &amp;&amp;
+          xsd:dateTime(STR(?pickup)) &lt;= xsd:dateTime(STR(?end)))
+}" aria-label="Copy PREFIX sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt;
+PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX time: &lt;http://www.w3.org/2006/time#&gt;
+PREFIX GTFS: &lt;http://www.semanticweb.org/hp/ontologies/2024/transport#&gt;
+PREFIX DRT: &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+SELECT DISTINCT ?event ?reservation ?stop ?pickup WHERE {
+  ?event Events:HasImpact ?impact ;
+         sem:hasTime ?interval .
+  ?interval time:hasBeginning/time:inXSDDateTimeStamp ?begin ;
+            time:hasEnd/time:inXSDDateTimeStamp ?end .
+  ?impact Events:ImpactsOnPlace ?stop .
+  ?stop a GTFS:Stops .
+  ?trip DRT:Departs_from|DRT:Arrives_at ?stop ;
+        DRT:belongsToRide ?ride .
+  ?reservation DRT:assigned_to ?ride ;
+               DRT:selectedPickupTime ?pickup .
+  FILTER (xsd:dateTime(STR(?pickup)) &gt;= xsd:dateTime(STR(?begin)) &amp;&amp;
+          xsd:dateTime(STR(?pickup)) &lt;= xsd:dateTime(STR(?end)))
+}">Copy</button><p class="muted small">Tested on the knowledge graph: 1 result row.</p></details></article><article class="cq" id="CQ5"><header><span class="cq-id">CQ5</span><h3>Which road segments are affected by a traffic event?</h3></header><p class="small">Terms involved:</p><ul class='plain chain'><li><a class="t ext" href="http://motools.sourceforge.net/event/event.html#term_Event" title="http://purl.org/NET/c4dm/event.owl#Event" target="_blank" rel="noopener"><span class="pfx">event:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <span class="arrow">—</span> <a class="t k-op m-event" href="event.html#HasImpact" title="Events:HasImpact: Links an event to an impact that it causes."><span class="pfx">Events:</span>HasImpact</a> <span class="arrow">→</span> <a class="t k-c m-event" href="event.html#PlaceImpact" title="Events:PlaceImpact: An impact of an event on a place of the transport network, such as a blocked road…"><span class="pfx">Events:</span>PlaceImpact</a></li><li><a class="t k-c m-event" href="event.html#PlaceImpact" title="Events:PlaceImpact: An impact of an event on a place of the transport network, such as a blocked road…"><span class="pfx">Events:</span>PlaceImpact</a> <span class="arrow">—</span> <a class="t k-op m-event" href="event.html#ImpactsOnPlace" title="Events:ImpactsOnPlace: Links a place impact to the place that it affects, such as a road segment or a stop."><span class="pfx">Events:</span>ImpactsOnPlace</a> <span class="arrow">→</span> <a class="t k-c m-infra" href="infrastructure.html#Road_segment" title="Infrastructure:Road_segment: A portion of road between two reference points, such as intersections or stops. Its…"><span class="pfx">Infrastructure:</span>Road_segment</a></li><li><a class="t k-c m-infra" href="infrastructure.html#Road_segment" title="Infrastructure:Road_segment: A portion of road between two reference points, such as intersections or stops. Its…"><span class="pfx">Infrastructure:</span>Road_segment</a> <span class="arrow">—</span> <a class="t k-op m-infra" href="infrastructure.html#IsPartOfStreet" title="Infrastructure:IsPartOfStreet: Links a road segment to the street it belongs to. It specialises the spatial relation…"><span class="pfx">Infrastructure:</span>IsPartOfStreet</a> <span class="arrow">→</span> <a class="t k-c m-infra" href="infrastructure.html#Streets" title="Infrastructure:Streets: A street used by vehicles and pedestrians, made of one or more road segments."><span class="pfx">Infrastructure:</span>Streets</a></li></ul><details class="sparql"><summary>SPARQL query</summary><pre><code>PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX Infrastructure: &lt;http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#&gt;
+
+SELECT ?event ?segment ?streetName WHERE {
+  ?event Events:HasImpact ?impact .
+  ?impact a Events:PlaceImpact ;
+          Events:ImpactsOnPlace ?segment .
+  ?segment a Infrastructure:Road_segment .
+  OPTIONAL { ?segment Infrastructure:IsPartOfStreet ?street .
+             ?street Infrastructure:Nom_rue ?streetName }
+}</code></pre><button class="copy" type="button" data-copy="PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX Infrastructure: &lt;http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#&gt;
+
+SELECT ?event ?segment ?streetName WHERE {
+  ?event Events:HasImpact ?impact .
+  ?impact a Events:PlaceImpact ;
+          Events:ImpactsOnPlace ?segment .
+  ?segment a Infrastructure:Road_segment .
+  OPTIONAL { ?segment Infrastructure:IsPartOfStreet ?street .
+             ?street Infrastructure:Nom_rue ?streetName }
+}" aria-label="Copy PREFIX Events: &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt;
+PREFIX Infrastructure: &lt;http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#&gt;
+
+SELECT ?event ?segment ?streetName WHERE {
+  ?event Events:HasImpact ?impact .
+  ?impact a Events:PlaceImpact ;
+          Events:ImpactsOnPlace ?segment .
+  ?segment a Infrastructure:Road_segment .
+  OPTIONAL { ?segment Infrastructure:IsPartOfStreet ?street .
+             ?street Infrastructure:Nom_rue ?streetName }
+}">Copy</button><p class="muted small">Tested on the knowledge graph: 3 result rows.</p></details></article></section>
+    <section class="block" id="examples"><h2>Examples</h2>
+      <h3>A reservation and its ride</h3><pre class="ttl"><code><span class="k">@prefix</span> DRT:            &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt; .
+<span class="k">@prefix</span> GTFS:           &lt;http://www.semanticweb.org/hp/ontologies/2024/transport#&gt; .
+<span class="k">@prefix</span> Infrastructure: &lt;http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#&gt; .
+<span class="k">@prefix</span> xsd:            &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+<span class="c"># A reservation, the ride it is assigned to and the trip of its passenger.</span>
+<span class="c"># Identifiers and values are illustrative: no real booking is shown.</span>
+DRT:reservation_1001 <span class="k">a</span> DRT:Reservation ;
+    DRT:madeBy DRT:customer_17 ;
+    DRT:hasPassenger DRT:passenger_17_1001 ;
+    DRT:assigned_to DRT:ride_501 ;
+    DRT:numberOfPeople 1 ;
+    DRT:isShared true ;
+    DRT:selectedPickupTime <span class="s">&quot;2025-08-13T11:30:00+02:00&quot;</span><span class="d">^^xsd:dateTime</span> ;
+    DRT:selectedDropoffTime <span class="s">&quot;2025-08-13T11:52:00+02:00&quot;</span><span class="d">^^xsd:dateTime</span> .
+
+DRT:passenger_17_1001 <span class="k">a</span> DRT:Passenger ;
+    DRT:wait_at GTFS:stop_DRT_9 ;
+    DRT:Travels_by Infrastructure:drt_shuttle_City_Bus_02 .
+
+DRT:ride_501 <span class="k">a</span> DRT:Ride ;
+    DRT:includesTrip DRT:trip_1001 ;
+    DRT:operatesOn GTFS:route_3 ;
+    DRT:usesVehicle Infrastructure:drt_shuttle_City_Bus_02 .
+
+DRT:trip_1001 <span class="k">a</span> DRT:Trips ;
+    DRT:belongsToRide DRT:ride_501 ;
+    DRT:Departs_from GTFS:stop_DRT_9 ;
+    DRT:Arrives_at GTFS:stop_DRT_22 .</code></pre>
+      <h3>A disruptive event and its impact</h3><pre class="ttl"><code><span class="k">@prefix</span> DRT:            &lt;http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#&gt; .
+<span class="k">@prefix</span> Events:         &lt;http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#&gt; .
+<span class="k">@prefix</span> Infrastructure: &lt;http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#&gt; .
+<span class="k">@prefix</span> sem:            &lt;http://semanticweb.cs.vu.nl/2009/11/sem/&gt; .
+<span class="k">@prefix</span> event:          &lt;http://purl.org/NET/c4dm/event.owl#&gt; .
+<span class="k">@prefix</span> Dtx:            &lt;http://purl.org/td/transportdisruption#&gt; .
+<span class="k">@prefix</span> time:           &lt;http://www.w3.org/2006/time#&gt; .
+<span class="k">@prefix</span> xsd:            &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+<span class="c"># One of the five simulated events of the knowledge graph: a road closure on a road segment.</span>
+DRT:Ev_SIM_001 <span class="k">a</span> sem:Event, event:Event ;
+    sem:eventType DRT:Type_SIM_RoadClosure ;
+    Events:HasLocation Infrastructure:OSM_seg_46898758_3_B ;
+    sem:hasTime DRT:Tm_SIM_001 ;
+    sem:hasBeginTimeStamp <span class="s">&quot;2025-08-07T10:48:00+02:00&quot;</span><span class="d">^^xsd:dateTime</span> ;
+    sem:hasEndTimeStamp <span class="s">&quot;2025-08-07T13:22:00+02:00&quot;</span><span class="d">^^xsd:dateTime</span> ;
+    Events:HasImpact DRT:Imp_SIM_001 .
+
+<span class="c"># The type of the event: an individual of a Dtx class.</span>
+DRT:Type_SIM_RoadClosure <span class="k">a</span> Dtx:RoadClosure .
+
+DRT:Tm_SIM_001 <span class="k">a</span> sem:Time, time:Interval ;
+    time:hasBeginning DRT:Ts_SIM_001 ;
+    time:hasEnd DRT:Te_SIM_001 .
+DRT:Ts_SIM_001 <span class="k">a</span> time:Instant ;
+    time:inXSDDateTimeStamp <span class="s">&quot;2025-08-07T10:48:00+02:00&quot;</span><span class="d">^^xsd:dateTime</span> .
+DRT:Te_SIM_001 <span class="k">a</span> time:Instant ;
+    time:inXSDDateTimeStamp <span class="s">&quot;2025-08-07T13:22:00+02:00&quot;</span><span class="d">^^xsd:dateTime</span> .
+
+DRT:Imp_SIM_001 <span class="k">a</span> Events:PlaceImpact ;
+    Events:ImpactsOnPlace Infrastructure:OSM_seg_46898758_3_B .</code></pre>
+    </section>
+    <section class="block" id="reuse"><h2>Reused ontologies</h2>
+      <p class="sub">Standard ontologies are imported, not copied into this documentation: follow the links to their official documentation. Each module page lists in detail what it reuses.</p>
+      <div class="tbl-wrap"><table class="reuse"><thead><tr><th>Ontology</th><th>Used for</th><th>Terms used</th><th>Modules</th></tr></thead><tbody><tr><th scope="row"><a href="https://docs.ogc.org/is/22-047r1/22-047r1.html" target="_blank" rel="noopener">GeoSPARQL 1.1</a><br><code>geosparql:</code></th><td>Spatial features, WKT geometries and topological relations (within, touches, intersects).</td><td class="chips"><a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#geo_aswkt" title="http://www.opengis.net/ont/geosparql#asWKT" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>asWKT<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#_class_geofeature" title="http://www.opengis.net/ont/geosparql#Feature" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>Feature<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#_class_geogeometry" title="http://www.opengis.net/ont/geosparql#Geometry" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>Geometry<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#_property_geohasdefaultgeometry" title="http://www.opengis.net/ont/geosparql#hasDefaultGeometry" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>hasDefaultGeometry<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#_property_geohasgeometry" title="http://www.opengis.net/ont/geosparql#hasGeometry" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>hasGeometry<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#sf_relations" title="http://www.opengis.net/ont/geosparql#sfCrosses" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>sfCrosses<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#sf_relations" title="http://www.opengis.net/ont/geosparql#sfIntersects" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>sfIntersects<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#sf_relations" title="http://www.opengis.net/ont/geosparql#sfTouches" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>sfTouches<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#sf_relations" title="http://www.opengis.net/ont/geosparql#sfWithin" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>sfWithin<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://docs.ogc.org/is/22-047r1/22-047r1.html#_rdfs_datatype_geowktliteral" title="http://www.opengis.net/ont/geosparql#wktLiteral" target="_blank" rel="noopener"><span class="pfx">geosparql:</span>wktLiteral<span class="ext-mark" aria-hidden="true">↗</span></a></td><td><a href=gtfs.html#reuse><span class="line-badge m-gtfs xs" aria-hidden="true">G</span></a> <a href=infrastructure.html#reuse><span class="line-badge m-infra xs" aria-hidden="true">I</span></a></td></tr><tr><th scope="row"><a href="https://www.w3.org/TR/owl-time/" target="_blank" rel="noopener">OWL-Time</a><br><code>time:</code></th><td>Time instants and intervals: reservation time windows and the periods of events.</td><td class="chips"><a class="t ext" href="https://www.w3.org/TR/owl-time/#time:hasBeginning" title="http://www.w3.org/2006/time#hasBeginning" target="_blank" rel="noopener"><span class="pfx">time:</span>hasBeginning<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://www.w3.org/TR/owl-time/#time:hasEnd" title="http://www.w3.org/2006/time#hasEnd" target="_blank" rel="noopener"><span class="pfx">time:</span>hasEnd<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://www.w3.org/TR/owl-time/#time:hasTime" title="http://www.w3.org/2006/time#hasTime" target="_blank" rel="noopener"><span class="pfx">time:</span>hasTime<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://www.w3.org/TR/owl-time/#time:Instant" title="http://www.w3.org/2006/time#Instant" target="_blank" rel="noopener"><span class="pfx">time:</span>Instant<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://www.w3.org/TR/owl-time/#time:Interval" title="http://www.w3.org/2006/time#Interval" target="_blank" rel="noopener"><span class="pfx">time:</span>Interval<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://www.w3.org/TR/owl-time/#time:inXSDDateTimeStamp" title="http://www.w3.org/2006/time#inXSDDateTimeStamp" target="_blank" rel="noopener"><span class="pfx">time:</span>inXSDDateTimeStamp<span class="ext-mark" aria-hidden="true">↗</span></a></td><td><a href=drt.html#reuse><span class="line-badge m-drt xs" aria-hidden="true">D</span></a> <a href=event.html#reuse><span class="line-badge m-event xs" aria-hidden="true">E</span></a></td></tr><tr><th scope="row"><a href="https://semanticweb.cs.vu.nl/2009/11/sem/" target="_blank" rel="noopener">Simple Event Model (SEM)</a><br><code>sem:</code></th><td>Generic event model: events, places, actors, times and event types.</td><td class="chips"><a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Actor" target="_blank" rel="noopener"><span class="pfx">sem:</span>Actor<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Event" target="_blank" rel="noopener"><span class="pfx">sem:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/eventType" target="_blank" rel="noopener"><span class="pfx">sem:</span>eventType<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/hasBeginTimeStamp" target="_blank" rel="noopener"><span class="pfx">sem:</span>hasBeginTimeStamp<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/hasEndTimeStamp" target="_blank" rel="noopener"><span class="pfx">sem:</span>hasEndTimeStamp<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/hasTime" target="_blank" rel="noopener"><span class="pfx">sem:</span>hasTime<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Place" target="_blank" rel="noopener"><span class="pfx">sem:</span>Place<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://semanticweb.cs.vu.nl/2009/11/sem/" title="http://semanticweb.cs.vu.nl/2009/11/sem/Time" target="_blank" rel="noopener"><span class="pfx">sem:</span>Time<span class="ext-mark" aria-hidden="true">↗</span></a></td><td><a href=event.html#reuse><span class="line-badge m-event xs" aria-hidden="true">E</span></a></td></tr><tr><th scope="row"><a href="https://transportdisruption.github.io/transportdisruption.html" target="_blank" rel="noopener">Transport Disruption ontology (Dtx)</a><br><code>Dtx:</code></th><td>Classification of transport events (from DATEX II), travel plans and disruptive impacts.</td><td class="chips"><p class="dtx-line"><strong>Event types:</strong> <span class="dtx-type"><a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e6399" title="http://purl.org/td/transportdisruption#TrafficElementEvent" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>TrafficElementEvent<span class="ext-mark" aria-hidden="true">↗</span></a><span class="muted">345 classes</span></span> <span class="dtx-type"><a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e4346" title="http://purl.org/td/transportdisruption#OperatorAction" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>OperatorAction<span class="ext-mark" aria-hidden="true">↗</span></a><span class="muted">72 classes</span></span> <span class="dtx-type"><a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e4773" title="http://purl.org/td/transportdisruption#PublicTransportEvent" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>PublicTransportEvent<span class="ext-mark" aria-hidden="true">↗</span></a><span class="muted">3 classes</span></span></p><p class="dtx-line"><strong>Examples used:</strong> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e4998" title="http://purl.org/td/transportdisruption#RoadClosure" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>RoadClosure<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e3078" title="http://purl.org/td/transportdisruption#HeavyTraffic" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>HeavyTraffic<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e2392" title="http://purl.org/td/transportdisruption#FallenTrees" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>FallenTrees<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e2522" title="http://purl.org/td/transportdisruption#Flooding" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>Flooding<span class="ext-mark" aria-hidden="true">↗</span></a></p><p class="dtx-line"><strong>Disruption model:</strong> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e2064" title="http://purl.org/td/transportdisruption#DisruptiveImpact" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>DisruptiveImpact<span class="ext-mark" aria-hidden="true">↗</span></a> <a class="t ext" href="https://transportdisruption.github.io/transportdisruption.html#d4e4574" title="http://purl.org/td/transportdisruption#Plan" target="_blank" rel="noopener"><span class="pfx">Dtx:</span>Plan<span class="ext-mark" aria-hidden="true">↗</span></a></p></td><td><a href=drt.html#reuse><span class="line-badge m-drt xs" aria-hidden="true">D</span></a> <a href=event.html#reuse><span class="line-badge m-event xs" aria-hidden="true">E</span></a></td></tr><tr><th scope="row"><a href="http://motools.sourceforge.net/event/event.html" target="_blank" rel="noopener">Event Ontology (c4dm)</a><br><code>event:</code></th><td>Event class on which Dtx builds its events; aligned with sem:Event.</td><td class="chips"><a class="t ext" href="http://motools.sourceforge.net/event/event.html#term_Event" title="http://purl.org/NET/c4dm/event.owl#Event" target="_blank" rel="noopener"><span class="pfx">event:</span>Event<span class="ext-mark" aria-hidden="true">↗</span></a></td><td><a href=event.html#reuse><span class="line-badge m-event xs" aria-hidden="true">E</span></a></td></tr></tbody></table></div>
+    </section>
+    <section class="block" id="namespaces"><h2>Namespaces</h2><p class="sub">Prefixes used in this documentation.</p>
+      <div class="tbl-wrap"><table class="ns"><thead><tr><th>Prefix</th><th>Namespace</th><th>Ontology</th></tr></thead><tbody><tr><td><code>DRT:</code></td><td><code>http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#</code></td><td><span class="line-badge m-drt xs" aria-hidden="true">D</span>DRT core</td></tr><tr><td><code>GTFS:</code></td><td><code>http://www.semanticweb.org/hp/ontologies/2024/transport#</code></td><td><span class="line-badge m-gtfs xs" aria-hidden="true">G</span>GTFS service</td></tr><tr><td><code>Infrastructure:</code></td><td><code>http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#</code></td><td><span class="line-badge m-infra xs" aria-hidden="true">I</span>Urban infrastructure</td></tr><tr><td><code>Events:</code></td><td><code>http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#</code></td><td><span class="line-badge m-event xs" aria-hidden="true">E</span>Events and impacts</td></tr><tr><td><code>geosparql:</code></td><td><code>http://www.opengis.net/ont/geosparql#</code></td><td>GeoSPARQL 1.1</td></tr><tr><td><code>time:</code></td><td><code>http://www.w3.org/2006/time#</code></td><td>OWL-Time</td></tr><tr><td><code>sem:</code></td><td><code>http://semanticweb.cs.vu.nl/2009/11/sem/</code></td><td>Simple Event Model (SEM)</td></tr><tr><td><code>Dtx:</code></td><td><code>http://purl.org/td/transportdisruption#</code></td><td>Transport Disruption ontology (Dtx)</td></tr><tr><td><code>event:</code></td><td><code>http://purl.org/NET/c4dm/event.owl#</code></td><td>Event Ontology (c4dm)</td></tr><tr><td><code>xsd:</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td><td>XML Schema datatypes</td></tr></tbody></table></div></section>
+    <section class="block" id="downloads"><h2>Downloads</h2><p class="sub">The four modules without instances: classes, properties and axioms. RDF/XML is the format saved by Protégé; Turtle holds the same triples.</p>
+      <div class="tbl-wrap"><table class="dl-table"><thead><tr><th>Module</th><th>RDF/XML</th><th>Turtle</th><th>Triples</th><th>Project file</th></tr></thead><tbody><tr><th scope="row"><span class="line-badge m-drt xs" aria-hidden="true">D</span>DRT core</th><td><a class="dl" href="ontology/drt.rdf" download>drt.rdf</a></td><td><a class="dl" href="ontology/drt.ttl" download>drt.ttl</a></td><td class="num">2,704</td><td><code>DRT_sans_instances.rdf</code></td></tr><tr><th scope="row"><span class="line-badge m-gtfs xs" aria-hidden="true">G</span>GTFS service</th><td><a class="dl" href="ontology/gtfs.rdf" download>gtfs.rdf</a></td><td><a class="dl" href="ontology/gtfs.ttl" download>gtfs.ttl</a></td><td class="num">897</td><td><code>GTFS_sans_instances.rdf</code></td></tr><tr><th scope="row"><span class="line-badge m-infra xs" aria-hidden="true">I</span>Urban infrastructure</th><td><a class="dl" href="ontology/infrastructure.rdf" download>infrastructure.rdf</a></td><td><a class="dl" href="ontology/infrastructure.ttl" download>infrastructure.ttl</a></td><td class="num">732</td><td><code>Urban_Infrastructure.rdf</code></td></tr><tr><th scope="row"><span class="line-badge m-event xs" aria-hidden="true">E</span>Events and impacts</th><td><a class="dl" href="ontology/event.rdf" download>event.rdf</a></td><td><a class="dl" href="ontology/event.ttl" download>event.ttl</a></td><td class="num">291</td><td><code>Events.rdf</code></td></tr></tbody></table></div>
+      <p>To open the whole ontology in Protégé, download the four <code>.rdf</code> files and <a class="dl" href="ontology/catalog-v001.xml" download>catalog-v001.xml</a> into one folder, then open <code>drt.rdf</code>: the catalog lets Protégé find the imported modules in the folder. GeoSPARQL, OWL-Time, SEM and Dtx are loaded from their official addresses.</p></section>
+    <section class="block" id="data"><h2>Data sources</h2><div class="tbl-wrap"><table><thead><tr><th>Module</th><th>Source</th><th>Licence</th></tr></thead><tbody><tr><td><span class="line-badge m-infra xs" aria-hidden="true">I</span>Urban infrastructure</td><td>OpenStreetMap: road network, buildings and points of interest of part of the La Rochelle metropolitan area</td><td><a href=https://www.openstreetmap.org/copyright>ODbL 1.0</a></td></tr><tr><td><span class="line-badge m-gtfs xs" aria-hidden="true">G</span>GTFS service</td><td>GTFS feed of the Yélo public transport network of La Rochelle (transport.data.gouv.fr)</td><td><a href=https://transport.data.gouv.fr/datasets/arrets-horaires-et-parcours-theoriques-des-reseaux-naq-lro-nva-m-1>ODbL</a></td></tr><tr><td><span class="line-badge m-drt xs" aria-hidden="true">D</span>DRT core</td><td>Requests of the YeloFlex demand-responsive service in La Rochelle</td><td><a href=https://creativecommons.org/licenses/by/4.0/>CC BY 4.0</a></td></tr><tr><td><span class="line-badge m-event xs" aria-hidden="true">E</span>Events and impacts</td><td>Simulated disruption events (road closures, heavy traffic, fallen trees, flooding)</td><td><a href=https://creativecommons.org/licenses/by/4.0/>CC BY 4.0</a></td></tr></tbody></table></div></section>
+    <section class="block" id="cite"><h2>How to cite</h2>
+      <p>Nourelhouda El Gadi, Esma Talhi, Alain Bouju (2026). <em>Urban-Mobility-Ontology</em> (version 1.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.20054329">https://doi.org/10.5281/zenodo.20054329</a></p>
+      <pre><code>@misc{elgadi2026urbanmobility,
+  author    = {El Gadi, Nourelhouda and Talhi, Esma and Bouju, Alain},
+  title     = {Urban-Mobility-Ontology},
+  year      = {2026},
+  version   = {1.0.0},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20054329},
+  url       = {https://doi.org/10.5281/zenodo.20054329}
+}</code></pre><button class="copy" type="button" data-copy="@misc{elgadi2026urbanmobility,
+  author    = {El Gadi, Nourelhouda and Talhi, Esma and Bouju, Alain},
+  title     = {Urban-Mobility-Ontology},
+  year      = {2026},
+  version   = {1.0.0},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20054329},
+  url       = {https://doi.org/10.5281/zenodo.20054329}
+}" aria-label="Copy @misc{elgadi2026urbanmobility,
+  author    = {El Gadi, Nourelhouda and Talhi, Esma and Bouju, Alain},
+  title     = {Urban-Mobility-Ontology},
+  year      = {2026},
+  version   = {1.0.0},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20054329},
+  url       = {https://doi.org/10.5281/zenodo.20054329}
+}">Copy</button>
+      <p>The ontology is released under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 (CC BY 4.0)</a> licence.</p>
+    </section>
+  </div>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <p>Urban-Mobility-Ontology · version 1.0.0</p>
+    <p>Licence: <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 (CC BY 4.0)</a> · <a href="https://doi.org/10.5281/zenodo.20054329">DOI 10.5281/zenodo.20054329</a></p>
+  </div>
+</footer>
+<script src="assets/terms.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
