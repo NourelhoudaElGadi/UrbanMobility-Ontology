@@ -1,0 +1,895 @@
+@prefix DRT: <http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#> .
+@prefix Infrastructure: <http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#> .
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+swrla:isRuleEnabled a owl:AnnotationProperty .
+
+geosparql:ehContains a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:ehCoveredBy a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:ehCovers a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:ehInside a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:ehMeet a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:ehOverlap a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:rcc8ec a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:rcc8ntpp a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:rcc8ntppi a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:rcc8po a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:rcc8tpp a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:rcc8tppi a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:sfContains a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:sfCrosses a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:sfDisjoint a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:sfOverlaps a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+Infrastructure: a owl:Ontology ;
+    owl:imports <http://www.opengis.net/ont/geosparql> .
+
+Infrastructure:AdressBat a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:comment "Adress for building" ;
+    rdfs:domain Infrastructure:Building ;
+    rdfs:range xsd:string .
+
+Infrastructure:Aggregates a owl:ObjectProperty ;
+    rdfs:domain Infrastructure:UrbanEntity ;
+    rdfs:range Infrastructure:UrbanEntity .
+
+Infrastructure:Arrow_markings a owl:Class ;
+    rdfs:comment "Directional arrows painted on the road surface to indicate traffic flow and vehicle movements" ;
+    rdfs:subClassOf Infrastructure:Road_markings .
+
+Infrastructure:Bicycle_lane_marking a owl:Class ;
+    rdfs:comment "ground markings indicating a passage/space intended for cyclists,marked with specific symbols or signs" ;
+    rdfs:subClassOf Infrastructure:Road_markings .
+
+Infrastructure:Blocks a owl:ObjectProperty ;
+    rdfs:comment "An obstacle blocks a Road segment" ;
+    rdfs:domain Infrastructure:Obstacles ;
+    rdfs:range Infrastructure:Road_segment .
+
+Infrastructure:Bus a owl:Class ;
+    rdfs:comment "A transport vehicle that travels along a fixed route, used for public or private transit in specific areas" ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Cars a owl:Class ;
+    rdfs:comment "Motorized vehicles used primarily for personal transportation,  with four wheels." ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Category_poi a owl:DatatypeProperty ;
+    rdfs:comment "the category of point of interest" ;
+    rdfs:domain Infrastructure:AreaOfInterest ;
+    rdfs:range xsd:string .
+
+Infrastructure:Code_Postal a owl:DatatypeProperty ;
+    rdfs:comment "postal code of the municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:string .
+
+Infrastructure:CurvatureSegment a owl:DatatypeProperty ;
+    rdfs:comment "the courvature of the segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:CurvatureTotal a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:EquippedBy a owl:ObjectProperty ;
+    rdfs:comment "An Road segment is equipped by a traffic control (sings or lights)" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range Infrastructure:Traffic_control .
+
+Infrastructure:HasIntersection a owl:ObjectProperty ;
+    rdfs:comment "A street has an intersection" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range Infrastructure:Intersection .
+
+Infrastructure:HasSegments a owl:ObjectProperty ;
+    rdfs:comment "A Street has Road Segment" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range Infrastructure:Road_segment ;
+    owl:inverseOf Infrastructure:IsPartOfStreet .
+
+Infrastructure:Hospital a owl:Class ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:Building .
+
+Infrastructure:ID_Capteur a owl:DatatypeProperty ;
+    rdfs:comment "sensor identifier" ;
+    rdfs:domain Infrastructure:Sensor ;
+    rdfs:range xsd:integer .
+
+Infrastructure:IdIntersection a owl:DatatypeProperty ;
+    rdfs:comment "intersection identifier" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range xsd:string .
+
+Infrastructure:IdMarquage a owl:DatatypeProperty ;
+    rdfs:comment "Road Marking identifier" ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range xsd:integer .
+
+Infrastructure:IdRondAbout a owl:DatatypeProperty ;
+    rdfs:comment "rondabout identifier" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:string .
+
+Infrastructure:IdSecteur a owl:DatatypeProperty ;
+    rdfs:comment "industrial zone identifier" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:integer .
+
+Infrastructure:IdSegment a owl:DatatypeProperty ;
+    rdfs:comment "Road Segment identifier" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:string .
+
+Infrastructure:Id_Feux a owl:DatatypeProperty ;
+    rdfs:comment "light identifier" ;
+    rdfs:domain Infrastructure:Traffic_light ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Id_pan a owl:DatatypeProperty ;
+    rdfs:comment "sings identifier" ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Id_rue a owl:DatatypeProperty ;
+    rdfs:comment "street identifier" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:string .
+
+Infrastructure:IsPartOfNeighborhood a owl:ObjectProperty ;
+    rdfs:comment "A street is part of neighborhood" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range Infrastructure:Neighborhood ;
+    rdfs:subPropertyOf geosparql:sfWithin .
+
+Infrastructure:LanesBackward a owl:DatatypeProperty ;
+    rdfs:comment "Lane backward direction for the road segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:integer .
+
+Infrastructure:LanesForward a owl:DatatypeProperty ;
+    rdfs:comment "Lane forward direction for the road segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Largeur a owl:DatatypeProperty ;
+    rdfs:comment "Width for a street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:LargeurSegment a owl:DatatypeProperty ;
+    rdfs:comment "Width for road segments" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:LatitudeR a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the rondabout" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_C a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_Cap a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the sensor" ;
+    rdfs:domain Infrastructure:Sensor ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_Feu a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the light" ;
+    rdfs:domain Infrastructure:Traffic_light ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_I a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the intersection" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_Q a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the neighborhood" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_R a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_pan a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the sings" ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_poi a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the area of interest" ;
+    rdfs:domain Infrastructure:AreaOfInterest ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_rech a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the charging station" ;
+    rdfs:domain Infrastructure:Charging_station ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_zon a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Parking ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Lidar_sensor a owl:Class ;
+    rdfs:comment "A sensor that uses laser light to measure distances and detect objects" ;
+    rdfs:subClassOf Infrastructure:Sensor .
+
+Infrastructure:LocatedOnStreet a owl:ObjectProperty ;
+    rdfs:comment "A road markings is located on  a streets." ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range Infrastructure:Road_segment .
+
+Infrastructure:LonObs a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the obstacle" ;
+    rdfs:domain Infrastructure:Obstacles ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longeursegment a owl:DatatypeProperty ;
+    rdfs:comment "length of the road segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:LongitudeMarquage a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the road marking" ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:LongitudeR a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the rondabout" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_C a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_Cap a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the sensor" ;
+    rdfs:domain Infrastructure:Sensor ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_Feu a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the light" ;
+    rdfs:domain Infrastructure:Traffic_light ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_I a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the intersection" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_Q a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the neighborhood" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_R a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_pan a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the signs" ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_poi a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the area of interest" ;
+    rdfs:domain Infrastructure:AreaOfInterest ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_rech a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the charging station" ;
+    rdfs:domain Infrastructure:Charging_station ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_zon a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Parking ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longueur a owl:DatatypeProperty ;
+    rdfs:comment "length of the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Macro a owl:NamedIndividual .
+
+Infrastructure:Meso a owl:NamedIndividual .
+
+Infrastructure:Metro a owl:Class ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Micro a owl:NamedIndividual .
+
+Infrastructure:Nbr_lane a owl:DatatypeProperty ;
+    rdfs:comment "number of lane on the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:integer .
+
+Infrastructure:NomBat a owl:DatatypeProperty ;
+    rdfs:comment "name of building" ;
+    rdfs:domain Infrastructure:Building ;
+    rdfs:range xsd:string .
+
+Infrastructure:NomSecteur a owl:DatatypeProperty ;
+    rdfs:comment "name of the industrial zone" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_C a owl:DatatypeProperty ;
+    rdfs:comment "name of municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_Q a owl:DatatypeProperty ;
+    rdfs:comment "name of the neighborhood" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_poi a owl:DatatypeProperty ;
+    rdfs:comment "name of the area of interest" ;
+    rdfs:domain Infrastructure:AreaOfInterest ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_rech a owl:DatatypeProperty ;
+    rdfs:comment "name of charging station" ;
+    rdfs:domain Infrastructure:Charging_station ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_rondP a owl:DatatypeProperty ;
+    rdfs:comment "name of the rondabout" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_rue a owl:DatatypeProperty ;
+    rdfs:comment "name of street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_zon a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Parking ;
+    rdfs:range xsd:string .
+
+Infrastructure:OneWay a owl:DatatypeProperty ;
+    rdfs:comment "numbre of ways on the  street" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:boolean .
+
+Infrastructure:OrientationDeg a owl:DatatypeProperty ;
+    rdfs:comment "angular direction in space relative to north" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Parking_markings a owl:Class ;
+    rdfs:comment "Markings that indicate designated parking spots on the road or in parking lots" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:Road_markings .
+
+Infrastructure:Pedestrian_crossing a owl:Class ;
+    rdfs:comment "A zebra-style road surface marking indicating a designated pedestrian crossing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:Road_markings .
+
+Infrastructure:Perimetre a owl:DatatypeProperty ;
+    rdfs:comment "roundabout perimeter" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Population_C a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Population_Q a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Radar_sensor a owl:Class ;
+    rdfs:comment "A sensor that uses radio waves to detect the speed and position of vehicles and other objects." ;
+    rdfs:subClassOf Infrastructure:Sensor .
+
+Infrastructure:Rayon a owl:DatatypeProperty ;
+    rdfs:comment "Roundabout radius" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:RoadType a owl:DatatypeProperty ;
+    rdfs:comment "road type of the street :residential ..." ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:string .
+
+Infrastructure:RondAboutEquippedBy a owl:ObjectProperty ;
+    rdfs:comment "RondAbout Equipped by a traffic control" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range Infrastructure:Traffic_control .
+
+Infrastructure:RunsOnStreet a owl:ObjectProperty ;
+    rdfs:comment "shuttle run on a street" ;
+    rdfs:domain Infrastructure:vehicle ;
+    rdfs:range Infrastructure:Streets .
+
+Infrastructure:School a owl:Class ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:Building .
+
+Infrastructure:Shuttle a owl:Class ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Sinuosity a owl:DatatypeProperty ;
+    rdfs:comment "sinuosity value of street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Surface a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Train a owl:Class ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:TypeBat a owl:DatatypeProperty ;
+    rdfs:comment "building type , school , hospital..." ;
+    rdfs:domain Infrastructure:Building ;
+    rdfs:range xsd:string .
+
+Infrastructure:TypeObs a owl:DatatypeProperty ;
+    rdfs:comment "obstacle type" ;
+    rdfs:domain Infrastructure:Obstacles ;
+    rdfs:range xsd:string .
+
+Infrastructure:Type_Capt a owl:DatatypeProperty ;
+    rdfs:comment "sensor type" ;
+    rdfs:domain Infrastructure:Sensor ;
+    rdfs:range xsd:string .
+
+<http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#Type_d'activité> a owl:DatatypeProperty ;
+    rdfs:comment "activity type of the industrial zone" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:string .
+
+Infrastructure:Type_pan a owl:DatatypeProperty ;
+    rdfs:comment "circulation signs type" ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:string .
+
+Infrastructure:Typemarquage a owl:DatatypeProperty ;
+    rdfs:comment "road marking type" ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range xsd:string .
+
+Infrastructure:WalkOn a owl:ObjectProperty ;
+    rdfs:comment "Pedestrians walk on the sidewalk" ;
+    rdfs:domain Infrastructure:Pedestrians ;
+    rdfs:range Infrastructure:Sidewalk .
+
+Infrastructure:Weather_sensor a owl:Class ;
+    rdfs:comment "A sensor that detects and reports weather conditions, such as rain, fog, or wind, which can affect traffic" ;
+    rdfs:subClassOf Infrastructure:Sensor .
+
+Infrastructure:adjacentMunicipalityTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:comment "one municipality is adjacent to another municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range Infrastructure:Municipalities ;
+    rdfs:subPropertyOf geosparql:sfTouches .
+
+Infrastructure:adjacentNeighborhoodTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:comment "one neighborhood is adjacent to another neighborhood" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range Infrastructure:Neighborhood ;
+    rdfs:subPropertyOf geosparql:sfTouches .
+
+Infrastructure:adjacentStreetTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:comment "one street is adjacent to another street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range Infrastructure:Streets ;
+    rdfs:subPropertyOf geosparql:sfTouches .
+
+Infrastructure:attached_to a owl:ObjectProperty ;
+    rdfs:comment "sidewalk attached to a street" ;
+    rdfs:domain Infrastructure:Sidewalk ;
+    rdfs:range Infrastructure:Streets ;
+    rdfs:subPropertyOf geosparql:sfIntersects .
+
+Infrastructure:batteryLevel a owl:DatatypeProperty ;
+    rdfs:comment "Battrey level for electric vehicle" ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:bicycle a owl:Class ;
+    rdfs:comment "A human-powered two-wheeled vehicle commonly used on streets, bike lanes, and sidewalks" ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:connectedToIntersection a owl:ObjectProperty ;
+    rdfs:comment "Road segment is conected to intersection" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range Infrastructure:Intersection ;
+    rdfs:subPropertyOf geosparql:sfTouches .
+
+Infrastructure:coordBegin a owl:DatatypeProperty ;
+    rdfs:comment "starting coordinate point of the streets" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range geosparql:wktLiteral .
+
+Infrastructure:coordEnd a owl:DatatypeProperty ;
+    rdfs:comment "street end coordinate point" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range geosparql:wktLiteral .
+
+Infrastructure:courvaturemax a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:curvaturemean a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:direction a owl:DatatypeProperty ;
+    rdfs:comment "direction of road segments" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:string .
+
+Infrastructure:frontsOnStreet a owl:ObjectProperty ;
+    rdfs:comment "building fronts on the street" ;
+    rdfs:domain Infrastructure:Building ;
+    rdfs:range Infrastructure:Streets .
+
+Infrastructure:hasGranularityLevel a owl:ObjectProperty ;
+    rdfs:domain Infrastructure:UrbanEntity ;
+    rdfs:range Infrastructure:GranularityLevel .
+
+Infrastructure:hasSensor a owl:ObjectProperty ;
+    rdfs:comment "A intersection has a sensor" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range Infrastructure:Sensor .
+
+Infrastructure:hasTrafficControl a owl:ObjectProperty ;
+    rdfs:comment "Intersection has a traffic control" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range Infrastructure:Traffic_control .
+
+Infrastructure:isBlocked a owl:DatatypeProperty ;
+    rdfs:comment "indicates whether road segments are blocked or not" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:boolean .
+
+Infrastructure:isComfortable a owl:DatatypeProperty ;
+    rdfs:comment "indicates whether segments are comfortable or not" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:boolean .
+
+Infrastructure:isDegraded a owl:DatatypeProperty ;
+    rdfs:comment "indicates whether segments are degraded  or not" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:boolean .
+
+Infrastructure:isPartOfMunicipalities a owl:ObjectProperty ;
+    rdfs:comment "neighborhood is part of municipalities" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range Infrastructure:Municipalities ;
+    rdfs:subPropertyOf geosparql:sfWithin .
+
+Infrastructure:latObs a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the obstacle" ;
+    rdfs:domain Infrastructure:Obstacles ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:latitudeMarquage a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the road marking" ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:latitudeSecteur a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the industrial zone" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:lightOrientation a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Traffic_light ;
+    rdfs:range xsd:string .
+
+Infrastructure:locatedInNeighborhood a owl:ObjectProperty ;
+    rdfs:comment "different zone is located in a neighborhood" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( Infrastructure:Building Infrastructure:Charging_station Infrastructure:Intersection Infrastructure:Parking Infrastructure:Road_markings Infrastructure:Road_segment Infrastructure:RondAbout Infrastructure:Sensor Infrastructure:Sidewalk Infrastructure:Traffic_control ) ] ;
+    rdfs:range Infrastructure:Neighborhood ;
+    rdfs:subPropertyOf geosparql:sfWithin .
+
+Infrastructure:longitudeSecteur a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the industrial zone" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:maxSpeed a owl:DatatypeProperty ;
+    rdfs:comment "max speed allowed on a street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:integer .
+
+Infrastructure:nbr_branches a owl:DatatypeProperty ;
+    rdfs:comment "number of branches for a roundabout" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:int .
+
+Infrastructure:nomVehicule a owl:DatatypeProperty ;
+    rdfs:comment "name of vehicle" ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:string .
+
+Infrastructure:numberOfPedestrianCrossings a owl:DatatypeProperty ;
+    rdfs:comment "numbre of pedestrian crossing on the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:int .
+
+Infrastructure:numberOfRoundabouts a owl:DatatypeProperty ;
+    rdfs:comment "number of rondabout on the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:int .
+
+Infrastructure:numberOfTurns a owl:DatatypeProperty ;
+    rdfs:comment "number of turns on the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:int .
+
+Infrastructure:parked_in a owl:ObjectProperty ;
+    rdfs:comment "a vehicle parked in a parking zone" ;
+    rdfs:domain Infrastructure:vehicle ;
+    rdfs:range Infrastructure:Parking .
+
+Infrastructure:signCategory a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:string .
+
+Infrastructure:signCode a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:string .
+
+Infrastructure:signOrientation a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:string .
+
+Infrastructure:sinuosité a owl:DatatypeProperty ;
+    rdfs:comment "sinuosity of road segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:decimal .
+
+geosparql:sfIntersects a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+DRT:Person a owl:Class .
+
+Infrastructure:GranularityLevel a owl:Class .
+
+Infrastructure:IsPartOfStreet a owl:ObjectProperty ;
+    rdfs:comment """A road segment is a part of streets
+isPartOfStreet est une spécialisation métier de la relation spatiale sfWithin""" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range Infrastructure:Streets ;
+    rdfs:subPropertyOf geosparql:sfWithin .
+
+Infrastructure:Pedestrians a owl:Class ;
+    rdfs:comment "micro level : People walking along the streets or crossing roads, or use a sidewalks" ;
+    rdfs:subClassOf DRT:Person .
+
+geosparql:wktLiteral a rdfs:Datatype .
+
+Infrastructure:DRT_Shuttle a owl:Class ;
+    rdfs:comment "A vehicle temporarily assigned to provide demand-responsive transport (DRT) services. The vehicle may cease to perform this role without losing its identity as a vehicle." ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Sidewalk a owl:Class ;
+    rdfs:comment "A paved pathway adjacent to a street, intended for pedestrian use" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+geosparql:sfTouches a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+geosparql:sfWithin a owl:ObjectProperty ;
+    rdfs:domain geosparql:SpatialObject ;
+    rdfs:range geosparql:SpatialObject .
+
+Infrastructure:AreaOfInterest a owl:Class ;
+    rdfs:comment "A functional urban area of interest at meso level." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Charging_station a owl:Class ;
+    rdfs:comment "Micro level: a specific charging point or station for electric vehicles" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Obstacles a owl:Class ;
+    rdfs:comment "Micro Level: An object or structure on the street that may block or impede the flow of vehicles or pedestrians" ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Traffic_light a owl:Class ;
+    rdfs:comment "Micro Level: A traffic signal that manages vehicle and pedestrian movement by switching between red, yellow, and green lights." ;
+    rdfs:subClassOf Infrastructure:Traffic_control .
+
+Infrastructure:Industrial_Zone a owl:Class ;
+    rdfs:comment "Meso Level: An area where specific types of economic activities are concentrated, such as industrial zones" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Parking a owl:Class ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Traffic_control a owl:Class ;
+    rdfs:comment "Micro Level: Includes all signs, traffic lights used to regulate, warn, or inform drivers and pedestrians about traffic rules" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Building a owl:Class ;
+    rdfs:comment "Micro Level: A  structure situated within the streets." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Traffic_signs a owl:Class ;
+    rdfs:comment "Micro Level: Signs displaying traffic information, such as speed limits, restrictions, or directions to follow" ;
+    rdfs:subClassOf Infrastructure:Traffic_control .
+
+Infrastructure:Intersection a owl:Class ;
+    rdfs:comment "Micro Level: A junction where several streets intersect, requiring vehicles and pedestrians to follow signage to navigate the correct direction." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Municipalities a owl:Class ;
+    rdfs:comment """At the macro level, a municipality is a territorial district corresponding to a city
+is a spatially delimited municipal territory at the macro level, represented by a geographic geometry such as a polygon or multipolygon. Its territorial identity is defined by its spatial extent and boundary delimitation.""" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Neighborhood a owl:Class ;
+    rdfs:comment """Meso Level: A defined area that generally includes multiple streets, POIs (Points of Interest), etc.
+A geographically delimited urban area at the meso level, comprising streets, points of interest, and other urban infrastructure elements. Each neighborhood is identified by its spatial extent and boundaries within the adopted urban zoning. Changes in geometric precision do not alter its identity when the represented area remains unchanged.""" ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:RondAbout a owl:Class ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:Sensor a owl:Class ;
+    rdfs:comment "Micro Level: A device used to collect data on vehicle flow, such as speed, traffic volume, or vehicle density on a road." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:vehicle a owl:Class ;
+    rdfs:comment "Motorized or non-motorized transportation devices used on roads for the movement of people or goods." ;
+    rdfs:subClassOf Infrastructure:UrbanEntity .
+
+Infrastructure:Road_markings a owl:Class ;
+    rdfs:comment "Micro Level: Road surface markings used to direct traffic, including lane lines, crosswalks, and directional arrows." ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+geosparql:hasGeometry a owl:ObjectProperty ;
+    rdfs:domain geosparql:Feature ;
+    rdfs:range geosparql:Geometry .
+
+geosparql:Geometry a owl:Class ;
+    rdfs:subClassOf geosparql:SpatialObject .
+
+Infrastructure:Road_segment a owl:Class ;
+    rdfs:comment """Micro Level: A segment of road between two points, such as those defined by intersections or road markings.
+A spatially and topologically delimited portion of the road network at the micro level, generally defined between two reference points such as intersections or stops. Its identity is determined by its position, endpoints, and segmentation within the road network. Corrections to geometric coordinates do not create a new segment when the network segment remains unchanged, whereas splitting or merging segments results in distinct network segment identities.""" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+Infrastructure:UrbanEntity a owl:Class ;
+    rdfs:comment "UrbanEntity: An entity belonging to the universe of discourse of urban and peri-urban mobility modelling" .
+
+geosparql:Feature a owl:Class ;
+    rdfs:subClassOf geosparql:SpatialObject .
+
+Infrastructure:Streets a owl:Class ;
+    rdfs:comment "Micro Level: Describes streets designed for the movement of both vehicles and pedestrians" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:UrbanEntity .
+
+geosparql:SpatialObject a owl:Class .
+

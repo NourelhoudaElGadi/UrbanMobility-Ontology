@@ -1,0 +1,3184 @@
+@prefix DRT: <http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand#> .
+@prefix Dtx: <http://purl.org/td/transportdisruption#> .
+@prefix Events: <http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#> .
+@prefix GTFS: <http://www.semanticweb.org/hp/ontologies/2024/transport#> .
+@prefix Infrastructure: <http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://linkedevents.org/ontology/Event> rdfs:isDefinedBy <http://linkedevents.org/ontology> .
+
+<http://linkedevents.org/ontology/atTime> rdfs:isDefinedBy <http://linkedevents.org/ontology> .
+
+<http://linkedevents.org/ontology/inSpace> rdfs:isDefinedBy <http://linkedevents.org/ontology> .
+
+<http://linkedevents.org/ontology/involved> rdfs:isDefinedBy <http://linkedevents.org/ontology> .
+
+<http://purl.org/dc/dcmitype/Event> rdfs:isDefinedBy <http://purl.org/dc/dcmitype> .
+
+<http://purl.org/dc/dcmitype/PhysicalObject> rdfs:isDefinedBy <http://purl.org/dc/dcmitype> .
+
+<http://purl.org/dc/elements/1.1/contributor> rdfs:label "Contributor"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#contributor-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "An entity responsible for making contributions to the resource."@en,
+        "Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/coverage> rdfs:label "Coverage"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#coverage-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en,
+        "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/creator> a owl:AnnotationProperty ;
+    rdfs:label "Creator"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#creator-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "An entity primarily responsible for making the resource."@en,
+        "Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/date> a owl:AnnotationProperty ;
+    rdfs:label "Date"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#date-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en,
+        "Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/description> a owl:AnnotationProperty ;
+    rdfs:label "Description"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#description-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "An account of the resource."@en,
+        "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/format> rdfs:label "Format"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#format-007> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en,
+        "The file format, physical medium, or dimensions of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/identifier> rdfs:label "Identifier"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifier-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "An unambiguous reference to the resource within a given context."@en,
+        "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/language> rdfs:label "Language"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#language-007> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "A language of the resource."@en,
+        "Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    rdfs:seeAlso <http://www.ietf.org/rfc/rfc4646.txt> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/publisher> rdfs:label "Publisher"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#publisher-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "An entity responsible for making the resource available."@en,
+        "Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/relation> rdfs:label "Relation"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#relation-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "A related resource."@en,
+        "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. "@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/rights> a owl:AnnotationProperty ;
+    rdfs:label "Rights"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#rights-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "Information about rights held in and over the resource."@en,
+        "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/source> rdfs:label "Source"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#source-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "A related resource from which the described resource is derived."@en,
+        "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/subject> rdfs:label "Subject"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#subject-007> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2012-06-14"^^xsd:date ;
+    rdfs:comment "The topic of the resource."@en,
+        "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/title> a owl:AnnotationProperty ;
+    rdfs:label "Title"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#title-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "A name given to the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+<http://purl.org/dc/elements/1.1/type> rdfs:label "Type"@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#type-006> ;
+    dcterms:issued "1999-07-02"^^xsd:date ;
+    dcterms:modified "2008-01-14"^^xsd:date ;
+    rdfs:comment "Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."@en,
+        "The nature or genre of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/elements/1.1> ;
+    skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+dcterms:Agent rdfs:isDefinedBy <http://purl.org/dc/terms> .
+
+dcterms:AgentClass rdfs:isDefinedBy <http://purl.org/dc/terms> .
+
+dcterms:Location rdfs:isDefinedBy <http://purl.org/dc/terms> .
+
+dcterms:PhysicalResource rdfs:isDefinedBy <http://purl.org/dc/terms> .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:hasVersion a owl:AnnotationProperty .
+
+dcterms:isVersionOf a owl:AnnotationProperty .
+
+dcterms:issued a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:modified a owl:AnnotationProperty .
+
+dcterms:publisher a owl:AnnotationProperty .
+
+dcterms:replaces a owl:AnnotationProperty .
+
+dcterms:rights a owl:AnnotationProperty .
+
+dcterms:source a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+sem:hasPlace a owl:ObjectProperty .
+
+<http://sw.opencyc.org/2009/04/07/concept/en/Agent-Generic> rdfs:isDefinedBy <http://sw.opencyc.org/2009/04/07/concept/en> .
+
+<http://sw.opencyc.org/2009/04/07/concept/en/EnduringThing-Localized> rdfs:isDefinedBy <http://sw.opencyc.org/2009/04/07/concept/en> .
+
+<http://sw.opencyc.org/2009/04/07/concept/en/Role> rdfs:isDefinedBy <http://sw.opencyc.org/2009/04/07/concept/en> .
+
+<http://sw.opencyc.org/2009/04/07/concept/en/Situation> rdfs:isDefinedBy <http://sw.opencyc.org/2009/04/07/concept/en> .
+
+<http://sw.opencyc.org/2009/04/07/concept/en/SomethingExisting> rdfs:isDefinedBy <http://sw.opencyc.org/2009/04/07/concept/en> .
+
+swrla:isRuleEnabled a owl:AnnotationProperty .
+
+<http://www.kulttuurisampo.fi/ebkr/agent> rdfs:isDefinedBy <http://www.kulttuurisampo.fi/ebkr> .
+
+<http://www.kulttuurisampo.fi/ebkr/place> rdfs:isDefinedBy <http://www.kulttuurisampo.fi/ebkr> .
+
+<http://www.kulttuurisampo.fi/ebkr/quality> rdfs:isDefinedBy <http://www.kulttuurisampo.fi/ebkr> .
+
+<http://www.kulttuurisampo.fi/ebkr/time> rdfs:isDefinedBy <http://www.kulttuurisampo.fi/ebkr> .
+
+<http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#AbstractRegion> rdfs:isDefinedBy <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+
+<http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#PhysicalRegion> rdfs:isDefinedBy <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+
+<http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant> rdfs:isDefinedBy <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+
+<http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant> rdfs:isDefinedBy <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+
+<http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#region> rdfs:isDefinedBy <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+
+<http://www.ontologyportal.org/translations/SUMO.owl.txt#Agent> rdfs:isDefinedBy <http://www.ontologyportal.org/translations/SUMO.owl.txt#> .
+
+<http://www.ontologyportal.org/translations/SUMO.owl.txt#GeographicArea> rdfs:isDefinedBy <http://www.ontologyportal.org/translations/SUMO.owl.txt#> .
+
+<http://www.ontologyportal.org/translations/SUMO.owl.txt#IntentionalProcess> rdfs:isDefinedBy <http://www.ontologyportal.org/translations/SUMO.owl.txt#> .
+
+<http://www.ontologyportal.org/translations/SUMO.owl.txt#Object> rdfs:isDefinedBy <http://www.ontologyportal.org/translations/SUMO.owl.txt#> .
+
+<http://www.ontologyportal.org/translations/SUMO.owl.txt#Process> rdfs:isDefinedBy <http://www.ontologyportal.org/translations/SUMO.owl.txt#> .
+
+<http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand> a owl:Ontology ;
+    owl:imports <http://www.opengis.net/ont/geosparql>,
+        Infrastructure:,
+        <http://www.semanticweb.org/hp/ontologies/2024/transport>,
+        <http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event>,
+        <http://www.w3.org/2006/time> .
+
+DRT:Admin a owl:Class ;
+    rdfs:subClassOf DRT:Person .
+
+DRT:Arrives_at a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "arrives at" ;
+    rdfs:comment "the passenger arrives at an location" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range GTFS:Stops .
+
+DRT:Capacité a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:integer .
+
+DRT:ComfortSensitiveReservation a owl:Class ;
+    rdfs:comment "A demand-responsive transport reservation associated with a user having a reduced-mobility (PMR) or elderly profile. Such reservations are classified as comfort-sensitive to account for potential accessibility during transport service planning." ;
+    rdfs:subClassOf DRT:Reservation .
+
+DRT:Cout a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:decimal .
+
+DRT:Departs_from a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "departs from" ;
+    rdfs:comment "A passenger  depart from an location" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range GTFS:Stops .
+
+DRT:Email a owl:DatatypeProperty ;
+    rdfs:domain DRT:Person ;
+    rdfs:range xsd:string .
+
+DRT:Makes_a a owl:ObjectProperty ;
+    rdfs:label "makes a reservation" ;
+    rdfs:comment "A passenger make a reservation" ;
+    rdfs:domain DRT:Customer ;
+    rdfs:range DRT:Reservation ;
+    owl:inverseOf DRT:madeBy .
+
+DRT:StopAt a owl:ObjectProperty ;
+    rdfs:label "stops at" ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range GTFS:Stops .
+
+DRT:TAD_speed a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:integer .
+
+DRT:TAD_trips_id a owl:DatatypeProperty ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:integer .
+
+DRT:TAD_type a owl:DatatypeProperty ;
+    rdfs:comment "describe the type of vehicle for example size etc" ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:string .
+
+DRT:Travels_by a owl:ObjectProperty ;
+    rdfs:label "travels by" ;
+    rdfs:comment "A passeger traveed by the shuttle" ;
+    rdfs:domain DRT:Passenger ;
+    rdfs:range Infrastructure:DRT_Shuttle .
+
+DRT:Use_fare_media a owl:ObjectProperty ;
+    rdfs:comment "the passenger use differents fare media" ;
+    rdfs:domain DRT:Customer ;
+    rdfs:range GTFS:FareMedia .
+
+DRT:actualDropoffTime a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "actual dropoff time" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:dateTime .
+
+DRT:actualPickupTime a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "actual pickup time" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:dateTime .
+
+DRT:actualRideDuration a owl:DatatypeProperty ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:float .
+
+DRT:arrivalTime a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:assigned_to a owl:ObjectProperty ;
+    rdfs:label "assigned to ride" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range DRT:Ride .
+
+DRT:belongsToRide a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "belongs to ride" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range DRT:Ride ;
+    owl:inverseOf DRT:includesTrip .
+
+DRT:bookedFrom a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:bookingCreatedAt a owl:DatatypeProperty ;
+    rdfs:label "booking creation datetime" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:buslineCode a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:integer .
+
+DRT:buslineName a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:string .
+
+DRT:buy a owl:ObjectProperty ;
+    rdfs:comment "the customer buy a  fare product" ;
+    rdfs:domain DRT:Customer ;
+    rdfs:range GTFS:FareProduct .
+
+DRT:cancellationReason a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:clientComment a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:complies_with a owl:ObjectProperty ;
+    rdfs:comment "A reservation must comply with certain booking rules." ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range GTFS:BookingRule .
+
+DRT:constraintPrecision a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:constraintType a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:dateTransport a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:delay a owl:DatatypeProperty ;
+    rdfs:label "delay" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:double .
+
+DRT:departureTime a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:directTripDistanceMeters a owl:DatatypeProperty ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:float .
+
+DRT:distance a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:float .
+
+DRT:driven_by a owl:ObjectProperty ;
+    rdfs:label "driven by" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range DRT:Driver .
+
+DRT:driverEmail a owl:DatatypeProperty ;
+    rdfs:domain DRT:Driver ;
+    rdfs:range xsd:string .
+
+DRT:driverName a owl:DatatypeProperty ;
+    rdfs:domain DRT:Driver ;
+    rdfs:range xsd:string .
+
+DRT:dropoffWalkTime a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:int .
+
+DRT:duréeTrajet a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:duration .
+
+DRT:entryDate a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:firstName a owl:DatatypeProperty ;
+    rdfs:domain DRT:Person ;
+    rdfs:range xsd:string .
+
+DRT:gender a owl:DatatypeProperty ;
+    rdfs:domain DRT:Person ;
+    rdfs:range xsd:string .
+
+DRT:hasDropoffLocation a owl:ObjectProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range GTFS:Stops .
+
+DRT:hasDropoffTimeWindow a owl:ObjectProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range time:Interval .
+
+DRT:hasPassenger a owl:ObjectProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range DRT:Passenger .
+
+DRT:hasPickupLocation a owl:ObjectProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range GTFS:Stops .
+
+DRT:hasPickupTimeWindow a owl:ObjectProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range time:Interval .
+
+DRT:has_Vehicle a owl:ObjectProperty ;
+    rdfs:label "has vehicle" ;
+    rdfs:comment "the DRT line has a DRT_Shuttle" ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range Infrastructure:DRT_Shuttle .
+
+DRT:indicationToDriver a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:initialPrice a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:float .
+
+DRT:isDropoffStandard a owl:DatatypeProperty ;
+    rdfs:label "is dropoff standard" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:boolean .
+
+DRT:isPMR a owl:DatatypeProperty ;
+    rdfs:domain DRT:Person ;
+    rdfs:range xsd:boolean .
+
+DRT:isPickupStandard a owl:DatatypeProperty ;
+    rdfs:label "is pickup standard" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:boolean .
+
+DRT:isRecommended a owl:DatatypeProperty ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:boolean .
+
+DRT:isShared a owl:DatatypeProperty ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:boolean .
+
+DRT:is_located_on_Streets a owl:ObjectProperty ;
+    rdfs:comment "the stops is located on the street" ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range Infrastructure:Streets .
+
+DRT:lastName a owl:DatatypeProperty ;
+    rdfs:domain DRT:Person ;
+    rdfs:range xsd:string .
+
+DRT:latestDropoffTime a owl:DatatypeProperty ;
+    rdfs:label "latest dropoff time" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:latestPickupTime a owl:DatatypeProperty ;
+    rdfs:label "latest pickup time" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:make_a_trip a owl:ObjectProperty ;
+    rdfs:label "makes a trip" ;
+    rdfs:comment "DRT shuttle make a trip" ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range DRT:Trips .
+
+DRT:maxRideFactor a owl:DatatypeProperty ;
+    rdfs:label "max ride factor" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:float .
+
+DRT:motif a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:numberOfPeople a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:integer .
+
+DRT:number_passenger a owl:DatatypeProperty ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:integer .
+
+DRT:operate_on a owl:ObjectProperty ;
+    rdfs:label "operate on" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range GTFS:Routes .
+
+DRT:operatedBy a owl:ObjectProperty ;
+    rdfs:label "operated by" ;
+    rdfs:domain DRT:Ride ;
+    rdfs:range DRT:Driver .
+
+DRT:operatesOn a owl:ObjectProperty ;
+    rdfs:label "operates on" ;
+    rdfs:domain DRT:Ride ;
+    rdfs:range GTFS:Routes .
+
+DRT:paidWithMedia a owl:ObjectProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range GTFS:FareMedia .
+
+DRT:passengerStatus a owl:DatatypeProperty ;
+    rdfs:label "passenger status" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:string .
+
+DRT:paymentMode a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:pickupWalkTime a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:int .
+
+DRT:releaseTimeHHMM a owl:DatatypeProperty ;
+    rdfs:label "release time as HHMM" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:releaseTimeSec a owl:DatatypeProperty ;
+    rdfs:label "release time in seconds" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:double .
+
+DRT:requestID a owl:DatatypeProperty ;
+    rdfs:label "request id" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:integer .
+
+DRT:reservationNumber a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:integer .
+
+DRT:rideID a owl:DatatypeProperty ;
+    rdfs:label "ride ID" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:string .
+
+DRT:selectedDropoffTime a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "selected dropoff time" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:selectedPickupTime a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "selected pickup time" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:dateTime .
+
+DRT:selectedRideDuration a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:float .
+
+DRT:status a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:theoreticalTripDistanceKm a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:float .
+
+DRT:totalPrice a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:float .
+
+DRT:tripDistanceKm a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "trip distance (km)" ;
+    rdfs:domain DRT:Trips ;
+    rdfs:range xsd:float .
+
+DRT:tripPurpose a owl:DatatypeProperty ;
+    rdfs:label "trip purpose" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:string .
+
+DRT:userID a owl:DatatypeProperty ;
+    rdfs:domain DRT:Person ;
+    rdfs:range xsd:integer .
+
+DRT:usesFareProduct a owl:ObjectProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range GTFS:FareProduct .
+
+DRT:usesVehicle a owl:ObjectProperty ;
+    rdfs:label "uses vehicle" ;
+    rdfs:domain DRT:Ride ;
+    rdfs:range Infrastructure:DRT_Shuttle .
+
+DRT:vatAmount a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:float .
+
+DRT:vehicleName a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:string .
+
+DRT:wait_at a owl:ObjectProperty ;
+    rdfs:label "waits at" ;
+    rdfs:domain DRT:Passenger ;
+    rdfs:range GTFS:Stops .
+
+DRT:wasCancelledBy a owl:ObjectProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range DRT:Person .
+
+DRT:year a owl:DatatypeProperty ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:integer .
+
+Infrastructure:AdressBat a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:comment "Adress for building" ;
+    rdfs:domain Infrastructure:Building ;
+    rdfs:range xsd:string .
+
+Infrastructure:AreaOfInterest a owl:Class ;
+    rdfs:subClassOf Infrastructure:UrbanEntity .
+
+Infrastructure:Arrow_markings a owl:Class ;
+    rdfs:comment "Directional arrows painted on the road surface to indicate traffic flow and vehicle movements" ;
+    rdfs:subClassOf Infrastructure:Road_markings .
+
+Infrastructure:Blocks a owl:ObjectProperty ;
+    rdfs:comment "An obstacle blocks a street." .
+
+Infrastructure:Bus a owl:Class ;
+    rdfs:comment "A transport vehicle that travels along a fixed route, used for public or private transit in specific areas" ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Cars a owl:Class ;
+    rdfs:comment "Motorized vehicles used primarily for personal transportation,  with four wheels." ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Category_poi a owl:DatatypeProperty ;
+    rdfs:comment "the category of point of interest" ;
+    rdfs:range xsd:string .
+
+Infrastructure:Code_Postal a owl:DatatypeProperty ;
+    rdfs:comment "postal code of the municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:string .
+
+Infrastructure:CurvatureSegment a owl:DatatypeProperty ;
+    rdfs:comment "the courvature of the segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:CurvatureTotal a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:EquippedBy a owl:ObjectProperty ;
+    rdfs:comment "An Road segment is equipped by a traffic control (sings or lights)" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range Infrastructure:Traffic_control .
+
+Infrastructure:HasIntersection a owl:ObjectProperty ;
+    rdfs:comment "A street has an intersection" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range Infrastructure:Intersection .
+
+Infrastructure:HasSegments a owl:ObjectProperty ;
+    rdfs:comment "A Street has Road Segment" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range Infrastructure:Road_segment ;
+    owl:inverseOf Infrastructure:IsPartOfStreet .
+
+Infrastructure:Hospital a owl:Class ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:Building .
+
+Infrastructure:ID_Capteur a owl:DatatypeProperty ;
+    rdfs:comment "sensor identifier" ;
+    rdfs:domain Infrastructure:Sensor ;
+    rdfs:range xsd:integer .
+
+Infrastructure:IdIntersection a owl:DatatypeProperty ;
+    rdfs:comment "intersection identifier" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range xsd:string .
+
+Infrastructure:IdMarquage a owl:DatatypeProperty ;
+    rdfs:comment "Road Marking identifier" ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range xsd:integer .
+
+Infrastructure:IdRondAbout a owl:DatatypeProperty ;
+    rdfs:comment "rondabout identifier" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:string .
+
+Infrastructure:IdSecteur a owl:DatatypeProperty ;
+    rdfs:comment "industrial zone identifier" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:integer .
+
+Infrastructure:IdSegment a owl:DatatypeProperty ;
+    rdfs:comment "Road Segment identifier" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:string .
+
+Infrastructure:Id_Feux a owl:DatatypeProperty ;
+    rdfs:comment "light identifier" ;
+    rdfs:domain Infrastructure:Traffic_light ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Id_pan a owl:DatatypeProperty ;
+    rdfs:comment "sings identifier" ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Id_rue a owl:DatatypeProperty ;
+    rdfs:comment "street identifier" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:string .
+
+Infrastructure:IsPartOfNeighborhood a owl:ObjectProperty ;
+    rdfs:comment "A street is part of neighborhood",
+        "Indicates that a public space is part of a neighborhood." ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range Infrastructure:Neighborhood ;
+    rdfs:subPropertyOf geosparql:sfWithin .
+
+Infrastructure:LanesBackward a owl:DatatypeProperty ;
+    rdfs:comment "Lane backward direction for the road segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:integer .
+
+Infrastructure:LanesForward a owl:DatatypeProperty ;
+    rdfs:comment "Lane forward direction for the road segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:integer .
+
+Infrastructure:LatitudeR a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the rondabout" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_C a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_Cap a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the sensor" ;
+    rdfs:domain Infrastructure:Sensor ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_Feu a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the light" ;
+    rdfs:domain Infrastructure:Traffic_light ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_I a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the intersection" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_Q a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the neighborhood" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_R a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_pan a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the sings" ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_poi a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the area of interest" ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_rech a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the charging station" ;
+    rdfs:domain Infrastructure:Charging_station ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Latitude_zon a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Parking ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Lidar_sensor a owl:Class ;
+    rdfs:comment "A sensor that uses laser light to measure distances and detect objects" ;
+    rdfs:subClassOf Infrastructure:Sensor .
+
+Infrastructure:LocatedOnStreet a owl:ObjectProperty ;
+    rdfs:comment "A road markings is located on  a streets." ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range Infrastructure:Road_segment,
+        Infrastructure:Streets ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+Infrastructure:LonObs a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the obstacle" ;
+    rdfs:domain Infrastructure:Obstacles ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longeursegment a owl:DatatypeProperty ;
+    rdfs:comment "length of the road segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:LongitudeMarquage a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the road marking" ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:LongitudeR a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the rondabout" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_C a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_Cap a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the sensor" ;
+    rdfs:domain Infrastructure:Sensor ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_Feu a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the light" ;
+    rdfs:domain Infrastructure:Traffic_light ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_I a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the intersection" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_Q a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the neighborhood" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_R a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_pan a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the signs" ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_poi a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the area of interest" ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_rech a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the charging station" ;
+    rdfs:domain Infrastructure:Charging_station ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longitude_zon a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Parking ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Longueur a owl:DatatypeProperty ;
+    rdfs:comment "length of the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Metro a owl:Class ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Nbr_lane a owl:DatatypeProperty ;
+    rdfs:comment "number of lane on the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:integer .
+
+Infrastructure:NomBat a owl:DatatypeProperty ;
+    rdfs:comment "name of building" ;
+    rdfs:domain Infrastructure:Building ;
+    rdfs:range xsd:string .
+
+Infrastructure:NomEsp a owl:DatatypeProperty ;
+    rdfs:comment "name of comercial area" ;
+    rdfs:range xsd:string .
+
+Infrastructure:NomSecteur a owl:DatatypeProperty ;
+    rdfs:comment "name of the industrial zone" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_C a owl:DatatypeProperty ;
+    rdfs:comment "name of municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_Q a owl:DatatypeProperty ;
+    rdfs:comment "name of the neighborhood" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_poi a owl:DatatypeProperty ;
+    rdfs:comment "name of the area of interest" ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_rech a owl:DatatypeProperty ;
+    rdfs:comment "name of charging station" ;
+    rdfs:domain Infrastructure:Charging_station ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_rondP a owl:DatatypeProperty ;
+    rdfs:comment "name of the rondabout" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_rue a owl:DatatypeProperty ;
+    rdfs:comment "name of street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:string .
+
+Infrastructure:Nom_zon a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Parking ;
+    rdfs:range xsd:string .
+
+Infrastructure:OneWay a owl:DatatypeProperty ;
+    rdfs:comment "numbre of ways on the  street" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:boolean .
+
+Infrastructure:OrientationDeg a owl:DatatypeProperty ;
+    rdfs:comment "angular direction in space relative to north",
+        "direction angulaire dans l'espace par rappor au nord" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Parking_markings a owl:Class ;
+    rdfs:comment "Markings that indicate designated parking spots on the road or in parking lots" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:Road_markings .
+
+Infrastructure:Pedestrian_crossing a owl:Class ;
+    rdfs:comment "road surface markings that indicate safe crossing zones for pedestrians" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature,
+        Infrastructure:Road_markings .
+
+Infrastructure:Perimetre a owl:DatatypeProperty ;
+    rdfs:comment "roundabout perimeter" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Population_C a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Population_Q a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range xsd:integer .
+
+Infrastructure:Radar_sensor a owl:Class ;
+    rdfs:comment "A sensor that uses radio waves to detect the speed and position of vehicles and other objects." ;
+    rdfs:subClassOf Infrastructure:Sensor .
+
+Infrastructure:Rayon a owl:DatatypeProperty ;
+    rdfs:comment "Roundabout radius" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:RoadType a owl:DatatypeProperty ;
+    rdfs:comment "road type of the street :residential ..." ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:string .
+
+Infrastructure:RondAboutEquippedBy a owl:ObjectProperty ;
+    rdfs:comment "RondAbout Equipped by a traffic control" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range Infrastructure:Traffic_control .
+
+Infrastructure:RunsOnStreet a owl:ObjectProperty ;
+    rdfs:comment "shuttle run on a street" ;
+    rdfs:domain Infrastructure:vehicle ;
+    rdfs:range Infrastructure:Streets .
+
+Infrastructure:School a owl:Class ;
+    rdfs:subClassOf geosparql:Feature,
+        Infrastructure:Building .
+
+Infrastructure:Shuttle a owl:Class ;
+    rdfs:comment "A transport vehicle that travels along a fixed route, used for public or private transit in specific areas" ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:Sinuosity a owl:DatatypeProperty ;
+    rdfs:comment "sinuosity value of street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Surface a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Train a owl:Class ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:TypeBat a owl:DatatypeProperty ;
+    rdfs:comment "building type , school , hospital..." ;
+    rdfs:domain Infrastructure:Building ;
+    rdfs:range xsd:string .
+
+Infrastructure:TypeObs a owl:DatatypeProperty ;
+    rdfs:comment "obstacle type" ;
+    rdfs:domain Infrastructure:Obstacles ;
+    rdfs:range xsd:string .
+
+Infrastructure:Type_Capt a owl:DatatypeProperty ;
+    rdfs:comment "sensor type" ;
+    rdfs:domain Infrastructure:Sensor ;
+    rdfs:range xsd:string .
+
+<http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#Type_d'activité> a owl:DatatypeProperty ;
+    rdfs:comment "activity type of the industrial zone" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:string .
+
+Infrastructure:Type_pan a owl:DatatypeProperty ;
+    rdfs:comment "circulation signs type" ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:string .
+
+Infrastructure:Typemarquage a owl:DatatypeProperty ;
+    rdfs:comment "road marking type" ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range xsd:string .
+
+Infrastructure:WalkOn a owl:ObjectProperty ;
+    rdfs:comment "Pedestrians walk on the sidewalk" ;
+    rdfs:domain Infrastructure:Pedestrians ;
+    rdfs:range Infrastructure:Sidewalk .
+
+Infrastructure:Weather_sensor a owl:Class ;
+    rdfs:comment "A sensor that detects and reports weather conditions, such as rain, fog, or wind, which can affect traffic" ;
+    rdfs:subClassOf Infrastructure:Sensor .
+
+Infrastructure:adjacentMunicipalityTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:comment "one municipality is adjacent to another municipality" ;
+    rdfs:domain Infrastructure:Municipalities ;
+    rdfs:range Infrastructure:Municipalities ;
+    rdfs:subPropertyOf geosparql:sfTouches .
+
+Infrastructure:adjacentNeighborhoodTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:comment "one neighborhood is adjacent to another neighborhood" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range Infrastructure:Neighborhood ;
+    rdfs:subPropertyOf geosparql:sfTouches .
+
+Infrastructure:adjacentStreetTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:comment "one street is adjacent to another street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range Infrastructure:Streets ;
+    rdfs:subPropertyOf geosparql:sfTouches .
+
+Infrastructure:attached_to a owl:ObjectProperty ;
+    rdfs:comment "sidewalk attached to a street" ;
+    rdfs:domain Infrastructure:Sidewalk ;
+    rdfs:range Infrastructure:Streets ;
+    rdfs:subPropertyOf geosparql:sfIntersects .
+
+Infrastructure:batteryLevel a owl:DatatypeProperty ;
+    rdfs:comment "Battrey level for electric vehicle" ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:bicycle a owl:Class ;
+    rdfs:comment "A human-powered two-wheeled vehicle commonly used on streets, bike lanes, and sidewalks" ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+Infrastructure:connectedToIntersection a owl:ObjectProperty ;
+    rdfs:comment "Road segment is conected to intersection" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range Infrastructure:Intersection ;
+    rdfs:subPropertyOf geosparql:sfTouches .
+
+Infrastructure:coordBegin a owl:DatatypeProperty ;
+    rdfs:comment "starting coordinate point of the streets" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range geosparql:wktLiteral .
+
+Infrastructure:coordEnd a owl:DatatypeProperty ;
+    rdfs:comment "street end coordinate point" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range geosparql:wktLiteral .
+
+Infrastructure:courvaturemax a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:curvaturemean a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:direction a owl:DatatypeProperty ;
+    rdfs:comment "direction of road segments" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:string .
+
+Infrastructure:frontsOnStreet a owl:ObjectProperty ;
+    rdfs:comment "building fronts on the street" ;
+    rdfs:domain Infrastructure:Building ;
+    rdfs:range Infrastructure:Streets .
+
+Infrastructure:hasGranularityLevel a owl:ObjectProperty .
+
+Infrastructure:hasSensor a owl:ObjectProperty ;
+    rdfs:comment "A intersection has a sensor" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range Infrastructure:Sensor .
+
+Infrastructure:hasTrafficControl a owl:ObjectProperty ;
+    rdfs:comment "Intersection has a traffic control" ;
+    rdfs:domain Infrastructure:Intersection ;
+    rdfs:range Infrastructure:Traffic_control .
+
+Infrastructure:isDegraded a owl:DatatypeProperty ;
+    rdfs:comment "indicates whether segments are degraded  or not" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:boolean .
+
+Infrastructure:isPartOfMunicipalities a owl:ObjectProperty ;
+    rdfs:comment "neighborhood is part of municipalities" ;
+    rdfs:domain Infrastructure:Neighborhood ;
+    rdfs:range Infrastructure:Municipalities ;
+    rdfs:subPropertyOf geosparql:sfWithin .
+
+Infrastructure:latObs a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the obstacle" ;
+    rdfs:domain Infrastructure:Obstacles ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:latitudeEsp a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the comercial area" ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:latitudeMarquage a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the road marking" ;
+    rdfs:domain Infrastructure:Road_markings ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:latitudeSecteur a owl:DatatypeProperty ;
+    rdfs:comment "latitude coordinate point of the industrial zone" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:lightOrientation a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Traffic_light ;
+    rdfs:range xsd:string .
+
+Infrastructure:locatedInNeighborhood a owl:ObjectProperty ;
+    rdfs:comment "different zone is located in a neighborhood" ;
+    rdfs:range Infrastructure:Neighborhood ;
+    rdfs:subPropertyOf geosparql:sfWithin .
+
+Infrastructure:longitudeEsp a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the comercial area" ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:longitudeSecteur a owl:DatatypeProperty ;
+    rdfs:comment "longitude coordinate point of the industrial zone" ;
+    rdfs:domain Infrastructure:Industrial_Zone ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:maxSpeed a owl:DatatypeProperty ;
+    rdfs:comment "max speed allowed on a street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:integer .
+
+Infrastructure:nbr_branches a owl:DatatypeProperty ;
+    rdfs:comment "number of branches for a roundabout" ;
+    rdfs:domain Infrastructure:RondAbout ;
+    rdfs:range xsd:int .
+
+Infrastructure:nomVehicule a owl:DatatypeProperty ;
+    rdfs:comment "name of vehicle" ;
+    rdfs:domain Infrastructure:DRT_Shuttle ;
+    rdfs:range xsd:string .
+
+Infrastructure:numberOfPedestrianCrossings a owl:DatatypeProperty ;
+    rdfs:comment "numbre of pedestrian crossing on the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:int .
+
+Infrastructure:numberOfRoundabouts a owl:DatatypeProperty ;
+    rdfs:comment "number of rondabout on the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:int .
+
+Infrastructure:numberOfTurns a owl:DatatypeProperty ;
+    rdfs:comment "number of turns on the street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:int .
+
+Infrastructure:parked_in a owl:ObjectProperty ;
+    rdfs:comment "a vehicle parked in a parking zone" ;
+    rdfs:domain Infrastructure:vehicle ;
+    rdfs:range Infrastructure:Parking .
+
+Infrastructure:signCategory a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:string .
+
+Infrastructure:signCode a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:string .
+
+Infrastructure:signOrientation a owl:DatatypeProperty ;
+    rdfs:domain Infrastructure:Traffic_signs ;
+    rdfs:range xsd:string .
+
+GTFS:Agency_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range xsd:string .
+
+GTFS:AppliesToAgency a owl:ObjectProperty ;
+    rdfs:comment "indicating that the attribution is managed or applicable to the specific agency." ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range GTFS:Agency .
+
+GTFS:AppliesToTrip a owl:ObjectProperty ;
+    rdfs:comment "the attribution applies to the trip." ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range GTFS:Trips .
+
+GTFS:ToStop a owl:ObjectProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range GTFS:Stops .
+
+GTFS:adress a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:agency_email a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range xsd:string .
+
+GTFS:agency_fare_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range xsd:string .
+
+GTFS:agency_lang a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range xsd:string .
+
+GTFS:agency_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range xsd:string .
+
+GTFS:agency_phone a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range xsd:string .
+
+GTFS:agency_timezone a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range xsd:string .
+
+GTFS:agency_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range xsd:string .
+
+GTFS:amount a owl:DatatypeProperty ;
+    rdfs:comment "The cost of the fare product. May be negative to represent transfer discounts. May be zero to represent a fare product that is free." ;
+    rdfs:domain GTFS:FareProduct ;
+    rdfs:range xsd:decimal .
+
+GTFS:appliesToLegGroup a owl:ObjectProperty ;
+    rdfs:comment "Indicates which segment group (defined by fare_leg_rules.leg group_id) a transfer rule (fare_transfer_rules.from_leg_group_id and fare_transfer_rules.to_leg_group_id) applied" ;
+    rdfs:domain GTFS:FareTransferRule ;
+    rdfs:range GTFS:FareLegRule .
+
+GTFS:appliesToRoute a owl:ObjectProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range GTFS:Routes .
+
+GTFS:appliesTotrip a owl:ObjectProperty ;
+    rdfs:comment "Indicates that booking rules apply to trips" ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range GTFS:Trips .
+
+GTFS:area_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Area ;
+    rdfs:range xsd:integer .
+
+GTFS:area_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Area ;
+    rdfs:range xsd:string .
+
+GTFS:arrival_time a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:string .
+
+GTFS:attribution_email a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range xsd:string .
+
+GTFS:attribution_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range xsd:integer .
+
+GTFS:attribution_phone a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range xsd:integer .
+
+GTFS:attribution_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range xsd:string .
+
+GTFS:belongsToTrip a owl:ObjectProperty ;
+    rdfs:comment "It indicates when the trips  passes through a stop" ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range GTFS:Trips .
+
+GTFS:bikes_allowed a owl:DatatypeProperty ;
+    rdfs:comment """Indicates whether bikes are allowed. Valid options are:
+0 or empty - No bike information for the trip.
+1 - Vehicle being used on this particular trip can accommodate at least one bicycle.
+2 - No bicycles are allowed on this trip.""" ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range xsd:int .
+
+GTFS:block_id a owl:DatatypeProperty ;
+    rdfs:comment "Identifies the block to which the trip belongs. A block consists of a single trip or many sequential trips made using the same vehicle, defined by shared service days and block_id." ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range xsd:string .
+
+GTFS:booking_rule_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:integer .
+
+GTFS:booking_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:int .
+
+GTFS:booking_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:string .
+
+GTFS:contains_id a owl:DatatypeProperty ;
+    rdfs:comment "Identifies the zones that a rider will enter while using a given fare class" ;
+    rdfs:domain GTFS:FareRule ;
+    rdfs:range xsd:integer .
+
+GTFS:continuous_drop_off a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:int .
+
+GTFS:continuous_pickup a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:int .
+
+GTFS:coversArea a owl:ObjectProperty ;
+    rdfs:comment "It describes an area involved in a fare Legs rule or a fareleg Rule cover the area" ;
+    rdfs:domain GTFS:FareLegRule ;
+    rdfs:range GTFS:Area .
+
+GTFS:currency a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareProduct ;
+    rdfs:range xsd:integer .
+
+GTFS:currency_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareAttribute ;
+    rdfs:range xsd:string .
+
+GTFS:date a owl:DatatypeProperty ;
+    rdfs:domain GTFS:CalendarDates ;
+    rdfs:range xsd:date .
+
+GTFS:default_lang a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:integer .
+
+GTFS:definesLevelFor a owl:ObjectProperty ;
+    rdfs:comment "indicating the specific level to which the stops belong." ;
+    rdfs:domain GTFS:Level ;
+    rdfs:range GTFS:Stops .
+
+GTFS:departure_time a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:string .
+
+GTFS:destination_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareRule ;
+    rdfs:range xsd:integer .
+
+GTFS:direction_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range xsd:integer .
+
+GTFS:drop_off_message a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:string .
+
+GTFS:drop_off_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:integer .
+
+GTFS:duration_limit a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareTransferRule ;
+    rdfs:range xsd:positiveInteger .
+
+GTFS:duration_limit_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareTransferRule ;
+    rdfs:range xsd:int .
+
+GTFS:end_date a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:date .
+
+GTFS:end_pickup_drop_off_window a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:dateTime .
+
+GTFS:end_time a owl:DatatypeProperty ;
+    rdfs:domain GTFS:TimeFrame ;
+    rdfs:range xsd:dateTime .
+
+GTFS:endtime a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Frequency ;
+    rdfs:range xsd:dateTime .
+
+GTFS:exact_times a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Frequency ;
+    rdfs:range xsd:boolean .
+
+GTFS:exception_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:CalendarDates ;
+    rdfs:range xsd:integer .
+
+GTFS:fare_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareAttribute ;
+    rdfs:range xsd:integer .
+
+GTFS:fare_media_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareMedia ;
+    rdfs:range xsd:integer .
+
+GTFS:fare_media_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareMedia ;
+    rdfs:range xsd:string .
+
+GTFS:fare_media_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareMedia ;
+    rdfs:range xsd:int .
+
+GTFS:fare_product_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareProduct ;
+    rdfs:range xsd:integer .
+
+GTFS:fare_product_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareProduct ;
+    rdfs:range xsd:string .
+
+GTFS:fare_transfer_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareTransferRule ;
+    rdfs:range xsd:int .
+
+GTFS:feed_contact_email a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:string .
+
+GTFS:feed_contact_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:string .
+
+GTFS:feed_end_date a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:dateTime .
+
+GTFS:feed_lang a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:integer .
+
+GTFS:feed_publisher_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:string .
+
+GTFS:feed_publisher_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:string .
+
+GTFS:feed_start_date a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:dateTime .
+
+GTFS:feed_version a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FeedInfo ;
+    rdfs:range xsd:string .
+
+GTFS:field_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Translation ;
+    rdfs:range xsd:string .
+
+GTFS:field_value a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Translation ;
+    rdfs:range xsd:string .
+
+GTFS:followsShape a owl:ObjectProperty ;
+    rdfs:comment "It indicates that the trip follows a geographical shape." ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range GTFS:Shapes .
+
+GTFS:friday a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:integer .
+
+GTFS:fromStop a owl:ObjectProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range GTFS:Stops .
+
+GTFS:hasAgency a owl:ObjectProperty ;
+    rdfs:comment "lines of network transport has differents agency" ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range GTFS:Agency .
+
+GTFS:hasBookingRule a owl:ObjectProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range GTFS:BookingRule .
+
+GTFS:hasException a owl:ObjectProperty ;
+    rdfs:comment "indicates exceptions or variations in the Calendar" ;
+    rdfs:domain GTFS:CalendarDates ;
+    rdfs:range GTFS:Calendar .
+
+GTFS:hasExeption a owl:ObjectProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range GTFS:CalendarDates .
+
+GTFS:hasFareProduct a owl:ObjectProperty ;
+    rdfs:comment "andicates the fare product applied in the leg rule." ;
+    rdfs:domain GTFS:FareLegRule ;
+    rdfs:range GTFS:FareProduct .
+
+GTFS:hasFareRule a owl:ObjectProperty ;
+    rdfs:comment "It describes the fare rule applicable to a route." ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range GTFS:FareRule .
+
+GTFS:hasLocation a owl:ObjectProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range GTFS:Location .
+
+GTFS:hasParentStation a owl:ObjectProperty ;
+    rdfs:comment "Associates a stop with a parent station . It indicates the main stop to which another stop is attached." ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range GTFS:Stops .
+
+GTFS:hasRoute a owl:ObjectProperty ;
+    rdfs:comment "specifies which routes are operated by an agency." ;
+    rdfs:domain GTFS:Agency ;
+    rdfs:range GTFS:Routes .
+
+GTFS:hasStop a owl:ObjectProperty ;
+    rdfs:comment "A group location has differents stops" ;
+    rdfs:domain GTFS:LocationGroup ;
+    rdfs:range GTFS:Stops .
+
+GTFS:hasStopTime a owl:ObjectProperty ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range GTFS:StopTimes .
+
+GTFS:headway_secs a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Frequency ;
+    rdfs:range xsd:positiveInteger .
+
+GTFS:info_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:string .
+
+GTFS:isApplicableDuring a owl:ObjectProperty ;
+    rdfs:comment "Indicates that the time period described by timeframes applies to the service days defined in the calendar." ;
+    rdfs:domain GTFS:TimeFrame ;
+    rdfs:range GTFS:Calendar .
+
+GTFS:isDiverted a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:boolean .
+
+GTFS:isLocatedIn a owl:ObjectProperty ;
+    rdfs:comment "This relation defines that a stops is located in differents location" ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range GTFS:Location .
+
+GTFS:isScheduledBy a owl:ObjectProperty ;
+    rdfs:comment "A trip  is scheduled by a frequency." ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range GTFS:Frequency .
+
+GTFS:isServedAtTime a owl:ObjectProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range GTFS:StopTimes .
+
+GTFS:is_authority a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range xsd:int .
+
+GTFS:is_bidirectional a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:int .
+
+GTFS:is_bookable a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:boolean .
+
+GTFS:is_bus_stop a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:boolean .
+
+GTFS:is_operator a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range xsd:int .
+
+GTFS:is_producer a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range xsd:int .
+
+GTFS:language a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Translation ;
+    rdfs:range xsd:integer .
+
+GTFS:leg_group_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareLegRule ;
+    rdfs:range xsd:integer .
+
+GTFS:length a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:float .
+
+GTFS:level_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Level ;
+    rdfs:range xsd:integer .
+
+GTFS:level_index a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Level ;
+    rdfs:range xsd:float .
+
+GTFS:level_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Level ;
+    rdfs:range xsd:string .
+
+GTFS:location_group_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:LocationGroup ;
+    rdfs:range xsd:integer .
+
+GTFS:location_group_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:LocationGroup ;
+    rdfs:range xsd:string .
+
+GTFS:location_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:integer .
+
+GTFS:managedBy a owl:ObjectProperty ;
+    rdfs:comment "indicates that the agency manages the fare attribute." ;
+    rdfs:domain GTFS:FareAttribute ;
+    rdfs:range GTFS:Agency .
+
+GTFS:max_slope a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:float .
+
+GTFS:message a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:string .
+
+GTFS:min_transfer_time a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Transfer ;
+    rdfs:range xsd:integer .
+
+GTFS:min_width a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:float .
+
+GTFS:monday a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:integer .
+
+GTFS:network_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Network ;
+    rdfs:range xsd:integer .
+
+GTFS:network_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Network ;
+    rdfs:range xsd:string .
+
+GTFS:offersupportTo a owl:ObjectProperty ;
+    rdfs:comment "It indicates the fare support type offered to the fare product." ;
+    rdfs:domain GTFS:FareMedia ;
+    rdfs:range GTFS:FareProduct .
+
+GTFS:operatesOnRoute a owl:ObjectProperty ;
+    rdfs:comment "represents that Trips operate on a Route" ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range GTFS:Routes .
+
+GTFS:organization_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Attribution ;
+    rdfs:range xsd:string .
+
+GTFS:origin_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareRule ;
+    rdfs:range xsd:integer .
+
+GTFS:parent_station a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:partOfNetwork a owl:ObjectProperty ;
+    rdfs:comment "It indicates that the route is part of a network." ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range GTFS:Network .
+
+GTFS:pathway_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:integer .
+
+GTFS:pathway_mode a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:int .
+
+GTFS:payment_method a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareAttribute ;
+    rdfs:range xsd:boolean .
+
+GTFS:phone_number a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:integer .
+
+GTFS:pickup_message a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:string .
+
+GTFS:pickup_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:integer .
+
+GTFS:platform_code a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:price a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareAttribute ;
+    rdfs:range xsd:decimal .
+
+GTFS:prior_notice_duration_max a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:integer .
+
+GTFS:prior_notice_duration_min a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:integer .
+
+GTFS:prior_notice_last_day a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:integer .
+
+GTFS:prior_notice_last_time a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:dateTime .
+
+GTFS:prior_notice_start_day a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:integer .
+
+GTFS:prior_notice_start_time a owl:DatatypeProperty ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:range xsd:dateTime .
+
+GTFS:providesMetadataFor a owl:ObjectProperty ;
+    rdfs:comment "indicating that the feed info provides metadata about the GTFS data" ;
+    rdfs:domain GTFS:FeedInfo .
+
+GTFS:record_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Translation ;
+    rdfs:range xsd:string .
+
+GTFS:record_sub_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Translation ;
+    rdfs:range xsd:string .
+
+GTFS:reversed_signposted_as a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:string .
+
+GTFS:roadside_index a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:integer .
+
+GTFS:route_color a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:string .
+
+GTFS:route_desc a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:string .
+
+GTFS:route_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:string .
+
+GTFS:route_long_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:string .
+
+GTFS:route_short_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:string .
+
+GTFS:route_sort_order a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:nonNegativeInteger .
+
+GTFS:route_text_color a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:string .
+
+GTFS:route_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:integer .
+
+GTFS:route_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Routes ;
+    rdfs:range xsd:string .
+
+GTFS:rule_priority a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareLegRule ;
+    rdfs:range xsd:nonNegativeInteger .
+
+GTFS:saturday a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:integer .
+
+GTFS:servesStop a owl:ObjectProperty ;
+    rdfs:comment "indicates what time the stop is served" ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range GTFS:Stops .
+
+GTFS:service_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:string .
+
+GTFS:shape_dist_traveled a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Shapes ;
+    rdfs:range xsd:float .
+
+GTFS:shape_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Shapes ;
+    rdfs:range xsd:string .
+
+GTFS:shape_pt_lat a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Shapes ;
+    rdfs:range xsd:double .
+
+GTFS:shape_pt_lon a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Shapes ;
+    rdfs:range xsd:double .
+
+GTFS:shape_pt_sequence a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain GTFS:Shapes ;
+    rdfs:range xsd:integer .
+
+GTFS:signposted_as a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:string .
+
+GTFS:stair_count a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:int .
+
+GTFS:start_date a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:date .
+
+GTFS:start_pickup_drop_off_window a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:dateTime .
+
+GTFS:start_time a owl:DatatypeProperty ;
+    rdfs:domain GTFS:TimeFrame ;
+    rdfs:range xsd:dateTime .
+
+GTFS:starttime a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Frequency ;
+    rdfs:range xsd:dateTime .
+
+GTFS:stopInArea a owl:ObjectProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range GTFS:Area .
+
+GTFS:stopInLocationGroup a owl:ObjectProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range GTFS:LocationGroup .
+
+GTFS:stop_code a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:stop_desc a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:stop_headsign a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:string .
+
+GTFS:stop_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:stop_lat a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:double .
+
+GTFS:stop_lon a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:double .
+
+GTFS:stop_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:stop_sequence a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:integer .
+
+GTFS:stop_timezone a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:stop_url a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:sunday a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:integer .
+
+GTFS:table_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Translation ;
+    rdfs:range xsd:int .
+
+GTFS:thursday a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:integer .
+
+GTFS:timeframe_group_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:TimeFrame ;
+    rdfs:range xsd:integer .
+
+GTFS:timepoint a owl:DatatypeProperty ;
+    rdfs:domain GTFS:StopTimes ;
+    rdfs:range xsd:int .
+
+GTFS:transfer_count a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareTransferRule ;
+    rdfs:range xsd:integer .
+
+GTFS:transfer_duration a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareAttribute ;
+    rdfs:range xsd:dateTime .
+
+GTFS:transfer_type a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Transfer ;
+    rdfs:range xsd:int .
+
+GTFS:transfers a owl:DatatypeProperty ;
+    rdfs:domain GTFS:FareAttribute ;
+    rdfs:range xsd:int .
+
+GTFS:translation a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Translation ;
+    rdfs:range xsd:string .
+
+GTFS:traversal_time a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Pathway ;
+    rdfs:range xsd:positiveInteger .
+
+GTFS:trip_headsign a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range xsd:string .
+
+GTFS:trip_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range xsd:string .
+
+GTFS:trip_short_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range xsd:string .
+
+GTFS:tts_stop_name a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:string .
+
+GTFS:tuesday a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:integer .
+
+GTFS:usesFareAttribute a owl:ObjectProperty ;
+    rdfs:comment "describes which attribute is used by the fare rule" ;
+    rdfs:domain GTFS:FareRule ;
+    rdfs:range GTFS:FareAttribute .
+
+GTFS:usesService a owl:ObjectProperty ;
+    rdfs:comment "Represents that Trips use a Service (Calandar)" ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range GTFS:Calendar .
+
+GTFS:wednesday a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:range xsd:integer .
+
+GTFS:wheelchair_accessible a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Trips ;
+    rdfs:range xsd:int .
+
+GTFS:wheelchair_boarding a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:int .
+
+GTFS:zone_id a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:integer .
+
+rdf:type a owl:ObjectProperty .
+
+rdfs:Container a owl:Class .
+
+rdfs:member a owl:ObjectProperty .
+
+rdfs:subClassOf a owl:ObjectProperty .
+
+xsd:dateTimeStamp rdfs:label "sello de tiempo"@es .
+
+xsd:gDay a rdfs:Datatype .
+
+xsd:gMonth a rdfs:Datatype .
+
+xsd:gYear a rdfs:Datatype .
+
+xsd:gYearMonth a rdfs:Datatype .
+
+xsd:pattern a owl:AnnotationProperty .
+
+xsd:time a rdfs:Datatype .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+skos:broadMatch a owl:AnnotationProperty .
+
+skos:changeNote a owl:AnnotationProperty .
+
+skos:closeMatch a owl:AnnotationProperty .
+
+skos:definition a owl:AnnotationProperty .
+
+skos:editorialNote a owl:AnnotationProperty .
+
+skos:exactMatch a owl:AnnotationProperty .
+
+skos:example a owl:AnnotationProperty .
+
+skos:historyNote a owl:AnnotationProperty .
+
+skos:narrowMatch a owl:AnnotationProperty .
+
+skos:note a owl:AnnotationProperty .
+
+skos:prefLabel a owl:AnnotationProperty .
+
+skos:relatedMatch a owl:AnnotationProperty .
+
+skos:scopeNote a owl:AnnotationProperty .
+
+time:TemporalUnit a owl:Class .
+
+<http://www.w3.org/2006/timeTemporalEntity> rdfs:isDefinedBy <http://www.w3.org/2006/time> .
+
+<http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E19.Physical_Object> rdfs:isDefinedBy <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#> .
+
+<http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E21.Person> rdfs:isDefinedBy <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#> .
+
+<http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E39.Actor> rdfs:isDefinedBy <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#> .
+
+<http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E5.Event> rdfs:isDefinedBy <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#> .
+
+<http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E53.Place> rdfs:isDefinedBy <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#> .
+
+<http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E55.Type> rdfs:isDefinedBy <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#> .
+
+schema:affiliation a owl:AnnotationProperty .
+
+schema:email a owl:AnnotationProperty .
+
+schema:name a owl:AnnotationProperty .
+
+schema:url a owl:AnnotationProperty .
+
+Dtx:BlockadeOrBarrier a owl:Class .
+
+Dtx:Plan a owl:Class .
+
+DRT:ShortNoticeReservation a owl:Class ;
+    rdfs:comment "A reservation made with a short lead time between its creation time and its currently requested pickup time. If the requested pickup time is modified, the lead time is recalculated, and the reservation may enter or leave this class without losing its identity." ;
+    rdfs:subClassOf DRT:Reservation .
+
+DRT:TightDropWindowReservation a owl:Class ;
+    rdfs:comment "A reservation with a narrow drop-off time window, meaning that the passenger must be dropped off within a limited time interval defined by the DRT service. This time window may be modified after the reservation is created, and the reservation may consequently cease to belong to this class." ;
+    rdfs:subClassOf DRT:Reservation .
+
+DRT:TightPickupWindowReservation a owl:Class ;
+    rdfs:comment "A reservation with a narrow pickup time window, meaning that the passenger must be picked up within a limited time interval defined by the DRT service. This time window may be modified after the reservation is created, and the reservation may consequently cease to belong to this class." ;
+    rdfs:subClassOf DRT:Reservation .
+
+DRT:dropoffSlackSec a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "dropoff slack in seconds" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:double .
+
+DRT:includesTrip a owl:ObjectProperty ;
+    rdfs:label "includes trip" ;
+    rdfs:domain DRT:Ride ;
+    rdfs:range DRT:Trips .
+
+DRT:madeBy a owl:ObjectProperty ;
+    rdfs:label "made by" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range DRT:Customer .
+
+DRT:noticeSec a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "notice in seconds" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:double .
+
+DRT:pickupSlackSec a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "pickup slack in seconds" ;
+    rdfs:domain DRT:Reservation ;
+    rdfs:range xsd:double .
+
+Infrastructure:Largeur a owl:DatatypeProperty ;
+    rdfs:comment "Width for a street" ;
+    rdfs:domain Infrastructure:Streets ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Pedestrians a owl:Class ;
+    rdfs:comment "micro level : People walking along the streets or crossing roads, or use a sidewalks" ;
+    rdfs:subClassOf sem:Actor .
+
+Infrastructure:UrbanEntity a owl:Class .
+
+xsd:duration a rdfs:Datatype .
+
+time:hasTime a owl:ObjectProperty .
+
+<http://anonymous#s> a swrl:Variable .
+
+geosparql:sfIntersects a owl:ObjectProperty .
+
+geosparql:wktLiteral a rdfs:Datatype .
+
+Infrastructure:Sidewalk a owl:Class ;
+    rdfs:comment "A paved pathway adjacent to a street, intended for pedestrian use" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:Location a owl:Class ;
+    rdfs:comment "Defines geographical areas where passengers can request pick-up or drop-off,( represented in GeoJSON format)." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:Transfer a owl:Class ;
+    rdfs:comment "Defines the transfer rules between stops,routes and trips" .
+
+GTFS:isUnavailable a owl:DatatypeProperty ;
+    rdfs:domain GTFS:Stops ;
+    rdfs:range xsd:boolean .
+
+schema:Organization a owl:Class .
+
+<http://anonymous#ds> a swrl:Variable .
+
+<http://anonymous#n> a swrl:Variable .
+
+sem:Actor a owl:Class .
+
+sem:Event a owl:Class .
+
+sem:eventType a owl:ObjectProperty .
+
+DRT:Passenger a owl:Class ;
+    rdfs:comment "Describes a passenger who uses on-demand transportation services." ;
+    rdfs:subClassOf DRT:Person .
+
+<http://www.semanticweb.org/hp/ontologies/2024/6/seg> a swrl:Variable .
+
+<http://www.semanticweb.org/hp/ontologies/2024/6/stop> a swrl:Variable .
+
+Infrastructure:Charging_station a owl:Class ;
+    rdfs:comment "Meso Level: A designated location for charging electric vehicles.",
+        "Micro level: a specific charging point or station for electric vehicles" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+Infrastructure:IsPartOfStreet a owl:ObjectProperty ;
+    rdfs:comment "A road segment is a part of streets" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range Infrastructure:Streets ;
+    rdfs:subPropertyOf geosparql:sfWithin .
+
+Infrastructure:Obstacles a owl:Class ;
+    rdfs:comment "Micro Level: An object or structure on the street that may block or impede the flow of vehicles or pedestrians" ;
+    rdfs:subClassOf geosparql:Feature .
+
+Infrastructure:isBlocked a owl:DatatypeProperty ;
+    rdfs:comment "indicates whether road segments are blocked or not" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:boolean .
+
+GTFS:Network a owl:Class ;
+    rdfs:comment "Defines the transportation networks, such as route groups." .
+
+xsd:date a rdfs:Datatype .
+
+time:Interval a owl:Class .
+
+geosparql:sfTouches a owl:ObjectProperty .
+
+geosparql:sfWithin a owl:ObjectProperty .
+
+DRT:Customer a owl:Class ;
+    rdfs:comment "Describes a customer who make a reservation for on-demand transportation services." ;
+    rdfs:subClassOf DRT:Person .
+
+DRT:Driver a owl:Class ;
+    rdfs:subClassOf DRT:Person .
+
+DRT:st a swrl:Variable .
+
+Infrastructure:LargeurSegment a owl:DatatypeProperty ;
+    rdfs:comment "Width for road segments" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:decimal .
+
+Infrastructure:Parking a owl:Class ;
+    rdfs:comment "Meso Level: A designated area for vehicle parking within a neighborhood, including parking lots or designated spaces" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+Infrastructure:Traffic_light a owl:Class ;
+    rdfs:comment "Micro Level: A traffic signal that manages vehicle and pedestrian movement by switching between red, yellow, and green lights." ;
+    rdfs:subClassOf Infrastructure:Traffic_control .
+
+Infrastructure:sinuosité a owl:DatatypeProperty ;
+    rdfs:comment "sinuosity of road segment" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:decimal .
+
+GTFS:Area a owl:Class ;
+    rdfs:comment "Describes the geographical areas within the transportation network" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:CalendarDates a owl:Class ;
+    rdfs:comment "specifying exceptions or adjustments to the schedules defined in calendar (e.g., holidays)." .
+
+GTFS:Level a owl:Class ;
+    rdfs:comment """used to model the different physical levels of a station or transport building, such as :
+Floors in a multimodal station (basement, first floor, upper floor), The levels of a multi-storey parking lot. etc""" .
+
+GTFS:LocationGroup a owl:Class ;
+    rdfs:comment "Defines location groups, which are groups of stops where a rider may request pickup or drop off." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:TimeFrame a owl:Class ;
+    rdfs:comment "Used to describe fares that can change depending on the time of day, day of the week, or specific dates throughout the year." .
+
+Infrastructure:Industrial_Zone a owl:Class ;
+    rdfs:comment "Meso Level: An area where specific types of economic activities are concentrated, such as industrial zones",
+        "Meso Level: An area where specific types of economic activities are concentrated, such as industrial zones or commercial areas." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+Infrastructure:Traffic_control a owl:Class ;
+    rdfs:comment "Micro Level: Includes all signs, traffic lights, and road markings used to regulate, warn, or inform drivers and pedestrians about traffic rules" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:FareLegRule a owl:Class ;
+    rdfs:comment "Specifies the fare rules for each segment of the legs" .
+
+GTFS:FareRule a owl:Class ;
+    rdfs:comment "Specifies the fare application rules based on routes, zones..." .
+
+GTFS:FareTransferRule a owl:Class ;
+    rdfs:comment "Defines the Fare rules for transfers between legs of trips" .
+
+GTFS:Frequency a owl:Class ;
+    rdfs:comment "represents trips that operate on regular headways (time between trips)" .
+
+DRT:Ride a owl:Class .
+
+<http://www.semanticweb.org/hp/ontologies/2024/6/t> a swrl:Variable .
+
+Infrastructure:Building a owl:Class ;
+    rdfs:comment "Micro Level: A  structure situated within the streets." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+Infrastructure:isComfortable a owl:DatatypeProperty ;
+    rdfs:comment "indicates whether segments are comfortable or not" ;
+    rdfs:domain Infrastructure:Road_segment ;
+    rdfs:range xsd:boolean .
+
+GTFS:FareMedia a owl:Class ;
+    rdfs:comment "Specifies the types of media used to pay the fare, such as smart cards or paper tickets" .
+
+GTFS:Shapes a owl:Class ;
+    rdfs:comment "Describes the geometry of routes as connected GPS points, to represent the paths on a map." ;
+    rdfs:subClassOf geosparql:Feature .
+
+Infrastructure:Intersection a owl:Class ;
+    rdfs:comment "Micro Level: A junction where several streets intersect, requiring vehicles and pedestrians to follow signage to navigate the correct direction." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+Infrastructure:Traffic_signs a owl:Class ;
+    rdfs:comment "Micro Level: Signs displaying traffic information, such as speed limits, restrictions, or directions to follow" ;
+    rdfs:subClassOf Infrastructure:Traffic_control .
+
+GTFS:Translation a owl:Class ;
+    rdfs:comment "Provides translations for text fields in multiple languages" .
+
+DRT:w a swrl:Variable .
+
+Infrastructure:Municipalities a owl:Class ;
+    rdfs:comment "At the macro level, a municipality is a territorial district corresponding to a city" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+Infrastructure:Road_markings a owl:Class ;
+    rdfs:comment "Micro Level: Road surface markings used to direct traffic, including lane lines, crosswalks, and directional arrows." ;
+    rdfs:subClassOf geosparql:Feature .
+
+Infrastructure:RondAbout a owl:Class ;
+    rdfs:subClassOf geosparql:Feature .
+
+Infrastructure:Sensor a owl:Class ;
+    rdfs:comment "Micro Level: A device used to collect data on vehicle flow, such as speed, traffic volume, or vehicle density on a road." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:FareAttribute a owl:Class ;
+    rdfs:comment "Defines the fare attributes of the services, including the price, payment method, validity etc" .
+
+GTFS:FareProduct a owl:Class ;
+    rdfs:comment "describe the range of fares available for purchase by riders" .
+
+<http://anonymous#r> a swrl:Variable .
+
+DRT:si a swrl:Variable .
+
+<http://www.semanticweb.org/hp/ontologies/2024/6/e> a swrl:Variable .
+
+<http://www.semanticweb.org/hp/ontologies/2024/6/i> a swrl:Variable .
+
+<http://www.semanticweb.org/hp/ontologies/2024/6/s> a swrl:Variable .
+
+Infrastructure:Neighborhood a owl:Class ;
+    rdfs:comment "Meso Level: A defined area that generally includes multiple streets, POIs (Points of Interest), etc." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+Infrastructure:vehicle a owl:Class ;
+    rdfs:comment "Motorized or non-motorized transportation devices used on roads for the movement of people or goods." ;
+    rdfs:subClassOf sem:Actor .
+
+GTFS:FeedInfo a owl:Class ;
+    rdfs:comment "Provides general information about the GTFS data feed, including the producer and validity period." .
+
+DRT:Person a owl:Class .
+
+GTFS:Attribution a owl:Class ;
+    rdfs:comment "describes the attributions for the provided data, such as copyrights and licenses etc .." .
+
+Infrastructure:DRT_Shuttle a owl:Class ;
+    rdfs:comment "A Demand-responsive transport (DRT) shuttle that provides flexible transit services, allowing users to request rides as needed",
+        "A Transport On Demand (DRT) shuttle that provides flexible transit services, allowing users to request rides as needed" ;
+    rdfs:subClassOf Infrastructure:vehicle .
+
+GTFS:Agency a owl:Class ;
+    rdfs:comment "Describes information about the transportation agency" ;
+    rdfs:subClassOf sem:Actor .
+
+GTFS:Pathway a owl:Class ;
+    rdfs:comment "Provides a graphical representation to describe subway or train stations, with nodes representing locations and edges representing pathways" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:Calendar a owl:Class ;
+    rdfs:comment "Defines the service days for different route and schedules" .
+
+GTFS:StopTimes a owl:Class ;
+    rdfs:comment "Contains detailed schedules for each trip, with arrival and departure times for each stop on the trip's" .
+
+<http://purl.org/dc/elements/1.1> dcterms:modified "2012-06-14"^^xsd:date ;
+    dcterms:publisher <http://purl.org/dc/aboutdcmi#DCMI> ;
+    dcterms:title "Dublin Core Metadata Element Set, Version 1.1"@en .
+
+GTFS:Trips a owl:Class ;
+    rdfs:comment "Defines trips, which are specific journeys made on a  route at a particular time" .
+
+GTFS:BookingRule a owl:Class ;
+    rdfs:comment "Specifies the rules for booking services requested by the passenger, e.g. in the case of transport on demand, the rules include a deadline for booking before departure" .
+
+geosparql:Geometry a owl:Class .
+
+geosparql:hasGeometry a owl:ObjectProperty .
+
+DRT:Trips a owl:Class ;
+    rdfs:comment """Defines a DRT trips, which are specific journeys made on a  route at a particular time.
+Each Trips instance represents a passenger journey performed as a result of a prior Reservation. In the DRT system, every passenger trip necessarily originates from a reservation.""" .
+
+GTFS:Routes a owl:Class ;
+    rdfs:comment "Routes describe the public transit lines." .
+
+geosparql:Feature a owl:Class .
+
+DRT:seg a swrl:Variable .
+
+Infrastructure:Road_segment a owl:Class ;
+    rdfs:comment """Micro Level: A segment of road between two points, such as those defined by intersections or road markings.
+A spatially and topologically delimited portion of the road network at the micro level, generally defined between two reference points such as intersections or stops. Its identity is determined by its position, endpoints, and segmentation within the road network. Corrections to geometric coordinates do not create a new segment when the network segment remains unchanged, whereas splitting or merging segments results in distinct network segment identities.""" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+Infrastructure:Streets a owl:Class ;
+    rdfs:comment "Micro Level: Describes streets designed for the movement of both vehicles and pedestrians" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:Stops a owl:Class ;
+    rdfs:label "GTFS Stops" ;
+    rdfs:comment "the stops or stations served by the transportation network" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+DRT:Reservation a owl:Class ;
+    rdfs:comment "Represents a booking made by a passenger to access on-demand transportation services." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty time:hasTime ;
+            owl:someValuesFrom time:Interval ],
+        Dtx:Plan .
+
+[] schema:affiliation "Oracle Corporation" ;
+    schema:email "john.herring@oracle.com" ;
+    schema:name "John Herring" .
+
+[] a swrl:Imp ;
+    rdfs:label "S1" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:st ;
+                            swrl:propertyPredicate Infrastructure:IsPartOfStreet ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                    swrl:argument1 DRT:st ;
+                                    swrl:argument2 DRT:w ;
+                                    swrl:propertyPredicate Infrastructure:Largeur ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 DRT:w ;
+                    swrl:propertyPredicate Infrastructure:LargeurSegment ] ;
+            rdf:rest () ] .
+
+[] xsd:pattern "-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] schema:affiliation "Oracle Corporation" ;
+    schema:email "john.herring@oracle.com" ;
+    schema:name "John Herring" .
+
+[] a swrl:Imp ;
+    rdfs:label "S9" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                    swrl:classPredicate sem:Event ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
+                            swrl:propertyPredicate sem:eventType ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
+                                    swrl:classPredicate Dtx:RoadClosure ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                            swrl:propertyPredicate Events:HasImpact ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:ClassAtom ;
+                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                                    swrl:classPredicate Events:PlaceImpact ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                                                            swrl:propertyPredicate Events:ImpactsOnPlace ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:ClassAtom ;
+                                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                                                                    swrl:classPredicate Infrastructure:Road_segment ] ;
+                                                            rdf:rest () ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate Infrastructure:isBlocked ] ;
+            rdf:rest () ] .
+
+[] xsd:pattern "--(0[1-9]|1[0-9]|20)(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] a swrl:Imp ;
+    rdfs:label "S15" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:w ;
+                            swrl:propertyPredicate Infrastructure:LargeurSegment ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:w ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 3.0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThan ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                            swrl:argument1 DRT:seg ;
+                                            swrl:argument2 DRT:si ;
+                                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:BuiltinAtom ;
+                                                    swrl:arguments [ a rdf:List ;
+                                                            rdf:first DRT:si ;
+                                                            rdf:rest [ a rdf:List ;
+                                                                    rdf:first 1.05 ;
+                                                                    rdf:rest () ] ] ;
+                                                    swrl:builtin swrlb:lessThan ] ;
+                                            rdf:rest () ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
+            rdf:rest () ] .
+
+[] schema:email "fjknibbe@gmail.com" ;
+    schema:name "Frans Knibbe" ;
+    schema:url "https://orcid.org/0000-0003-3789-2260"^^xsd:anyURI .
+
+[] schema:affiliation "Mainz University Of Applied Sciences" ;
+    schema:email "timo.homburg@hs-mainz.de" ;
+    schema:name "Timo Homburg" ;
+    schema:url "https://orcid.org/0000-0002-9499-5840"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S2" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                    swrl:classPredicate sem:Event ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
+                            swrl:propertyPredicate sem:eventType ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
+                                    swrl:classPredicate Dtx:Obstruction ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                            swrl:propertyPredicate Events:HasImpact ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:ClassAtom ;
+                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                                    swrl:classPredicate Events:PlaceImpact ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                                                            swrl:propertyPredicate Events:ImpactsOnPlace ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:ClassAtom ;
+                                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                                                                    swrl:classPredicate GTFS:Stops ] ;
+                                                            rdf:rest () ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate GTFS:isUnavailable ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S16" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:si ;
+                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:si ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 1.05 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThanOrEqual ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:BuiltinAtom ;
+                                            swrl:arguments [ a rdf:List ;
+                                                    rdf:first DRT:si ;
+                                                    rdf:rest [ a rdf:List ;
+                                                            rdf:first 1.25 ;
+                                                            rdf:rest () ] ] ;
+                                            swrl:builtin swrlb:lessThan ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 false ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
+            rdf:rest () ] .
+
+[] schema:affiliation "CSIRO Australia" ;
+    schema:email "simon.cox@csiro.au" ;
+    schema:name "Simon J D Cox" ;
+    schema:url "https://orcid.org/0000-0002-3884-3420"^^xsd:anyURI .
+
+[] a schema:Organization ;
+    schema:name "Open Geospatial Consortium" ;
+    schema:url "https://www.ogc.org"^^xsd:anyURI .
+
+[] schema:affiliation "Mainz University Of Applied Sciences" ;
+    schema:email "timo.homburg@hs-mainz.de" ;
+    schema:name "Timo Homburg" ;
+    schema:url "https://orcid.org/0000-0002-9499-5840"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S17" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
+                            swrl:argument2 true ;
+                            swrl:propertyPredicate Infrastructure:isBlocked ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
+                                    swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
+                                    swrl:propertyPredicate geosparql:sfIntersects ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
+                                            swrl:classPredicate GTFS:Stops ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate GTFS:isUnavailable ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S5" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:si ;
+                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:si ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 1.05 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:lessThan ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S6" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:st ;
+                            swrl:propertyPredicate Infrastructure:IsPartOfStreet ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 DRT:st ;
+                                    swrl:classPredicate Infrastructure:Streets ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Streets ] ;
+            rdf:rest () ] .
+
+[] xsd:pattern "---(0[1-9]|[1-9][0-9])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] schema:affiliation "KU Leuven",
+        "Neanex Technologies" ;
+    schema:email "mathias.bonduel@neanex.com" ;
+    schema:name "Mathias Bonduel" ;
+    schema:url "https://orcid.org/0000-0002-3313-924X"^^xsd:anyURI .
+
+[] xsd:pattern "-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] a swrl:Imp ;
+    rdfs:label "S13" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 <http://anonymous#r> ;
+                            swrl:argument2 <http://anonymous#ds> ;
+                            swrl:propertyPredicate DRT:dropoffSlackSec ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first <http://anonymous#ds> ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThan ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:BuiltinAtom ;
+                                            swrl:arguments [ a rdf:List ;
+                                                    rdf:first <http://anonymous#ds> ;
+                                                    rdf:rest [ a rdf:List ;
+                                                            rdf:first 1800 ;
+                                                            rdf:rest () ] ] ;
+                                            swrl:builtin swrlb:lessThanOrEqual ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:TightDropWindowReservation ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S7" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                    swrl:classPredicate sem:Event ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
+                            swrl:propertyPredicate sem:eventType ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
+                                    swrl:classPredicate Dtx:BlockadeOrBarrier ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                            swrl:propertyPredicate Events:HasImpact ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:ClassAtom ;
+                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                                    swrl:classPredicate Events:PlaceImpact ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                                                            swrl:propertyPredicate Events:ImpactsOnPlace ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:ClassAtom ;
+                                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                                                                    swrl:classPredicate Infrastructure:Road_segment ] ;
+                                                            rdf:rest () ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate Infrastructure:isBlocked ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S8" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:w ;
+                            swrl:propertyPredicate Infrastructure:LargeurSegment ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:w ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 3.0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThan ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
+            rdf:rest () ] .
+
+[] schema:affiliation "Australian National University",
+        "SURROUND Australia Pty Ltd" ;
+    schema:email "nicholas.car@surroundaustralia.com" ;
+    schema:name "Nicholas J. Car" ;
+    schema:url "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI .
+
+[] schema:affiliation "CSIRO Australia" ;
+    schema:email "simon.cox@csiro.au" ;
+    schema:name "Simon J D Cox" ;
+    schema:url "https://orcid.org/0000-0002-3884-3420"^^xsd:anyURI .
+
+[] schema:affiliation "KU Leuven",
+        "Neanex Technologies" ;
+    schema:email "mathias.bonduel@neanex.com" ;
+    schema:name "Mathias Bonduel" ;
+    schema:url "https://orcid.org/0000-0002-3313-924X"^^xsd:anyURI .
+
+[] schema:affiliation "Geoscape Australia" ;
+    schema:email "joseph.abhayaratna@geoscape.com.au" ;
+    schema:name "Joseph Abhayaratna" ;
+    schema:url "https://orcid.org/0000-0001-5075-6234"^^xsd:anyURI .
+
+[] schema:affiliation "Oracle Corporation" ;
+    schema:email "matthew.perry@oracle.com" ;
+    schema:name "Matthew Perry" ;
+    schema:url "https://orcid.org/0000-0003-1988-462X"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S11" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 <http://anonymous#r> ;
+                            swrl:argument2 <http://anonymous#n> ;
+                            swrl:propertyPredicate DRT:noticeSec ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first <http://anonymous#n> ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThan ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:BuiltinAtom ;
+                                            swrl:arguments [ a rdf:List ;
+                                                    rdf:first <http://anonymous#n> ;
+                                                    rdf:rest [ a rdf:List ;
+                                                            rdf:first 1200 ;
+                                                            rdf:rest () ] ] ;
+                                            swrl:builtin swrlb:lessThanOrEqual ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:ShortNoticeReservation ] ;
+            rdf:rest () ] .
+
+[] schema:email "fjknibbe@gmail.com" ;
+    schema:name "Frans Knibbe" ;
+    schema:url "https://orcid.org/0000-0003-3789-2260"^^xsd:anyURI .
+
+[] a schema:Organization ;
+    schema:name "Open Geospatial Consortium" ;
+    schema:url "https://www.ogc.org"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S10" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 <http://anonymous#r> ;
+                            swrl:argument2 <http://anonymous#s> ;
+                            swrl:propertyPredicate DRT:pickupSlackSec ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first <http://anonymous#s> ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 1200 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:lessThanOrEqual ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:TightPickupWindowReservation ] ;
+            rdf:rest () ] .
+
+[] schema:affiliation "Geoscape Australia" ;
+    schema:email "joseph.abhayaratna@geoscape.com.au" ;
+    schema:name "Joseph Abhayaratna" ;
+    schema:url "https://orcid.org/0000-0001-5075-6234"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S3" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:si ;
+                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:si ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 1.25 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThanOrEqual ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 false ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
+            rdf:rest () ] .
+
+[] xsd:pattern "--(0[1-9]|1[0-9]|20)(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] xsd:pattern "---(0[1-9]|[1-9][0-9])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] schema:affiliation "Australian National University",
+        "SURROUND Australia Pty Ltd" ;
+    schema:email "nicholas.car@surroundaustralia.com" ;
+    schema:name "Nicholas J. Car" ;
+    schema:url "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S4" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:w ;
+                            swrl:propertyPredicate Infrastructure:LargeurSegment ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:w ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 3.0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:lessThanOrEqual ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 false ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
+            rdf:rest () ] .
+
+[] schema:affiliation "Oracle Corporation" ;
+    schema:email "matthew.perry@oracle.com" ;
+    schema:name "Matthew Perry" ;
+    schema:url "https://orcid.org/0000-0003-1988-462X"^^xsd:anyURI .
+

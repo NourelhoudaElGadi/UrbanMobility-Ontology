@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="module-1" name="http://www.semanticweb.org/hp/ontologies/2024/6/OnDemand" uri="drt.rdf"/>
+    <uri id="module-2" name="http://www.semanticweb.org/hp/ontologies/2024/transport" uri="gtfs.rdf"/>
+    <uri id="module-3" name="http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation#" uri="infrastructure.rdf"/>
+    <uri id="module-3-b" name="http://www.semanticweb.org/hp/ontologies/2024/7/Modélisation" uri="infrastructure.rdf"/>
+    <uri id="module-4" name="http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event" uri="event.rdf"/>
+</catalog>

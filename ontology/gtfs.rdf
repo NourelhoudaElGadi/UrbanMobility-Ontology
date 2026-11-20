@@ -1,0 +1,2407 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/hp/ontologies/2024/transport#"
+     xml:base="http://www.semanticweb.org/hp/ontologies/2024/transport"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:GTFS="http://www.semanticweb.org/hp/ontologies/2024/transport#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="https://schema.org/"
+     xmlns:geosparql="http://www.opengis.net/ont/geosparql#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport">
+        <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#hasGeometry -->
+
+    <owl:ObjectProperty rdf:about="http://www.opengis.net/ont/geosparql#hasGeometry"/>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#AppliesToAgency -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#AppliesToAgency">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:comment>indicating that the attribution is managed or applicable to the specific agency.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#AppliesToTrip -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#AppliesToTrip">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:comment>the attribution applies to the trip.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#ToStop -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#ToStop">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:comment>Links a pathway to the stop where the pathway ends.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#appliesToLegGroup -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#appliesToLegGroup">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareTransferRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:comment>Indicates which segment group (defined by fare_leg_rules.leg group_id) a transfer rule (fare_transfer_rules.from_leg_group_id and fare_transfer_rules.to_leg_group_id) applied</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#appliesToRoute -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#appliesToRoute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:comment>Links an attribution record to the route to which it applies.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#appliesTotrip -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#appliesTotrip">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:comment>Indicates that booking rules apply to trips</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#belongsToTrip -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#belongsToTrip">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:comment>It indicates when the trips  passes through a stop</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#coversArea -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#coversArea">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Area"/>
+        <rdfs:comment>It describes an area involved in a fare Legs rule or a fareleg Rule cover the area</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#definesLevelFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#definesLevelFor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Level"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:comment>indicating the specific level to which the stops belong.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#followsShape -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#followsShape">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Shapes"/>
+        <rdfs:comment>It indicates that the trip follows a geographical shape.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#fromStop -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#fromStop">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:comment>Links a pathway to the stop where the pathway starts.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasAgency -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasAgency">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:comment>line of network transport has differents agency</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasBookingRule -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasBookingRule">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:comment>Links a stop time record to the booking rule that governs it.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasDestinationArea -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasDestinationArea">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Area"/>
+        <rdfs:comment>Links a fare leg rule to the destination area at which the fare leg ends</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasDestinationRoute -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasDestinationRoute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:comment>Links a transfer rule to the destination route to which the transfer leads</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasDestinationStop -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasDestinationStop">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:comment>Links a transfer rule to the destination stop where the transfer ends</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasDestinationTrip -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasDestinationTrip">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:comment>Links a transfer rule to the destination trip to which the transfer leads</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasEndTimeframeGroup -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasEndTimeframeGroup">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#TimeFrame"/>
+        <rdfs:comment>Links a fare leg rule to the timeframe group that applies to the fare validation event at the end of the fare leg</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasException -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasException">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#CalendarDates"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:comment>indicates exceptions or variations in the Calendar</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasExeption -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasExeption">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#CalendarDates"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasFareProduct -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasFareProduct">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareProduct"/>
+        <rdfs:comment>andicates the fare product applied in the leg rule.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasFareRule -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasFareRule">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareRule"/>
+        <rdfs:comment>It describes the fare rule applicable to a route.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasOriginArea -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasOriginArea">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Area"/>
+        <rdfs:comment>Links a fare leg rule to the origin area from which the fare leg starts.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasOriginRoute -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasOriginRoute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:comment>Links a transfer rule to the origin route from which the transfer starts</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasOriginStop -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasOriginStop">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:comment>Links a transfer rule to the origin stop where the transfer begins</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasOriginTrip -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasOriginTrip">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:comment>Links a transfer rule to the origin trip from which the transfer starts</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasParentStation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasParentStation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:comment>Associates a stop with a parent station . It indicates the main stop to which another stop is attached.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasRoute -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasRoute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasStartTimeframeGroup -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasStartTimeframeGroup">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#TimeFrame"/>
+        <rdfs:comment>Links a fare leg rule to the timeframe group that applies to the fare validation event at the start of the fare leg</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasStop -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasStop">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#LocationGroup"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:comment>A group location has differents stops</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasStopTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasStopTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:comment>a trips has a stop times</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#isApplicableDuring -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#isApplicableDuring">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#TimeFrame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:comment>Indicates that the time period described by timeframes applies to the service days defined in the calendar.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#isLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#isLocatedIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Location"/>
+        <rdfs:comment>This relation defines that a stops is located in differents location</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#isScheduledBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#isScheduledBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Frequency"/>
+        <rdfs:comment>A trip  is scheduled by a frequency.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#isServedAtTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#isServedAtTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#managedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#managedBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:comment>indicates that the agency manages the fare attribute.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#offersupportTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#offersupportTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareMedia"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareProduct"/>
+        <rdfs:comment>It indicates the fare support type offered to the fare product.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#operatesOnRoute -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#operatesOnRoute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:comment>represents that Trips operate on a Route</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#partOfNetwork -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#partOfNetwork">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Network"/>
+        <rdfs:comment>It indicates that the route is part of a network.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#servesStop -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#servesStop">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:comment>indicates what time the stop is served</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stopInArea -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stopInArea">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Area"/>
+        <rdfs:comment>Links a stop to an area that contains or groups it.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stopInLocationGroup -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stopInLocationGroup">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#LocationGroup"/>
+        <rdfs:comment>Links a stop to the location group to which it belongs.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#usesFareAttribute -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#usesFareAttribute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareRule"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute"/>
+        <rdfs:comment>describes which attribute is used by the fare rule</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#usesService -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#usesService">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:comment>Represents that Trips use a Service (Calandar)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Agency_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifier of the agency.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#adress -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#adress">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#agency_email -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#agency_email">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Email address of the agency.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#agency_fare_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#agency_fare_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>URL of a page describing fares for the agency.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#agency_lang -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#agency_lang">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Default language used by the agency.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#agency_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#agency_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Public name of the agency.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#agency_phone -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#agency_phone">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Phone number of the agency.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#agency_timezone -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#agency_timezone">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Timezone used by the agency.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#agency_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#agency_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Public website URL of the agency.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#amount -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#amount">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareProduct"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The cost of the fare product. May be negative to represent transfer discounts. May be zero to represent a fare product that is free.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#area_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#area_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Area"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the area.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#area_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#area_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Area"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the area as presented to riders.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#arrival_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#arrival_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Scheduled arrival time at the stop.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#attribution_email -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#attribution_email">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Email address for the attribution record.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#attribution_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#attribution_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the attribution record.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#attribution_phone -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#attribution_phone">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Phone number for the attribution record.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#attribution_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#attribution_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>URL associated with the attribution record.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#bikes_allowed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#bikes_allowed">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Indicates whether bikes are allowed. Valid options are:
+0 or empty - No bike information for the trip.
+1 - Vehicle being used on this particular trip can accommodate at least one bicycle.
+2 - No bicycles are allowed on this trip.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#block_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#block_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifies the block to which the trip belongs. A block consists of a single trip or many sequential trips made using the same vehicle, defined by shared service days and block_id.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#booking_rule_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#booking_rule_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the booking rule.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#booking_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#booking_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Type of advance-booking policy applied to the service.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#booking_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#booking_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>URL of the online booking interface.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#contains_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#contains_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of a fare zone that must be traversed for the fare rule to apply.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#continuous_drop_off -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#continuous_drop_off">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Continuous drop-off behavior defined for the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#continuous_pickup -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#continuous_pickup">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Continuous pickup behavior defined for the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#currency -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#currency">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareProduct"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Currency code of the fare product amount.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#currency_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#currency_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Currency code used for the fare attribute price.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#date">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#CalendarDates"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Specific date to which the service exception applies.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#default_lang -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#default_lang">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Fallback language to use when the rider language is unknown</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#departure_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#departure_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Scheduled departure time from the stop.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#destination_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#destination_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the destination fare zone.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#direction_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#direction_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Direction identifier used to distinguish travel directions on a route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#drop_off_message -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#drop_off_message">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Message shown to riders for on-demand drop-off booking.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#drop_off_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#drop_off_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Drop-off behavior at the stop time.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#duration_limit -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#duration_limit">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareTransferRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <rdfs:comment>Duration limit, in seconds, for the transfer rule.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#duration_limit_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#duration_limit_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareTransferRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Method used to interpret the transfer duration limit.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#end_date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#end_date">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Last date on which the service is active.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#end_pickup_drop_off_window -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#end_pickup_drop_off_window">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>End of the pickup or drop-off availability window.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#end_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#end_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#TimeFrame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>End time of the timeframe.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#endtime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#endtime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Frequency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#exact_times -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#exact_times">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Frequency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Indicates whether the trip is frequency-based or schedule-based within the frequency record.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#exception_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#exception_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#CalendarDates"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Type of service exception applied on the given date.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#fare_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#fare_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the fare definition</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#fare_media_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#fare_media_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareMedia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the fare media.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#fare_media_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#fare_media_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareMedia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the fare media.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#fare_media_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#fare_media_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareMedia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Type of fare media used to store or validate fare products.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#fare_product_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#fare_product_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareProduct"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the fare product.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#fare_product_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#fare_product_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareProduct"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the fare product.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#fare_transfer_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#fare_transfer_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareTransferRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Cost-processing type applied when transferring between fare legs.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#feed_contact_email -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#feed_contact_email">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Contact email address for the feed publisher.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#feed_contact_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#feed_contact_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Contact URL for the feed publisher.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#feed_end_date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#feed_end_date">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Last date covered reliably by the feed.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#feed_lang -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#feed_lang">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Default language of the feed.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#feed_publisher_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#feed_publisher_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the feed publisher.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#feed_publisher_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#feed_publisher_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Website URL of the feed publisher.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#feed_start_date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#feed_start_date">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>First date covered reliably by the feed.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#feed_version -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#feed_version">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Version identifier of the feed.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#field_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#field_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Translation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the GTFS field being translated.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#field_value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#field_value">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Translation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Original field value used as the basis for the translation.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#friday -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#friday">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Indicates whether the service runs on Friday.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#headway_secs -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#headway_secs">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Frequency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <rdfs:comment>Headway, in seconds, between departures for the trip.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#info_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#info_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>URL providing rider information about the booking rule.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#isDiverted -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#isDiverted">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#isUnavailable -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#isUnavailable">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>indicate whether a stop is accessible or not</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#is_authority -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#is_authority">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Indicates whether the organization is a transport authority.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#is_bidirectional -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#is_bidirectional">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Indicates whether the pathway can be used in both directions.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#is_bookable -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#is_bookable">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#is_bus_stop -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#is_bus_stop">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#is_operator -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#is_operator">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#is_producer -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#is_producer">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#language -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#language">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Translation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Language code of the translation.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#leg_group_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#leg_group_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the fare leg rule group.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#length -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#length">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment>Horizontal length of the pathway in meters.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#level_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#level_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Level"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the level.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#level_index -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#level_index">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Level"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment>Relative index of the level within a facility or station.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#level_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#level_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Level"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Public name of the level.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#location_group_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#location_group_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#LocationGroup"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the location group.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#location_group_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#location_group_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#LocationGroup"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the location group.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#location_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#location_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Type of location represented by the stop record.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#max_slope -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#max_slope">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment>Maximum slope ratio of the pathway.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#message -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#message">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>General rider-facing message associated with the booking rule.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#min_transfer_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#min_transfer_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Minimum transfer time, in seconds, required between services.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#min_width -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#min_width">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment>Minimum width of the pathway in meters.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#monday -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#monday">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Indicates whether the service runs on Monday.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#network_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#network_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Network"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the network.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#network_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#network_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Network"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the network.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#organization_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#organization_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the organization referenced by the attribution.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#origin_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#origin_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the origin fare zone.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#parent_station -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#parent_station">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifier of the parent station or parent location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#pathway_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#pathway_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the pathway.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#pathway_mode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#pathway_mode">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Type of pathway between the origin and destination stops.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#payment_method -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#payment_method">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Indicates when the fare must be paid.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#phone_number -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#phone_number">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Phone number riders can call to make a booking request.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#pickup_message -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#pickup_message">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Message shown to riders for on-demand pickup booking.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#pickup_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#pickup_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Pickup behavior at the stop time.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#platform_code -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#platform_code">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Platform identifier shown to riders.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#price -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#price">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Price of the fare attribute.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_duration_max -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_duration_max">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Maximum notice period, in minutes, before travel for booking.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_duration_min -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_duration_min">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Minimum notice period, in minutes, before travel for booking.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_last_day -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_last_day">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Last eligible day before travel on which booking can be made.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_last_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_last_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Latest time on the last eligible booking day.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_start_day -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_start_day">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Earliest day before travel when booking can start.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_start_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#prior_notice_start_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Earliest time on the start day when booking can start.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#record_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#record_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Translation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifier of the record containing the field to translate.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#record_sub_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#record_sub_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Translation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Secondary identifier used when a record needs additional disambiguation.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#reversed_signposted_as -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#reversed_signposted_as">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Public-facing text shown when the pathway is used in the reverse direction.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#roadside_index -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#roadside_index">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_color -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_color">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Presentation color associated with the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_desc -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_desc">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Description of the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifier of the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_long_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_long_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Long public name of the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_short_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_short_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Short public name or code of the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_sort_order -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_sort_order">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment>Display order of the route for rider-facing presentation.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_text_color -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_text_color">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Text color to display on top of the route color.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Mode or type of transportation used by the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#route_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#route_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Public web page for the route.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#rule_priority -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#rule_priority">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment>Priority used to choose among multiple matching fare leg rules.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#saturday -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#saturday">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Indicates whether the service runs on Saturday.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#service_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#service_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifier of the service calendar.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#shape_dist_traveled -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#shape_dist_traveled">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Shapes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment>Distance traveled along the shape from its start to this point.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#shape_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#shape_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Shapes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifier of the shape.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#shape_pt_lat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#shape_pt_lat">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Shapes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Latitude of a point in the shape geometry.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#shape_pt_lon -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#shape_pt_lon">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Shapes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Longitude of a point in the shape geometry.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#shape_pt_sequence -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#shape_pt_sequence">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Shapes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Sequence number of a point within the shape.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#signposted_as -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#signposted_as">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Public-facing text shown on signs for the pathway.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stair_count -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stair_count">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Number of stairs along the pathway.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#start_date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#start_date">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>First date on which the service is active.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#start_pickup_drop_off_window -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#start_pickup_drop_off_window">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Start of the pickup or drop-off availability window.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#start_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#start_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#TimeFrame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Start time of the timeframe.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#starttime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#starttime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Frequency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_code -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_code">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Short code used to identify the stop to riders.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_desc -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_desc">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Description of the stop or location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_headsign -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_headsign">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Headsign displayed to riders for this stop time.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifier of the stop or location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_lat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_lat">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Latitude of the stop or location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_lon -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_lon">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>Longitude of the stop or location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Public name of the stop or location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_sequence -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_sequence">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Sequence number of the stop within the trip.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_timezone -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_timezone">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Timezone assigned to the stop or location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#stop_url -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#stop_url">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Public web page for the stop or location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#sunday -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#sunday">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Indicates whether the service runs on Sunday.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#table_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#table_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Translation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Name of the GTFS table containing the translated field.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#thursday -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#thursday">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Indicates whether the service runs on Thursday.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#timeframe_group_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#timeframe_group_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#TimeFrame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the timeframe group.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#timepoint -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#timepoint">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Indicates whether the stop time is exact or approximate.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#transfer_count -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#transfer_count">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareTransferRule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Number of consecutive transfers covered by the rule.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#transfer_duration -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#transfer_duration">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Maximum time window during which transfers remain valid.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#transfer_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#transfer_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Type of transfer rule applied between the specified locations or trips.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#transfers -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#transfers">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Number of transfers allowed by the fare attribute.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#translation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#translation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Translation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Translated value provided for the selected field.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#traversal_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#traversal_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <rdfs:comment>Average traversal time of the pathway in seconds.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#trip_headsign -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#trip_headsign">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Headsign displayed to riders for the trip.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#trip_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#trip_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Identifier of the trip.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#trip_short_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#trip_short_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Short public name or code of the trip.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#tts_stop_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#tts_stop_name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Text-to-speech friendly version of the stop name.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#tuesday -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#tuesday">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Indicates whether the service runs on Tuesday.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#wednesday -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#wednesday">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Indicates whether the service runs on Wednesday.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#wheelchair_accessible -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#wheelchair_accessible">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Indicates whether the trip is wheelchair accessible.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#wheelchair_boarding -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#wheelchair_boarding">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>Indicates wheelchair boarding accessibility at the stop or location.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#zone_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#zone_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Identifier of the fare zone associated with the stop.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Feature -->
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/geosparql#Feature">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#SpatialObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Geometry -->
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/geosparql#Geometry">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#SpatialObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Agency -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Agency">
+        <rdfs:comment>Describes information about the transportation agency</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Area -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Area">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.opengis.net/ont/geosparql#hasGeometry"/>
+                <owl:someValuesFrom rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Describes the geographical areas within the transportation network</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Attribution">
+        <rdfs:comment>describes the attributions for the provided data, such as copyrights and licenses etc ..</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#BookingRule">
+        <rdfs:comment>Specifies the rules for booking services requested by the passenger, e.g. in the case of transport on demand, the rules include a deadline for booking before departure</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar">
+        <rdfs:comment>Defines the service days for different route and schedules</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#CalendarDates -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#CalendarDates">
+        <rdfs:comment>specifying exceptions or adjustments to the schedules defined in calendar (e.g., holidays).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#FareAttribute">
+        <rdfs:comment>Defines the fare attributes of the services, including the price, payment method, validity etc</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule">
+        <rdfs:comment>Specifies the fare rules for each segment of the legs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#FareMedia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#FareMedia">
+        <rdfs:comment>Specifies the types of media used to pay the fare, such as smart cards or paper tickets</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#FareProduct -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#FareProduct">
+        <rdfs:comment>describe the range of fares available for purchase by riders</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#FareRule -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#FareRule">
+        <rdfs:comment>Specifies the fare application rules based on routes, zones...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#FareTransferRule -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#FareTransferRule">
+        <rdfs:comment>Defines the Fare rules for transfers between legs of trips</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#FeedInfo">
+        <rdfs:comment>Provides general information about the GTFS data feed, including the producer and validity period.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Frequency -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Frequency">
+        <rdfs:comment>represents trips that operate on regular headways (time between trips)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Level -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Level">
+        <rdfs:comment>used to model the different physical levels of a station or transport building, such as :
+Floors in a multimodal station (basement, first floor, upper floor), The levels of a multi-storey parking lot. etc</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Location">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.opengis.net/ont/geosparql#hasGeometry"/>
+                <owl:someValuesFrom rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Defines geographical areas where passengers can request pick-up or drop-off,( represented in GeoJSON format).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#LocationGroup -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#LocationGroup">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.opengis.net/ont/geosparql#hasGeometry"/>
+                <owl:someValuesFrom rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Defines location groups, which are groups of stops where a rider may request pickup or drop off.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Network -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Network">
+        <rdfs:comment>Defines the transportation networks, such as route groups.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Pathway">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.opengis.net/ont/geosparql#hasGeometry"/>
+                <owl:someValuesFrom rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Provides a graphical representation to describe subway or train stations, with nodes representing locations and edges representing pathways</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Routes -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Routes">
+        <rdfs:comment>Routes describe the public transit lines.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Shapes -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Shapes">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:comment>Describes the geometry of routes as connected GPS points, to represent the paths on a map.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#StopTimes">
+        <rdfs:comment>Contains detailed schedules for each trip, with arrival and departure times for each stop on the trip&apos;s</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Stops -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Stops">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.opengis.net/ont/geosparql#hasGeometry"/>
+                <owl:someValuesFrom rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the stops or stations served by the transportation network</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#TimeFrame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#TimeFrame">
+        <rdfs:comment>Used to describe fares that can change depending on the time of day, day of the week, or specific dates throughout the year.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Transfer">
+        <rdfs:comment>Defines the transfer rules between stops,routes and trips</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Translation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Translation">
+        <rdfs:comment>Provides translations for text fields in multiple languages</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#Trips -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#Trips">
+        <rdfs:comment>Defines trips, which are specific journeys made on a  route at a particular time</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
