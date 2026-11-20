@@ -1,0 +1,25 @@
+digraph G {
+graph [rankdir=BT, bgcolor="transparent", pad="0.15", nodesep="0.12", ranksep="0.55", fontname="Overpass", splines=true, newrank=true];
+node [shape=box, style="rounded,filled", fontname="Overpass", fontsize=13, height=0.34, margin="0.12,0.05", penwidth=1.4, fontcolor="#14212b"];
+edge [fontname="Overpass", fontsize=11, color="#8795a1", fontcolor="#5a6977", arrowsize=0.7, penwidth=1.1];
+"DRT:Admin" [label=<Admin>, href="#Admin", tooltip="DRT:Admin: A person who administers the DRT service, for example an operator or a call-centre agent who manages reservations.", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:Person" [label=<Person>, href="#Person", tooltip="DRT:Person: A person involved in the DRT service: a customer, a passenger, a driver or an administrator.", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:ComfortSensitiveReservation" [label=<ComfortSensitiveReservation>, href="#ComfortSensitiveReservation", tooltip="DRT:ComfortSensitiveReservation: A reservation made by a user with a reduced-mobility (PMR) or elderly profile. Such reservations are classified as…", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:Reservation" [label=<Reservation>, href="#Reservation", tooltip="DRT:Reservation: A booking for the on-demand transport service, made by a customer for one or more passengers. It states the requested…", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:Customer" [label=<Customer>, href="#Customer", tooltip="DRT:Customer: A person who books DRT trips. The customer makes the reservation and may travel or book for other passengers.", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:Driver" [label=<Driver>, href="#Driver", tooltip="DRT:Driver: A person who drives the vehicle during a ride or, for an autonomous shuttle, supervises it.", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:Passenger" [label=<Passenger>, href="#Passenger", tooltip="DRT:Passenger: A person who travels on a DRT trip under a reservation.", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"Dtx:Plan" [label=<Dtx:Plan>, href="https://transportdisruption.github.io/transportdisruption.html#d4e4574", target="_blank", tooltip="Dtx:Plan: Plan provides an extension point for users of the ontology to describe an agent's plan that may be impacted by an event.", color="#64748b", fillcolor="#eef1f5", style="rounded,dashed,filled", class="ext"];
+"DRT:ShortNoticeReservation" [label=<ShortNoticeReservation>, href="#ShortNoticeReservation", tooltip="DRT:ShortNoticeReservation: A reservation made with a short lead time between its creation time and its currently requested pickup time. If the…", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:TightDropWindowReservation" [label=<TightDropWindowReservation>, href="#TightDropWindowReservation", tooltip="DRT:TightDropWindowReservation: A reservation with a narrow drop-off time window: the passenger must be dropped off within a short time interval…", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:TightPickupWindowReservation" [label=<TightPickupWindowReservation>, href="#TightPickupWindowReservation", tooltip="DRT:TightPickupWindowReservation: A reservation with a narrow pickup time window: the passenger must be picked up within a short time interval defined by…", color="#c2410c", fillcolor="#fdeee6", peripheries=1, class="own m-drt"];
+"DRT:Admin" -> "DRT:Person" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+"DRT:ComfortSensitiveReservation" -> "DRT:Reservation" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+"DRT:Customer" -> "DRT:Person" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+"DRT:Driver" -> "DRT:Person" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+"DRT:Passenger" -> "DRT:Person" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+"DRT:Reservation" -> "Dtx:Plan" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+"DRT:ShortNoticeReservation" -> "DRT:Reservation" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+"DRT:TightDropWindowReservation" -> "DRT:Reservation" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+"DRT:TightPickupWindowReservation" -> "DRT:Reservation" [arrowhead=onormal, arrowsize=1.0, class="sub", tooltip="subclass of"];
+}
