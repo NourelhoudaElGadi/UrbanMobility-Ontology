@@ -172,11 +172,6 @@ GTFS:continuous_pickup a owl:DatatypeProperty ;
     rdfs:domain GTFS:Routes ;
     rdfs:range xsd:int .
 
-GTFS:coversArea a owl:ObjectProperty ;
-    rdfs:comment "It describes an area involved in a fare Legs rule or a fareleg Rule cover the area" ;
-    rdfs:domain GTFS:FareLegRule ;
-    rdfs:range GTFS:Area .
-
 GTFS:currency a owl:DatatypeProperty ;
     rdfs:comment "Currency code of the fare product amount." ;
     rdfs:domain GTFS:FareProduct ;
@@ -401,15 +396,6 @@ GTFS:hasEndTimeframeGroup a owl:ObjectProperty ;
     rdfs:domain GTFS:FareLegRule ;
     rdfs:range GTFS:TimeFrame .
 
-GTFS:hasException a owl:ObjectProperty ;
-    rdfs:comment "indicates exceptions or variations in the Calendar" ;
-    rdfs:domain GTFS:CalendarDates ;
-    rdfs:range GTFS:Calendar .
-
-GTFS:hasExeption a owl:ObjectProperty ;
-    rdfs:domain GTFS:Calendar ;
-    rdfs:range GTFS:CalendarDates .
-
 GTFS:hasFareProduct a owl:ObjectProperty ;
     rdfs:comment "andicates the fare product applied in the leg rule." ;
     rdfs:domain GTFS:FareLegRule ;
@@ -486,6 +472,11 @@ GTFS:isApplicableDuring a owl:ObjectProperty ;
 GTFS:isDiverted a owl:DatatypeProperty ;
     rdfs:domain GTFS:Stops ;
     rdfs:range xsd:boolean .
+
+GTFS:isExceptionOf a owl:ObjectProperty ;
+    rdfs:comment "indicates exceptions or variations in the Calendar" ;
+    rdfs:domain GTFS:CalendarDates ;
+    rdfs:range GTFS:Calendar .
 
 GTFS:isLocatedIn a owl:ObjectProperty ;
     rdfs:comment "This relation defines that a stops is located in differents location" ;
@@ -1033,13 +1024,13 @@ GTFS:Location a owl:Class ;
             owl:someValuesFrom geosparql:Geometry ],
         geosparql:Feature .
 
+GTFS:CalendarDates a owl:Class ;
+    rdfs:comment "specifying exceptions or adjustments to the schedules defined in calendar (e.g., holidays)." .
+
 GTFS:Network a owl:Class ;
     rdfs:comment "Defines the transportation networks, such as route groups." .
 
 xsd:date a rdfs:Datatype .
-
-GTFS:CalendarDates a owl:Class ;
-    rdfs:comment "specifying exceptions or adjustments to the schedules defined in calendar (e.g., holidays)." .
 
 GTFS:FareMedia a owl:Class ;
     rdfs:comment "Specifies the types of media used to pay the fare, such as smart cards or paper tickets" .
@@ -1060,6 +1051,13 @@ geosparql:Geometry a owl:Class ;
 
 geosparql:hasGeometry a owl:ObjectProperty .
 
+GTFS:Area a owl:Class ;
+    rdfs:comment "Describes the geographical areas within the transportation network" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
 GTFS:FareRule a owl:Class ;
     rdfs:comment "Specifies the fare application rules based on routes, zones..." .
 
@@ -1071,13 +1069,6 @@ GTFS:Frequency a owl:Class ;
 
 geosparql:Feature a owl:Class ;
     rdfs:subClassOf geosparql:SpatialObject .
-
-GTFS:Area a owl:Class ;
-    rdfs:comment "Describes the geographical areas within the transportation network" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty geosparql:hasGeometry ;
-            owl:someValuesFrom geosparql:Geometry ],
-        geosparql:Feature .
 
 GTFS:FareProduct a owl:Class ;
     rdfs:comment "describe the range of fares available for purchase by riders" .
@@ -1095,11 +1086,11 @@ GTFS:Translation a owl:Class ;
 GTFS:FareAttribute a owl:Class ;
     rdfs:comment "Defines the fare attributes of the services, including the price, payment method, validity etc" .
 
-GTFS:Transfer a owl:Class ;
-    rdfs:comment "Defines the transfer rules between stops,routes and trips" .
-
 GTFS:FareLegRule a owl:Class ;
     rdfs:comment "Specifies the fare rules for each segment of the legs" .
+
+GTFS:Transfer a owl:Class ;
+    rdfs:comment "Defines the transfer rules between stops,routes and trips" .
 
 GTFS:FeedInfo a owl:Class ;
     rdfs:comment "Provides general information about the GTFS data feed, including the producer and validity period." .

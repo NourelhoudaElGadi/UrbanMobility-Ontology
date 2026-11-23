@@ -538,11 +538,6 @@ DRT:make_a_trip a owl:ObjectProperty ;
     rdfs:domain Infrastructure:DRT_Shuttle ;
     rdfs:range DRT:Trips .
 
-DRT:maxRideFactor a owl:DatatypeProperty ;
-    rdfs:label "max ride factor" ;
-    rdfs:domain DRT:Reservation ;
-    rdfs:range xsd:float .
-
 DRT:motif a owl:DatatypeProperty ;
     rdfs:domain DRT:Reservation ;
     rdfs:range xsd:string .
@@ -596,11 +591,6 @@ DRT:releaseTimeSec a owl:DatatypeProperty ;
     rdfs:label "release time in seconds" ;
     rdfs:domain DRT:Reservation ;
     rdfs:range xsd:double .
-
-DRT:requestID a owl:DatatypeProperty ;
-    rdfs:label "request id" ;
-    rdfs:domain DRT:Reservation ;
-    rdfs:range xsd:integer .
 
 DRT:reservationNumber a owl:DatatypeProperty ;
     rdfs:domain DRT:Reservation ;
@@ -1438,11 +1428,6 @@ GTFS:continuous_pickup a owl:DatatypeProperty ;
     rdfs:domain GTFS:Routes ;
     rdfs:range xsd:int .
 
-GTFS:coversArea a owl:ObjectProperty ;
-    rdfs:comment "It describes an area involved in a fare Legs rule or a fareleg Rule cover the area" ;
-    rdfs:domain GTFS:FareLegRule ;
-    rdfs:range GTFS:Area .
-
 GTFS:currency a owl:DatatypeProperty ;
     rdfs:domain GTFS:FareProduct ;
     rdfs:range xsd:integer .
@@ -1606,15 +1591,6 @@ GTFS:hasBookingRule a owl:ObjectProperty ;
     rdfs:domain GTFS:StopTimes ;
     rdfs:range GTFS:BookingRule .
 
-GTFS:hasException a owl:ObjectProperty ;
-    rdfs:comment "indicates exceptions or variations in the Calendar" ;
-    rdfs:domain GTFS:CalendarDates ;
-    rdfs:range GTFS:Calendar .
-
-GTFS:hasExeption a owl:ObjectProperty ;
-    rdfs:domain GTFS:Calendar ;
-    rdfs:range GTFS:CalendarDates .
-
 GTFS:hasFareProduct a owl:ObjectProperty ;
     rdfs:comment "andicates the fare product applied in the leg rule." ;
     rdfs:domain GTFS:FareLegRule ;
@@ -1664,6 +1640,11 @@ GTFS:isApplicableDuring a owl:ObjectProperty ;
 GTFS:isDiverted a owl:DatatypeProperty ;
     rdfs:domain GTFS:Stops ;
     rdfs:range xsd:boolean .
+
+GTFS:isExceptionOf a owl:ObjectProperty ;
+    rdfs:comment "indicates exceptions or variations in the Calendar" ;
+    rdfs:domain GTFS:CalendarDates ;
+    rdfs:range GTFS:Calendar .
 
 GTFS:isLocatedIn a owl:ObjectProperty ;
     rdfs:comment "This relation defines that a stops is located in differents location" ;
@@ -2314,6 +2295,16 @@ Infrastructure:isBlocked a owl:DatatypeProperty ;
     rdfs:domain Infrastructure:Road_segment ;
     rdfs:range xsd:boolean .
 
+GTFS:Area a owl:Class ;
+    rdfs:comment "Describes the geographical areas within the transportation network" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty geosparql:hasGeometry ;
+            owl:someValuesFrom geosparql:Geometry ],
+        geosparql:Feature .
+
+GTFS:CalendarDates a owl:Class ;
+    rdfs:comment "specifying exceptions or adjustments to the schedules defined in calendar (e.g., holidays)." .
+
 GTFS:Network a owl:Class ;
     rdfs:comment "Defines the transportation networks, such as route groups." .
 
@@ -2355,15 +2346,8 @@ Infrastructure:sinuosité a owl:DatatypeProperty ;
     rdfs:domain Infrastructure:Road_segment ;
     rdfs:range xsd:decimal .
 
-GTFS:Area a owl:Class ;
-    rdfs:comment "Describes the geographical areas within the transportation network" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty geosparql:hasGeometry ;
-            owl:someValuesFrom geosparql:Geometry ],
-        geosparql:Feature .
-
-GTFS:CalendarDates a owl:Class ;
-    rdfs:comment "specifying exceptions or adjustments to the schedules defined in calendar (e.g., holidays)." .
+GTFS:FareLegRule a owl:Class ;
+    rdfs:comment "Specifies the fare rules for each segment of the legs" .
 
 GTFS:Level a owl:Class ;
     rdfs:comment """used to model the different physical levels of a station or transport building, such as :
@@ -2393,9 +2377,6 @@ Infrastructure:Traffic_control a owl:Class ;
             owl:onProperty geosparql:hasGeometry ;
             owl:someValuesFrom geosparql:Geometry ],
         geosparql:Feature .
-
-GTFS:FareLegRule a owl:Class ;
-    rdfs:comment "Specifies the fare rules for each segment of the legs" .
 
 GTFS:FareRule a owl:Class ;
     rdfs:comment "Specifies the fare application rules based on routes, zones..." .
@@ -2578,9 +2559,97 @@ DRT:Reservation a owl:Class ;
             owl:someValuesFrom time:Interval ],
         Dtx:Plan .
 
-[] schema:affiliation "Oracle Corporation" ;
-    schema:email "john.herring@oracle.com" ;
-    schema:name "John Herring" .
+[] schema:email "fjknibbe@gmail.com" ;
+    schema:name "Frans Knibbe" ;
+    schema:url "https://orcid.org/0000-0003-3789-2260"^^xsd:anyURI .
+
+[] xsd:pattern "-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] schema:affiliation "Mainz University Of Applied Sciences" ;
+    schema:email "timo.homburg@hs-mainz.de" ;
+    schema:name "Timo Homburg" ;
+    schema:url "https://orcid.org/0000-0002-9499-5840"^^xsd:anyURI .
+
+[] schema:affiliation "CSIRO Australia" ;
+    schema:email "simon.cox@csiro.au" ;
+    schema:name "Simon J D Cox" ;
+    schema:url "https://orcid.org/0000-0002-3884-3420"^^xsd:anyURI .
+
+[] xsd:pattern "--(0[1-9]|1[0-9]|20)(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] a swrl:Imp ;
+    rdfs:label "S17" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
+                            swrl:argument2 true ;
+                            swrl:propertyPredicate Infrastructure:isBlocked ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
+                                    swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
+                                    swrl:propertyPredicate geosparql:sfIntersects ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:ClassAtom ;
+                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
+                                            swrl:classPredicate GTFS:Stops ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate GTFS:isUnavailable ] ;
+            rdf:rest () ] .
+
+[] schema:affiliation "KU Leuven",
+        "Neanex Technologies" ;
+    schema:email "mathias.bonduel@neanex.com" ;
+    schema:name "Mathias Bonduel" ;
+    schema:url "https://orcid.org/0000-0002-3313-924X"^^xsd:anyURI .
+
+[] xsd:pattern "---(0[1-9]|[1-9][0-9])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] a swrl:Imp ;
+    rdfs:label "S11" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 <http://anonymous#r> ;
+                            swrl:argument2 <http://anonymous#n> ;
+                            swrl:propertyPredicate DRT:noticeSec ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first <http://anonymous#n> ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThan ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:BuiltinAtom ;
+                                            swrl:arguments [ a rdf:List ;
+                                                    rdf:first <http://anonymous#n> ;
+                                                    rdf:rest [ a rdf:List ;
+                                                            rdf:first 1200 ;
+                                                            rdf:rest () ] ] ;
+                                            swrl:builtin swrlb:lessThanOrEqual ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:ShortNoticeReservation ] ;
+            rdf:rest () ] .
 
 [] a swrl:Imp ;
     rdfs:label "S1" ;
@@ -2608,11 +2677,82 @@ DRT:Reservation a owl:Class ;
                     swrl:propertyPredicate Infrastructure:LargeurSegment ] ;
             rdf:rest () ] .
 
-[] xsd:pattern "-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+[] schema:affiliation "Geoscape Australia" ;
+    schema:email "joseph.abhayaratna@geoscape.com.au" ;
+    schema:name "Joseph Abhayaratna" ;
+    schema:url "https://orcid.org/0000-0001-5075-6234"^^xsd:anyURI .
 
 [] schema:affiliation "Oracle Corporation" ;
     schema:email "john.herring@oracle.com" ;
     schema:name "John Herring" .
+
+[] schema:affiliation "CSIRO Australia" ;
+    schema:email "simon.cox@csiro.au" ;
+    schema:name "Simon J D Cox" ;
+    schema:url "https://orcid.org/0000-0002-3884-3420"^^xsd:anyURI .
+
+[] schema:affiliation "Oracle Corporation" ;
+    schema:email "matthew.perry@oracle.com" ;
+    schema:name "Matthew Perry" ;
+    schema:url "https://orcid.org/0000-0003-1988-462X"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S6" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:st ;
+                            swrl:propertyPredicate Infrastructure:IsPartOfStreet ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 DRT:st ;
+                                    swrl:classPredicate Infrastructure:Streets ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Streets ] ;
+            rdf:rest () ] .
+
+[] schema:affiliation "Geoscape Australia" ;
+    schema:email "joseph.abhayaratna@geoscape.com.au" ;
+    schema:name "Joseph Abhayaratna" ;
+    schema:url "https://orcid.org/0000-0001-5075-6234"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S5" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:si ;
+                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:si ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 1.05 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:lessThan ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
+            rdf:rest () ] .
 
 [] a swrl:Imp ;
     rdfs:label "S9" ;
@@ -2657,10 +2797,27 @@ DRT:Reservation a owl:Class ;
                     swrl:propertyPredicate Infrastructure:isBlocked ] ;
             rdf:rest () ] .
 
+[] xsd:pattern "-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+[] schema:affiliation "Australian National University",
+        "SURROUND Australia Pty Ltd" ;
+    schema:email "nicholas.car@surroundaustralia.com" ;
+    schema:name "Nicholas J. Car" ;
+    schema:url "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI .
+
+[] schema:affiliation "Oracle Corporation" ;
+    schema:email "matthew.perry@oracle.com" ;
+    schema:name "Matthew Perry" ;
+    schema:url "https://orcid.org/0000-0003-1988-462X"^^xsd:anyURI .
+
 [] xsd:pattern "--(0[1-9]|1[0-9]|20)(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
 
+[] schema:affiliation "Oracle Corporation" ;
+    schema:email "john.herring@oracle.com" ;
+    schema:name "John Herring" .
+
 [] a swrl:Imp ;
-    rdfs:label "S15" ;
+    rdfs:label "S8" ;
     swrla:isRuleEnabled true ;
     rdfs:comment "" ;
     swrl:body [ a swrl:AtomList ;
@@ -2680,20 +2837,7 @@ DRT:Reservation a owl:Class ;
                                                     rdf:first 3.0 ;
                                                     rdf:rest () ] ] ;
                                     swrl:builtin swrlb:greaterThan ] ;
-                            rdf:rest [ a swrl:AtomList ;
-                                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                                            swrl:argument1 DRT:seg ;
-                                            swrl:argument2 DRT:si ;
-                                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
-                                    rdf:rest [ a swrl:AtomList ;
-                                            rdf:first [ a swrl:BuiltinAtom ;
-                                                    swrl:arguments [ a rdf:List ;
-                                                            rdf:first DRT:si ;
-                                                            rdf:rest [ a rdf:List ;
-                                                                    rdf:first 1.05 ;
-                                                                    rdf:rest () ] ] ;
-                                                    swrl:builtin swrlb:lessThan ] ;
-                                            rdf:rest () ] ] ] ] ] ;
+                            rdf:rest () ] ] ] ;
     swrl:head [ a swrl:AtomList ;
             rdf:first [ a swrl:DatavaluedPropertyAtom ;
                     swrl:argument1 DRT:seg ;
@@ -2701,57 +2845,80 @@ DRT:Reservation a owl:Class ;
                     swrl:propertyPredicate Infrastructure:isComfortable ] ;
             rdf:rest () ] .
 
-[] schema:email "fjknibbe@gmail.com" ;
-    schema:name "Frans Knibbe" ;
-    schema:url "https://orcid.org/0000-0003-3789-2260"^^xsd:anyURI .
-
-[] schema:affiliation "Mainz University Of Applied Sciences" ;
-    schema:email "timo.homburg@hs-mainz.de" ;
-    schema:name "Timo Homburg" ;
-    schema:url "https://orcid.org/0000-0002-9499-5840"^^xsd:anyURI .
-
 [] a swrl:Imp ;
-    rdfs:label "S2" ;
+    rdfs:label "S13" ;
     swrla:isRuleEnabled true ;
     rdfs:comment "" ;
     swrl:body [ a swrl:AtomList ;
             rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
-                    swrl:classPredicate sem:Event ] ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:Reservation ] ;
             rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:IndividualPropertyAtom ;
-                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
-                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
-                            swrl:propertyPredicate sem:eventType ] ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 <http://anonymous#r> ;
+                            swrl:argument2 <http://anonymous#ds> ;
+                            swrl:propertyPredicate DRT:dropoffSlackSec ] ;
                     rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:ClassAtom ;
-                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
-                                    swrl:classPredicate Dtx:Obstruction ] ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first <http://anonymous#ds> ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThan ] ;
                             rdf:rest [ a swrl:AtomList ;
-                                    rdf:first [ a swrl:IndividualPropertyAtom ;
-                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
-                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
-                                            swrl:propertyPredicate Events:HasImpact ] ;
-                                    rdf:rest [ a swrl:AtomList ;
-                                            rdf:first [ a swrl:ClassAtom ;
-                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
-                                                    swrl:classPredicate Events:PlaceImpact ] ;
-                                            rdf:rest [ a swrl:AtomList ;
-                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
-                                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
-                                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
-                                                            swrl:propertyPredicate Events:ImpactsOnPlace ] ;
-                                                    rdf:rest [ a swrl:AtomList ;
-                                                            rdf:first [ a swrl:ClassAtom ;
-                                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
-                                                                    swrl:classPredicate GTFS:Stops ] ;
-                                                            rdf:rest () ] ] ] ] ] ] ] ;
+                                    rdf:first [ a swrl:BuiltinAtom ;
+                                            swrl:arguments [ a rdf:List ;
+                                                    rdf:first <http://anonymous#ds> ;
+                                                    rdf:rest [ a rdf:List ;
+                                                            rdf:first 1800 ;
+                                                            rdf:rest () ] ] ;
+                                            swrl:builtin swrlb:lessThanOrEqual ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:TightDropWindowReservation ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S3" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:si ;
+                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:si ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 1.25 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThanOrEqual ] ;
+                            rdf:rest () ] ] ] ;
     swrl:head [ a swrl:AtomList ;
             rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
-                    swrl:argument2 true ;
-                    swrl:propertyPredicate GTFS:isUnavailable ] ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 false ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
             rdf:rest () ] .
+
+[] schema:affiliation "Australian National University",
+        "SURROUND Australia Pty Ltd" ;
+    schema:email "nicholas.car@surroundaustralia.com" ;
+    schema:name "Nicholas J. Car" ;
+    schema:url "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI .
+
+[] schema:email "fjknibbe@gmail.com" ;
+    schema:name "Frans Knibbe" ;
+    schema:url "https://orcid.org/0000-0003-3789-2260"^^xsd:anyURI .
 
 [] a swrl:Imp ;
     rdfs:label "S16" ;
@@ -2790,148 +2957,10 @@ DRT:Reservation a owl:Class ;
                     swrl:propertyPredicate Infrastructure:isComfortable ] ;
             rdf:rest () ] .
 
-[] schema:affiliation "CSIRO Australia" ;
-    schema:email "simon.cox@csiro.au" ;
-    schema:name "Simon J D Cox" ;
-    schema:url "https://orcid.org/0000-0002-3884-3420"^^xsd:anyURI .
-
-[] a schema:Organization ;
-    schema:name "Open Geospatial Consortium" ;
-    schema:url "https://www.ogc.org"^^xsd:anyURI .
-
 [] schema:affiliation "Mainz University Of Applied Sciences" ;
     schema:email "timo.homburg@hs-mainz.de" ;
     schema:name "Timo Homburg" ;
     schema:url "https://orcid.org/0000-0002-9499-5840"^^xsd:anyURI .
-
-[] a swrl:Imp ;
-    rdfs:label "S17" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "" ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
-                    swrl:classPredicate Infrastructure:Road_segment ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
-                            swrl:argument2 true ;
-                            swrl:propertyPredicate Infrastructure:isBlocked ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:IndividualPropertyAtom ;
-                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/seg> ;
-                                    swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
-                                    swrl:propertyPredicate geosparql:sfIntersects ] ;
-                            rdf:rest [ a swrl:AtomList ;
-                                    rdf:first [ a swrl:ClassAtom ;
-                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
-                                            swrl:classPredicate GTFS:Stops ] ;
-                                    rdf:rest () ] ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/stop> ;
-                    swrl:argument2 true ;
-                    swrl:propertyPredicate GTFS:isUnavailable ] ;
-            rdf:rest () ] .
-
-[] a swrl:Imp ;
-    rdfs:label "S5" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "" ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 DRT:seg ;
-                    swrl:classPredicate Infrastructure:Road_segment ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                            swrl:argument1 DRT:seg ;
-                            swrl:argument2 DRT:si ;
-                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:BuiltinAtom ;
-                                    swrl:arguments [ a rdf:List ;
-                                            rdf:first DRT:si ;
-                                            rdf:rest [ a rdf:List ;
-                                                    rdf:first 1.05 ;
-                                                    rdf:rest () ] ] ;
-                                    swrl:builtin swrlb:lessThan ] ;
-                            rdf:rest () ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                    swrl:argument1 DRT:seg ;
-                    swrl:argument2 true ;
-                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
-            rdf:rest () ] .
-
-[] a swrl:Imp ;
-    rdfs:label "S6" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "" ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 DRT:seg ;
-                    swrl:classPredicate Infrastructure:Road_segment ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:IndividualPropertyAtom ;
-                            swrl:argument1 DRT:seg ;
-                            swrl:argument2 DRT:st ;
-                            swrl:propertyPredicate Infrastructure:IsPartOfStreet ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:ClassAtom ;
-                                    swrl:argument1 DRT:st ;
-                                    swrl:classPredicate Infrastructure:Streets ] ;
-                            rdf:rest () ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 DRT:seg ;
-                    swrl:classPredicate Infrastructure:Streets ] ;
-            rdf:rest () ] .
-
-[] xsd:pattern "---(0[1-9]|[1-9][0-9])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
-
-[] schema:affiliation "KU Leuven",
-        "Neanex Technologies" ;
-    schema:email "mathias.bonduel@neanex.com" ;
-    schema:name "Mathias Bonduel" ;
-    schema:url "https://orcid.org/0000-0002-3313-924X"^^xsd:anyURI .
-
-[] xsd:pattern "-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
-
-[] a swrl:Imp ;
-    rdfs:label "S13" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "" ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 <http://anonymous#r> ;
-                    swrl:classPredicate DRT:Reservation ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                            swrl:argument1 <http://anonymous#r> ;
-                            swrl:argument2 <http://anonymous#ds> ;
-                            swrl:propertyPredicate DRT:dropoffSlackSec ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:BuiltinAtom ;
-                                    swrl:arguments [ a rdf:List ;
-                                            rdf:first <http://anonymous#ds> ;
-                                            rdf:rest [ a rdf:List ;
-                                                    rdf:first 0 ;
-                                                    rdf:rest () ] ] ;
-                                    swrl:builtin swrlb:greaterThan ] ;
-                            rdf:rest [ a swrl:AtomList ;
-                                    rdf:first [ a swrl:BuiltinAtom ;
-                                            swrl:arguments [ a rdf:List ;
-                                                    rdf:first <http://anonymous#ds> ;
-                                                    rdf:rest [ a rdf:List ;
-                                                            rdf:first 1800 ;
-                                                            rdf:rest () ] ] ;
-                                            swrl:builtin swrlb:lessThanOrEqual ] ;
-                                    rdf:rest () ] ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 <http://anonymous#r> ;
-                    swrl:classPredicate DRT:TightDropWindowReservation ] ;
-            rdf:rest () ] .
 
 [] a swrl:Imp ;
     rdfs:label "S7" ;
@@ -2976,177 +3005,7 @@ DRT:Reservation a owl:Class ;
                     swrl:propertyPredicate Infrastructure:isBlocked ] ;
             rdf:rest () ] .
 
-[] a swrl:Imp ;
-    rdfs:label "S8" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "" ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 DRT:seg ;
-                    swrl:classPredicate Infrastructure:Road_segment ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                            swrl:argument1 DRT:seg ;
-                            swrl:argument2 DRT:w ;
-                            swrl:propertyPredicate Infrastructure:LargeurSegment ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:BuiltinAtom ;
-                                    swrl:arguments [ a rdf:List ;
-                                            rdf:first DRT:w ;
-                                            rdf:rest [ a rdf:List ;
-                                                    rdf:first 3.0 ;
-                                                    rdf:rest () ] ] ;
-                                    swrl:builtin swrlb:greaterThan ] ;
-                            rdf:rest () ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                    swrl:argument1 DRT:seg ;
-                    swrl:argument2 true ;
-                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
-            rdf:rest () ] .
-
-[] schema:affiliation "Australian National University",
-        "SURROUND Australia Pty Ltd" ;
-    schema:email "nicholas.car@surroundaustralia.com" ;
-    schema:name "Nicholas J. Car" ;
-    schema:url "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI .
-
-[] schema:affiliation "CSIRO Australia" ;
-    schema:email "simon.cox@csiro.au" ;
-    schema:name "Simon J D Cox" ;
-    schema:url "https://orcid.org/0000-0002-3884-3420"^^xsd:anyURI .
-
-[] schema:affiliation "KU Leuven",
-        "Neanex Technologies" ;
-    schema:email "mathias.bonduel@neanex.com" ;
-    schema:name "Mathias Bonduel" ;
-    schema:url "https://orcid.org/0000-0002-3313-924X"^^xsd:anyURI .
-
-[] schema:affiliation "Geoscape Australia" ;
-    schema:email "joseph.abhayaratna@geoscape.com.au" ;
-    schema:name "Joseph Abhayaratna" ;
-    schema:url "https://orcid.org/0000-0001-5075-6234"^^xsd:anyURI .
-
-[] schema:affiliation "Oracle Corporation" ;
-    schema:email "matthew.perry@oracle.com" ;
-    schema:name "Matthew Perry" ;
-    schema:url "https://orcid.org/0000-0003-1988-462X"^^xsd:anyURI .
-
-[] a swrl:Imp ;
-    rdfs:label "S11" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "" ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 <http://anonymous#r> ;
-                    swrl:classPredicate DRT:Reservation ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                            swrl:argument1 <http://anonymous#r> ;
-                            swrl:argument2 <http://anonymous#n> ;
-                            swrl:propertyPredicate DRT:noticeSec ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:BuiltinAtom ;
-                                    swrl:arguments [ a rdf:List ;
-                                            rdf:first <http://anonymous#n> ;
-                                            rdf:rest [ a rdf:List ;
-                                                    rdf:first 0 ;
-                                                    rdf:rest () ] ] ;
-                                    swrl:builtin swrlb:greaterThan ] ;
-                            rdf:rest [ a swrl:AtomList ;
-                                    rdf:first [ a swrl:BuiltinAtom ;
-                                            swrl:arguments [ a rdf:List ;
-                                                    rdf:first <http://anonymous#n> ;
-                                                    rdf:rest [ a rdf:List ;
-                                                            rdf:first 1200 ;
-                                                            rdf:rest () ] ] ;
-                                            swrl:builtin swrlb:lessThanOrEqual ] ;
-                                    rdf:rest () ] ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 <http://anonymous#r> ;
-                    swrl:classPredicate DRT:ShortNoticeReservation ] ;
-            rdf:rest () ] .
-
-[] schema:email "fjknibbe@gmail.com" ;
-    schema:name "Frans Knibbe" ;
-    schema:url "https://orcid.org/0000-0003-3789-2260"^^xsd:anyURI .
-
-[] a schema:Organization ;
-    schema:name "Open Geospatial Consortium" ;
-    schema:url "https://www.ogc.org"^^xsd:anyURI .
-
-[] a swrl:Imp ;
-    rdfs:label "S10" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "" ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 <http://anonymous#r> ;
-                    swrl:classPredicate DRT:Reservation ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                            swrl:argument1 <http://anonymous#r> ;
-                            swrl:argument2 <http://anonymous#s> ;
-                            swrl:propertyPredicate DRT:pickupSlackSec ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:BuiltinAtom ;
-                                    swrl:arguments [ a rdf:List ;
-                                            rdf:first <http://anonymous#s> ;
-                                            rdf:rest [ a rdf:List ;
-                                                    rdf:first 1200 ;
-                                                    rdf:rest () ] ] ;
-                                    swrl:builtin swrlb:lessThanOrEqual ] ;
-                            rdf:rest () ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 <http://anonymous#r> ;
-                    swrl:classPredicate DRT:TightPickupWindowReservation ] ;
-            rdf:rest () ] .
-
-[] schema:affiliation "Geoscape Australia" ;
-    schema:email "joseph.abhayaratna@geoscape.com.au" ;
-    schema:name "Joseph Abhayaratna" ;
-    schema:url "https://orcid.org/0000-0001-5075-6234"^^xsd:anyURI .
-
-[] a swrl:Imp ;
-    rdfs:label "S3" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "" ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 DRT:seg ;
-                    swrl:classPredicate Infrastructure:Road_segment ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                            swrl:argument1 DRT:seg ;
-                            swrl:argument2 DRT:si ;
-                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:BuiltinAtom ;
-                                    swrl:arguments [ a rdf:List ;
-                                            rdf:first DRT:si ;
-                                            rdf:rest [ a rdf:List ;
-                                                    rdf:first 1.25 ;
-                                                    rdf:rest () ] ] ;
-                                    swrl:builtin swrlb:greaterThanOrEqual ] ;
-                            rdf:rest () ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:DatavaluedPropertyAtom ;
-                    swrl:argument1 DRT:seg ;
-                    swrl:argument2 false ;
-                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
-            rdf:rest () ] .
-
-[] xsd:pattern "--(0[1-9]|1[0-9]|20)(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
-
 [] xsd:pattern "---(0[1-9]|[1-9][0-9])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
-
-[] schema:affiliation "Australian National University",
-        "SURROUND Australia Pty Ltd" ;
-    schema:email "nicholas.car@surroundaustralia.com" ;
-    schema:name "Nicholas J. Car" ;
-    schema:url "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI .
 
 [] a swrl:Imp ;
     rdfs:label "S4" ;
@@ -3177,8 +3036,130 @@ DRT:Reservation a owl:Class ;
                     swrl:propertyPredicate Infrastructure:isComfortable ] ;
             rdf:rest () ] .
 
-[] schema:affiliation "Oracle Corporation" ;
-    schema:email "matthew.perry@oracle.com" ;
-    schema:name "Matthew Perry" ;
-    schema:url "https://orcid.org/0000-0003-1988-462X"^^xsd:anyURI .
+[] a schema:Organization ;
+    schema:name "Open Geospatial Consortium" ;
+    schema:url "https://www.ogc.org"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S2" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                    swrl:classPredicate sem:Event ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
+                            swrl:propertyPredicate sem:eventType ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/t> ;
+                                    swrl:classPredicate Dtx:Obstruction ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/e> ;
+                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                            swrl:propertyPredicate Events:HasImpact ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:ClassAtom ;
+                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                                    swrl:classPredicate Events:PlaceImpact ] ;
+                                            rdf:rest [ a swrl:AtomList ;
+                                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                                            swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/i> ;
+                                                            swrl:argument2 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                                                            swrl:propertyPredicate Events:ImpactsOnPlace ] ;
+                                                    rdf:rest [ a swrl:AtomList ;
+                                                            rdf:first [ a swrl:ClassAtom ;
+                                                                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                                                                    swrl:classPredicate GTFS:Stops ] ;
+                                                            rdf:rest () ] ] ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 <http://www.semanticweb.org/hp/ontologies/2024/6/s> ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate GTFS:isUnavailable ] ;
+            rdf:rest () ] .
+
+[] schema:affiliation "KU Leuven",
+        "Neanex Technologies" ;
+    schema:email "mathias.bonduel@neanex.com" ;
+    schema:name "Mathias Bonduel" ;
+    schema:url "https://orcid.org/0000-0002-3313-924X"^^xsd:anyURI .
+
+[] a schema:Organization ;
+    schema:name "Open Geospatial Consortium" ;
+    schema:url "https://www.ogc.org"^^xsd:anyURI .
+
+[] a swrl:Imp ;
+    rdfs:label "S15" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:classPredicate Infrastructure:Road_segment ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 DRT:seg ;
+                            swrl:argument2 DRT:w ;
+                            swrl:propertyPredicate Infrastructure:LargeurSegment ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first DRT:w ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 3.0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThan ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                            swrl:argument1 DRT:seg ;
+                                            swrl:argument2 DRT:si ;
+                                            swrl:propertyPredicate Infrastructure:sinuosité ] ;
+                                    rdf:rest [ a swrl:AtomList ;
+                                            rdf:first [ a swrl:BuiltinAtom ;
+                                                    swrl:arguments [ a rdf:List ;
+                                                            rdf:first DRT:si ;
+                                                            rdf:rest [ a rdf:List ;
+                                                                    rdf:first 1.05 ;
+                                                                    rdf:rest () ] ] ;
+                                                    swrl:builtin swrlb:lessThan ] ;
+                                            rdf:rest () ] ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                    swrl:argument1 DRT:seg ;
+                    swrl:argument2 true ;
+                    swrl:propertyPredicate Infrastructure:isComfortable ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S10" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "" ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 <http://anonymous#r> ;
+                            swrl:argument2 <http://anonymous#s> ;
+                            swrl:propertyPredicate DRT:pickupSlackSec ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first <http://anonymous#s> ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 1200 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:lessThanOrEqual ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 <http://anonymous#r> ;
+                    swrl:classPredicate DRT:TightPickupWindowReservation ] ;
+            rdf:rest () ] .
 

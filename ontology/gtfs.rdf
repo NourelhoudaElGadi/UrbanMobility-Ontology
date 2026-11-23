@@ -140,16 +140,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#coversArea -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#coversArea">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#FareLegRule"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Area"/>
-        <rdfs:comment>It describes an area involved in a fare Legs rule or a fareleg Rule cover the area</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#definesLevelFor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#definesLevelFor">
@@ -250,21 +240,12 @@
     
 
 
-    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasException -->
+    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#isExceptionOf -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasException">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#isExceptionOf">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#CalendarDates"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
         <rdfs:comment>indicates exceptions or variations in the Calendar</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/hp/ontologies/2024/transport#hasExeption -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/hp/ontologies/2024/transport#hasExeption">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#Calendar"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/hp/ontologies/2024/transport#CalendarDates"/>
     </owl:ObjectProperty>
     
 
