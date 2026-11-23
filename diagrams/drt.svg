@@ -126,7 +126,7 @@
 <g id="a_node3"><a xlink:href="#Reservation" xlink:title="DRT:Reservation: A booking for the on&#45;demand transport service, made by a customer for one or more passengers. It states the requested…">
 <path fill="#fdeee6" stroke="#c2410c" stroke-width="1.4" d="M844.67,-459C844.67,-459 777.33,-459 777.33,-459 772.17,-459 767,-453.83 767,-448.67 767,-448.67 767,-438.33 767,-438.33 767,-433.17 772.17,-428 777.33,-428 777.33,-428 844.67,-428 844.67,-428 849.83,-428 855,-433.17 855,-438.33 855,-438.33 855,-448.67 855,-448.67 855,-453.83 849.83,-459 844.67,-459"/>
 <text text-anchor="start" x="776" y="-445.6" font-family="Overpass" font-size="13.00" fill="#14212b">Reservation</text>
-<text text-anchor="start" x="782" y="-435" font-family="Overpass" font-size="10.00" fill="#5a6977">38 attributes</text>
+<text text-anchor="start" x="782" y="-435" font-family="Overpass" font-size="10.00" fill="#5a6977">36 attributes</text>
 </a>
 </g>
 </g>
