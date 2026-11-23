@@ -389,3 +389,8 @@ table.dtx th[scope=row], table.dtx td:first-child { white-space: nowrap; }
 .dtx-type { display: inline-block; margin: 0 10px 4px 0; white-space: nowrap; }
 .dtx-type .t { margin-right: 4px !important; }
 .dtx-type .muted { font-size: .82rem; }
+.mod-reuse .t .line-badge { margin-right: 4px; vertical-align: -2px; }
+.mod-reuse a.t:not(.ext) { white-space: nowrap; }
+
+/* v2.5: space between "prefix" and the prefix itself (kept when the page is translated by the browser) */
+.pfx-line > code:first-of-type, .eyebrow code { margin-left: .3em; }
