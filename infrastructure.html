@@ -23,97 +23,13 @@
 </header>
 <main id="main">
 
-
 <section class="hero mod-hero m-infra" id="overview">
   <div class="wrap hero-grid">
     <span class="line-badge m-infra xl" aria-hidden="true">I</span>
-
     <div>
-      <p class="eyebrow">
-        Module · prefix <code>Infrastructure:</code>
-      </p>
-
+      <p class="eyebrow">Module · prefix <code>Infrastructure:</code></p>
       <h1>Urban infrastructure</h1>
-
-      <p class="lead">
-        The Infrastructure module provides a semantic representation 
-        of the urban environment in which public transport services 
-        and autonomous shuttles operate. It describes the physical 
-        components, spatial organization and hierarchical structure 
-        of the urban road network.
-      </p>
-
-      <p>
-        To represent urban infrastructure at different spatial scales, 
-        the module adopts three levels of granularity, defined through
-        <a class="t k-op m-infra" href="#hasGranularityLevel" 
-           title="Links an urban entity to its granularity level.">
-          hasGranularityLevel</a>:
-      </p>
-
-      <ul class="desc-list">
-        <li>
-          <strong>Micro level:</strong> represents the physical 
-          components of the urban network, including road segments
-          (<a class="t k-c m-infra" href="#Road_segment">Road_segment</a>),
-          streets
-          (<a class="t k-c m-infra" href="#Streets">Streets</a>),
-          intersections
-          (<a class="t k-c m-infra" href="#Intersection">Intersection</a>),
-          traffic signs, traffic lights, road markings, sensors, 
-          charging stations and buildings.
-          This level provides a detailed description of the local 
-          environment in which vehicles operate.
-        </li>
-
-        <li>
-          <strong>Meso level:</strong> represents intermediate spatial 
-          entities, including neighbourhoods
-          (<a class="t k-c m-infra" href="#Neighborhood">Neighborhood</a>),
-          areas of interest, parking areas and industrial zones.
-          This level describes the organization of urban areas 
-          beyond individual road segments and streets.
-        </li>
-
-        <li>
-          <strong>Macro level:</strong> represents municipalities
-          (<a class="t k-c m-infra" href="#Municipalities">Municipalities</a>),
-          providing a broader territorial context for the urban 
-          infrastructure and mobility services.
-        </li>
-      </ul>
-
-      <p>
-        These levels are interconnected through hierarchical spatial 
-        relationships. A road segment belongs to a street
-        (<a class="t k-op m-infra" href="#IsPartOfStreet">IsPartOfStreet</a>),
-        a street belongs to a neighbourhood
-        (<a class="t k-op m-infra" href="#IsPartOfNeighborhood">IsPartOfNeighborhood</a>),
-        and a neighbourhood belongs to a municipality
-        (<a class="t k-op m-infra" href="#isPartOfMunicipalities">isPartOfMunicipalities</a>).
-        These relationships enable the representation and analysis 
-        of the urban environment at different spatial scales.
-      </p>
-
-      <p>
-        The module relies on GeoSPARQL to represent spatial entities, 
-        their geometries and spatial relationships, using geographic 
-        data extracted from OpenStreetMap. It also describes vehicles 
-        operating within this environment, including demand-responsive 
-        transport shuttles
-        (<a class="t k-c m-infra" href="#DRT_Shuttle">DRT_Shuttle</a>).
-      </p>
-
-      <p>
-        Within the Urban Mobility Ontology, the Infrastructure module 
-        provides a common spatial foundation for connecting passenger 
-        reservations, public transport stops and disruptive events 
-        to the urban road network. This representation supports 
-        spatial reasoning and the identification of infrastructure 
-        affected by disruptions, contributing to disruption-aware 
-        planning of demand-responsive transport services.
-      </p>
-
+      <p class="lead">The Infrastructure module provides a semantic representation of the urban environment in which public transport services and autonomous shuttles operate. It describes the physical components, spatial organization and hierarchical structure of the urban road network.</p><p>To represent urban infrastructure at different spatial scales, the module adopts three levels of granularity, defined through <a class="t k-op m-infra" href="#hasGranularityLevel" title="Infrastructure:hasGranularityLevel: Links an urban entity to its granularity level: Micro, Meso or Macro.">hasGranularityLevel</a>:</p><ul class="desc-list"><li><strong>Micro level:</strong> represents the physical components of the urban network, including road segments (<a class="t k-c m-infra" href="#Road_segment" title="Infrastructure:Road_segment: A portion of road between two reference points, such as intersections or stops. Its…">Road_segment</a>), streets (<a class="t k-c m-infra" href="#Streets" title="Infrastructure:Streets: A street used by vehicles and pedestrians, made of one or more road segments.">Streets</a>), intersections (<a class="t k-c m-infra" href="#Intersection" title="Infrastructure:Intersection: A junction where several streets meet, where vehicles and pedestrians follow signage to…">Intersection</a>), traffic signs, traffic lights, road markings, sensors, charging stations and buildings. This level provides a detailed description of the local environment in which vehicles operate.</li><li><strong>Meso level:</strong> represents intermediate spatial entities, including neighbourhoods (<a class="t k-c m-infra" href="#Neighborhood" title="Infrastructure:Neighborhood: A geographically delimited urban area that comprises streets, points of interest and…">Neighborhood</a>), areas of interest, parking areas and industrial zones. This level describes the organization of urban areas beyond individual road segments and streets.</li><li><strong>Macro level:</strong> represents municipalities (<a class="t k-c m-infra" href="#Municipalities" title="Infrastructure:Municipalities: A municipality: the territory of a city or a town, delimited in space and represented by…">Municipalities</a>), providing a broader territorial context for the urban infrastructure and mobility services.</li></ul><p>These levels are interconnected through hierarchical spatial relationships. A road segment belongs to a street (<a class="t k-op m-infra" href="#IsPartOfStreet" title="Infrastructure:IsPartOfStreet: Links a road segment to the street it belongs to. It specialises the spatial relation…">IsPartOfStreet</a>), a street belongs to a neighbourhood (<a class="t k-op m-infra" href="#IsPartOfNeighborhood" title="Infrastructure:IsPartOfNeighborhood: Links a street to the neighbourhood it belongs to.">IsPartOfNeighborhood</a>), and a neighbourhood belongs to a municipality (<a class="t k-op m-infra" href="#isPartOfMunicipalities" title="Infrastructure:isPartOfMunicipalities: Links a neighbourhood to the municipality it belongs to.">isPartOfMunicipalities</a>). These relationships enable the representation and analysis of the urban environment at different spatial scales.</p><p>The module relies on GeoSPARQL to represent spatial entities, their geometries and spatial relationships, using geographic data extracted from OpenStreetMap. It also describes vehicles operating within this environment, including demand-responsive transport shuttles (<a class="t k-c m-infra" href="#DRT_Shuttle" title="Infrastructure:DRT_Shuttle: A vehicle temporarily assigned to the demand-responsive transport (DRT) service. It can…">DRT_Shuttle</a>).</p><p>Within the Urban Mobility Ontology, the Infrastructure module provides a common spatial foundation for connecting passenger reservations, public transport stops and disruptive events to the urban road network. This representation supports spatial reasoning and the identification of infrastructure affected by disruptions, contributing to disruption-aware planning of demand-responsive transport services.</p>
     </div>
   </div>
 </section>
