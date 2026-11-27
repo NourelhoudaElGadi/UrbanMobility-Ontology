@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+   xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b9">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b35">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b36"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b37"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b34">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>S13</rdfs:label>
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+    <rdfs:comment xml:lang="en">A reservation whose drop-off slack is greater than 0 and at most 1,800 seconds (30 minutes) is a tight drop-off window reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case.</rdfs:comment>
+    <swrl:body rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b35"/>
+    <swrl:head rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b47"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b16">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>S12</rdfs:label>
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+    <rdfs:comment xml:lang="en">A reservation made by a customer whose profile is 'elderly' is a comfort-sensitive reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case.</rdfs:comment>
+    <swrl:body rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b17"/>
+    <swrl:head rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b23"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isPartOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/urbanmobility/drt-rules">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dcterms:bibliographicCitation>Nourelhouda El Gadi, Esma Talhi, Alain Bouju (2026). Urban-Mobility-Ontology (version 1.1.0). Zenodo. https://doi.org/10.5281/zenodo.20054329</dcterms:bibliographicCitation>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#gYearMonth">2026-11</dcterms:created>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-1599-9326"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-7792-8953"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0009-0000-4334-4557"/>
+    <dcterms:description xml:lang="en">Application module of the Urban-Mobility-Ontology. It holds the SWRL rules used in the YeloFlex project to classify DRT reservations (short notice, tight pickup or drop-off window, comfort-sensitive) before the optimisation of the routes of autonomous on-demand shuttles. The thresholds of these rules are choices of that application, not part of the generic ontology: reusers can import the DRT module without this module, or write their own rules with other thresholds.</dcterms:description>
+    <dcterms:identifier rdf:resource="https://doi.org/10.5281/zenodo.20054329"/>
+    <dcterms:isPartOf rdf:resource="https://w3id.org/urbanmobility/"/>
+    <dcterms:language>en</dcterms:language>
+    <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-11-27</dcterms:modified>
+    <dcterms:title xml:lang="en">Urban-Mobility-Ontology: SWRL rules of the DRT routing optimisation application</dcterms:title>
+    <owl:imports rdf:resource="https://w3id.org/urbanmobility/drt"/>
+    <owl:versionIRI rdf:resource="https://w3id.org/urbanmobility/drt-rules/1.1.0"/>
+    <owl:versionInfo>1.1.0</owl:versionInfo>
+    <foaf:homepage rdf:resource="https://nourelhoudaelgadi.github.io/UrbanMobility-Ontology/rules.html"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b54">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b55"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b56">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:resource="https://w3id.org/urbanmobility/drt-rules#s"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b57"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b28">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b29"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b30"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b10">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b11"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b31">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:argument2 rdf:resource="https://w3id.org/urbanmobility/drt-rules#c"/>
+    <swrl:propertyPredicate rdf:resource="https://w3id.org/urbanmobility/drt#madeBy"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b6">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b7"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b10"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b53">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:argument2 rdf:resource="https://w3id.org/urbanmobility/drt-rules#s"/>
+    <swrl:propertyPredicate rdf:resource="https://w3id.org/urbanmobility/drt#pickupSlackSec"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b40">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+    <swrl:arguments rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b41"/>
+    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b3">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+    <swrl:arguments rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b4"/>
+    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b4">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:resource="https://w3id.org/urbanmobility/drt-rules#n"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b45">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:resource="https://w3id.org/urbanmobility/drt-rules#ds"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b46"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b48">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#TightDropWindowReservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b59">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#TightPickupWindowReservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/urbanmobility/drt-rules#c">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b2">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b3"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b23">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b24"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b1">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>S11</rdfs:label>
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+    <rdfs:comment xml:lang="en">A reservation whose notice time is greater than 0 and at most 1,200 seconds (20 minutes) is a short-notice reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case.</rdfs:comment>
+    <swrl:body rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b2"/>
+    <swrl:head rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b24">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#ComfortSensitiveReservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b20">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#c"/>
+    <swrl:argument2>elderly</swrl:argument2>
+    <swrl:propertyPredicate rdf:resource="https://w3id.org/urbanmobility/drt#userProfile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b33">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#ComfortSensitiveReservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b5">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/urbanmobility/drt-rules#n">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b8">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:resource="https://w3id.org/urbanmobility/drt-rules#n"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/identifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b19">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b20"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b21"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b41">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:resource="https://w3id.org/urbanmobility/drt-rules#ds"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b42"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b42">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b15">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#ShortNoticeReservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b18">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#Reservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b11">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#Reservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b57">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b38">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:argument2 rdf:resource="https://w3id.org/urbanmobility/drt-rules#ds"/>
+    <swrl:propertyPredicate rdf:resource="https://w3id.org/urbanmobility/drt#dropoffSlackSec"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b51">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#Reservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b13">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:argument2 rdf:resource="https://w3id.org/urbanmobility/drt-rules#n"/>
+    <swrl:propertyPredicate rdf:resource="https://w3id.org/urbanmobility/drt#noticeSec"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b39">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b40"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b43"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b26">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b27"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b28"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b14">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b15"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b27">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#Reservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b37">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b38"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b39"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b17">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b18"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b19"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b21">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b22"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b44">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+    <swrl:arguments rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b45"/>
+    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b47">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b48"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b32">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b33"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b49">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>S10</rdfs:label>
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+    <rdfs:comment xml:lang="en">A reservation whose pickup slack is at most 1,200 seconds (20 minutes) is a tight pickup window reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case.</rdfs:comment>
+    <swrl:body rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b50"/>
+    <swrl:head rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b58"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b29">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#c"/>
+    <swrl:argument2>PMR</swrl:argument2>
+    <swrl:propertyPredicate rdf:resource="https://w3id.org/urbanmobility/drt#userProfile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/modified">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b30">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b31"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b55">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+    <swrl:arguments rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b56"/>
+    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b36">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:classPredicate rdf:resource="https://w3id.org/urbanmobility/drt#Reservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b25">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <rdfs:label>S14</rdfs:label>
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+    <rdfs:comment xml:lang="en">A reservation made by a customer whose profile is 'PMR' (person with reduced mobility) is a comfort-sensitive reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case.</rdfs:comment>
+    <swrl:body rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b26"/>
+    <swrl:head rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b32"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b22">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:argument1 rdf:resource="https://w3id.org/urbanmobility/drt-rules#r"/>
+    <swrl:argument2 rdf:resource="https://w3id.org/urbanmobility/drt-rules#c"/>
+    <swrl:propertyPredicate rdf:resource="https://w3id.org/urbanmobility/drt#madeBy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/urbanmobility/drt-rules#s">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b12">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b13"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b7">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+    <swrl:arguments rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b8"/>
+    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThanOrEqual"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b52">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b53"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b54"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/language">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b46">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1800</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0000-0002-1599-9326">
+    <rdfs:label>Alain Bouju</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/urbanmobility/drt-rules#r">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b50">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b51"/>
+    <rdf:rest rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b52"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b43">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b44"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/urbanmobility/drt-rules#ds">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/bibliographicCitation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0000-0002-7792-8953">
+    <rdfs:label>Esma Talhi</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b58">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="nc06707571914477c9ad9241d4d0a4920b59"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0009-0000-4334-4557">
+    <rdfs:label>Nourelhouda El Gadi</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

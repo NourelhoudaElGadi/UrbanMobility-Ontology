@@ -1,0 +1,220 @@
+@prefix DRT: <https://w3id.org/urbanmobility/drt#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rules: <https://w3id.org/urbanmobility/drt-rules#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:bibliographicCitation a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:identifier a owl:AnnotationProperty .
+
+dcterms:isPartOf a owl:AnnotationProperty .
+
+dcterms:language a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:modified a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+swrla:isRuleEnabled a owl:AnnotationProperty .
+
+foaf:homepage a owl:AnnotationProperty .
+
+<https://w3id.org/urbanmobility/drt-rules> a owl:Ontology ;
+    dcterms:bibliographicCitation "Nourelhouda El Gadi, Esma Talhi, Alain Bouju (2026). Urban-Mobility-Ontology (version 1.1.0). Zenodo. https://doi.org/10.5281/zenodo.20054329" ;
+    dcterms:created "2026-11"^^xsd:gYearMonth ;
+    dcterms:creator <https://orcid.org/0000-0002-1599-9326>,
+        <https://orcid.org/0000-0002-7792-8953>,
+        <https://orcid.org/0009-0000-4334-4557> ;
+    dcterms:description "Application module of the Urban-Mobility-Ontology. It holds the SWRL rules used in the YeloFlex project to classify DRT reservations (short notice, tight pickup or drop-off window, comfort-sensitive) before the optimisation of the routes of autonomous on-demand shuttles. The thresholds of these rules are choices of that application, not part of the generic ontology: reusers can import the DRT module without this module, or write their own rules with other thresholds."@en ;
+    dcterms:identifier <https://doi.org/10.5281/zenodo.20054329> ;
+    dcterms:isPartOf <https://w3id.org/urbanmobility/> ;
+    dcterms:language "en" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-11-27"^^xsd:date ;
+    dcterms:title "Urban-Mobility-Ontology: SWRL rules of the DRT routing optimisation application"@en ;
+    owl:imports <https://w3id.org/urbanmobility/drt> ;
+    owl:versionIRI <https://w3id.org/urbanmobility/drt-rules/1.1.0> ;
+    owl:versionInfo "1.1.0" ;
+    foaf:homepage <https://nourelhoudaelgadi.github.io/UrbanMobility-Ontology/rules.html> .
+
+<https://orcid.org/0000-0002-1599-9326> rdfs:label "Alain Bouju" .
+
+<https://orcid.org/0000-0002-7792-8953> rdfs:label "Esma Talhi" .
+
+<https://orcid.org/0009-0000-4334-4557> rdfs:label "Nourelhouda El Gadi" .
+
+rules:s a swrl:Variable .
+
+rules:ds a swrl:Variable .
+
+rules:n a swrl:Variable .
+
+rules:c a swrl:Variable .
+
+rules:r a swrl:Variable .
+
+[] a swrl:Imp ;
+    rdfs:label "S11" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "A reservation whose notice time is greater than 0 and at most 1,200 seconds (20 minutes) is a short-notice reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case."@en ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:BuiltinAtom ;
+                    swrl:arguments [ a rdf:List ;
+                            rdf:first rules:n ;
+                            rdf:rest [ a rdf:List ;
+                                    rdf:first 0 ;
+                                    rdf:rest () ] ] ;
+                    swrl:builtin swrlb:greaterThan ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:BuiltinAtom ;
+                            swrl:arguments [ a rdf:List ;
+                                    rdf:first rules:n ;
+                                    rdf:rest [ a rdf:List ;
+                                            rdf:first 1200 ;
+                                            rdf:rest () ] ] ;
+                            swrl:builtin swrlb:lessThanOrEqual ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:ClassAtom ;
+                                    swrl:argument1 rules:r ;
+                                    swrl:classPredicate DRT:Reservation ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                                            swrl:argument1 rules:r ;
+                                            swrl:argument2 rules:n ;
+                                            swrl:propertyPredicate DRT:noticeSec ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:ShortNoticeReservation ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S12" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "A reservation made by a customer whose profile is 'elderly' is a comfort-sensitive reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case."@en ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 rules:c ;
+                            swrl:argument2 "elderly" ;
+                            swrl:propertyPredicate DRT:userProfile ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 rules:r ;
+                                    swrl:argument2 rules:c ;
+                                    swrl:propertyPredicate DRT:madeBy ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:ComfortSensitiveReservation ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S14" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "A reservation made by a customer whose profile is 'PMR' (person with reduced mobility) is a comfort-sensitive reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case."@en ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 rules:c ;
+                            swrl:argument2 "PMR" ;
+                            swrl:propertyPredicate DRT:userProfile ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 rules:r ;
+                                    swrl:argument2 rules:c ;
+                                    swrl:propertyPredicate DRT:madeBy ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:ComfortSensitiveReservation ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S13" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "A reservation whose drop-off slack is greater than 0 and at most 1,800 seconds (30 minutes) is a tight drop-off window reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case."@en ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 rules:r ;
+                            swrl:argument2 rules:ds ;
+                            swrl:propertyPredicate DRT:dropoffSlackSec ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first rules:ds ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 0 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:greaterThan ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:BuiltinAtom ;
+                                            swrl:arguments [ a rdf:List ;
+                                                    rdf:first rules:ds ;
+                                                    rdf:rest [ a rdf:List ;
+                                                            rdf:first 1800 ;
+                                                            rdf:rest () ] ] ;
+                                            swrl:builtin swrlb:lessThanOrEqual ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:TightDropWindowReservation ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    rdfs:label "S10" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "A reservation whose pickup slack is at most 1,200 seconds (20 minutes) is a tight pickup window reservation. Application-specific rule of the YeloFlex DRT routing optimisation use case."@en ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:Reservation ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:DatavaluedPropertyAtom ;
+                            swrl:argument1 rules:r ;
+                            swrl:argument2 rules:s ;
+                            swrl:propertyPredicate DRT:pickupSlackSec ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:BuiltinAtom ;
+                                    swrl:arguments [ a rdf:List ;
+                                            rdf:first rules:s ;
+                                            rdf:rest [ a rdf:List ;
+                                                    rdf:first 1200 ;
+                                                    rdf:rest () ] ] ;
+                                    swrl:builtin swrlb:lessThanOrEqual ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 rules:r ;
+                    swrl:classPredicate DRT:TightPickupWindowReservation ] ;
+            rdf:rest () ] .
+

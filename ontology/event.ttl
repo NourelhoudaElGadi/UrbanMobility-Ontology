@@ -1,16 +1,44 @@
 @prefix Dtx: <http://purl.org/td/transportdisruption#> .
-@prefix Events: <http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event#> .
+@prefix Events: <https://w3id.org/urbanmobility/event#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix event: <http://purl.org/NET/c4dm/event.owl#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:bibliographicCitation a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:identifier a owl:AnnotationProperty .
+
+dcterms:isPartOf a owl:AnnotationProperty .
+
+dcterms:language a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:modified a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
 
 Dtx:DisruptiveImpact a owl:Class ;
     rdfs:subClassOf Events:impact .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 sem:Object a owl:Class ;
     rdfs:label "Object" ;
@@ -23,7 +51,7 @@ sem:Object a owl:Class ;
         <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E21.Person> ;
     skos:narrowMatch event:Factor,
         event:Product,
-        <http://purl.org/dc/dcmitype/PhysicalObject>,
+        dcmitype:PhysicalObject,
         dcterms:PhysicalResource .
 
 sem:Temporary a owl:Class ;
@@ -131,30 +159,6 @@ sem:timeType a owl:ObjectProperty ;
     rdfs:range sem:TimeType ;
     rdfs:subPropertyOf sem:type .
 
-<http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event> a owl:Ontology ;
-    owl:imports <http://purl.org/td/transportdisruption>,
-        sem: .
-
-Events:AffectsActor a owl:ObjectProperty ;
-    rdfs:comment "the impact event of the different actor" ;
-    rdfs:domain Events:impact ;
-    rdfs:range sem:Actor .
-
-Events:HasImpact a owl:ObjectProperty ;
-    rdfs:comment "Indicates that a  Event is a cause of a Impact." ;
-    rdfs:domain event:Event ;
-    rdfs:range Events:impact .
-
-Events:HasLocation a owl:ObjectProperty ;
-    rdfs:comment "an event has location" ;
-    rdfs:domain sem:Event ;
-    rdfs:range sem:Place .
-
-Events:ImpactsOnPlace a owl:ObjectProperty ;
-    rdfs:comment "Indicates a place that a place Impact affects." ;
-    rdfs:domain Events:PlaceImpact ;
-    rdfs:range sem:Place .
-
 skos:broadMatch a owl:AnnotationProperty .
 
 skos:closeMatch a owl:AnnotationProperty .
@@ -164,6 +168,36 @@ skos:exactMatch a owl:AnnotationProperty .
 skos:narrowMatch a owl:AnnotationProperty .
 
 skos:relatedMatch a owl:AnnotationProperty .
+
+foaf:homepage a owl:AnnotationProperty .
+
+Events:AffectsActor a owl:ObjectProperty ;
+    rdfs:label "affects actor"@en ;
+    rdfs:comment "Links an impact to an actor that it affects, such as a passenger, a vehicle or an operator."@en ;
+    rdfs:domain Events:impact ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/event> ;
+    rdfs:range sem:Actor .
+
+Events:HasImpact a owl:ObjectProperty ;
+    rdfs:label "has impact"@en ;
+    rdfs:comment "Links an event to an impact that it causes."@en ;
+    rdfs:domain event:Event ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/event> ;
+    rdfs:range Events:impact .
+
+Events:HasLocation a owl:ObjectProperty ;
+    rdfs:label "has location"@en ;
+    rdfs:comment "Links an event to the place where it occurs, such as a road segment or a stop."@en ;
+    rdfs:domain sem:Event ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/event> ;
+    rdfs:range sem:Place .
+
+Events:ImpactsOnPlace a owl:ObjectProperty ;
+    rdfs:label "impacts on place"@en ;
+    rdfs:comment "Links a place impact to the place that it affects, such as a road segment or a stop."@en ;
+    rdfs:domain Events:PlaceImpact ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/event> ;
+    rdfs:range sem:Place .
 
 <http://linkedevents.org/ontology/Event> rdfs:isDefinedBy <http://linkedevents.org/ontology/> .
 
@@ -179,11 +213,11 @@ event:Product rdfs:isDefinedBy event: .
 
 event:sub_event rdfs:isDefinedBy event: .
 
-<http://purl.org/dc/dcmitype/Event> rdfs:isDefinedBy <http://purl.org/dc/dcmitype/> .
+dcmitype:Event rdfs:isDefinedBy dcmitype: .
 
-<http://purl.org/dc/dcmitype/PhysicalObject> rdfs:isDefinedBy <http://purl.org/dc/dcmitype/> .
+dcmitype:PhysicalObject rdfs:isDefinedBy dcmitype: .
 
-<http://purl.org/dc/elements/1.1/type> rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+dc:type rdfs:isDefinedBy dc: .
 
 dcterms:Agent rdfs:isDefinedBy dcterms: .
 
@@ -237,8 +271,7 @@ sem:subEventOf a owl:ObjectProperty ;
 
 sem:subTypeOf a owl:ObjectProperty ;
     rdfs:label "subtype of" ;
-    rdfs:comment "The inverse property of hasSubType." ;
-    rdfs:subPropertyOf rdfs:subClassOf .
+    rdfs:comment "The inverse property of hasSubType." .
 
 <http://sw.opencyc.org/2009/04/07/concept/en/Agent-Generic> rdfs:isDefinedBy <http://sw.opencyc.org/2009/04/07/concept/en/> .
 
@@ -274,16 +307,9 @@ sem:subTypeOf a owl:ObjectProperty ;
 
 <http://www.ontologyportal.org/translations/SUMO.owl.txt#Process> rdfs:isDefinedBy <http://www.ontologyportal.org/translations/SUMO.owl.txt#> .
 
-Events:PlaceImpact a owl:Class ;
-    rdfs:subClassOf Events:impact .
-
-rdf:type a owl:ObjectProperty .
-
-rdfs:subClassOf a owl:ObjectProperty .
-
 <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 
-<http://www.w3.org/2006/timeTemporalEntity> rdfs:isDefinedBy <http://www.w3.org/2006/time> .
+time:TemporalEntity rdfs:isDefinedBy <http://www.w3.org/2006/time> .
 
 <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E19.Physical_Object> rdfs:isDefinedBy <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#> .
 
@@ -299,6 +325,18 @@ rdfs:subClassOf a owl:ObjectProperty .
 
 foaf:Agent rdfs:isDefinedBy foaf: .
 
+<https://orcid.org/0000-0002-1599-9326> rdfs:label "Alain Bouju" .
+
+<https://orcid.org/0000-0002-7792-8953> rdfs:label "Esma Talhi" .
+
+<https://orcid.org/0009-0000-4334-4557> rdfs:label "Nourelhouda El Gadi" .
+
+Events:PlaceImpact a owl:Class ;
+    rdfs:label "place impact"@en ;
+    rdfs:comment "An impact of an event on a place of the transport network, such as a blocked road segment, a closed street or an unavailable stop."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/event> ;
+    rdfs:subClassOf Events:impact .
+
 event:Event a owl:Class ;
     rdfs:isDefinedBy event: ;
     rdfs:subClassOf sem:Event .
@@ -311,7 +349,7 @@ sem:Time a owl:Class ;
     rdfs:label "Time" ;
     rdfs:comment "Time contains symbolic representations of when an Event took place. Time instances do not necessarily need to have a timestamp associated with them. The Time class exists to represent semantics of time, e.g. that one thing happens before another, even though the exact timestamps are unknown." ;
     rdfs:subClassOf sem:Core ;
-    skos:broadMatch <http://www.w3.org/2006/timeTemporalEntity> .
+    skos:broadMatch time:TemporalEntity .
 
 sem:hasBeginTimeStamp a owl:DatatypeProperty ;
     rdfs:label "has begin timestamp" ;
@@ -370,7 +408,10 @@ sem:eventProperty a owl:ObjectProperty ;
     rdfs:label "event property" ;
     rdfs:comment "Event properties connect Events to other SEM Core entities." .
 
-Events:impact a owl:Class .
+Events:impact a owl:Class ;
+    rdfs:label "impact"@en ;
+    rdfs:comment "An effect of an event. The module separates the effects on the travel plans of agents (Dtx:DisruptiveImpact) from the effects on places of the transport network (PlaceImpact)."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/event> .
 
 sem:Event a owl:Class ;
     rdfs:label "Event" ;
@@ -378,7 +419,7 @@ sem:Event a owl:Class ;
     rdfs:subClassOf sem:Core ;
     skos:broadMatch <http://linkedevents.org/ontology/Event>,
         event:Event ;
-    skos:closeMatch <http://purl.org/dc/dcmitype/Event>,
+    skos:closeMatch dcmitype:Event,
         <http://sw.opencyc.org/2009/04/07/concept/en/Situation>,
         <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant>,
         <http://www.ontologyportal.org/translations/SUMO.owl.txt#Process>,
@@ -388,9 +429,29 @@ sem:type a owl:ObjectProperty ;
     rdfs:label "type property" ;
     rdfs:comment "Type is the super property of the properties that are used to indicate the type of a Core instance, eventType, actorType, placeType, timeType; and of roleType. Types can be both classes and individuals, cf. OWL 2 punning." ;
     rdfs:range sem:Type ;
-    rdfs:subPropertyOf rdf:type ;
-    skos:closeMatch <http://purl.org/dc/elements/1.1/type> ;
+    skos:closeMatch dc:type ;
     skos:relatedMatch <http://www.kulttuurisampo.fi/ebkr/quality> .
+
+<https://w3id.org/urbanmobility/event> a owl:Ontology ;
+    dcterms:bibliographicCitation "Nourelhouda El Gadi, Esma Talhi, Alain Bouju (2026). Urban-Mobility-Ontology (version 1.1.0). Zenodo. https://doi.org/10.5281/zenodo.20054329" ;
+    dcterms:created "2026-10"^^xsd:gYearMonth ;
+    dcterms:creator <https://orcid.org/0000-0002-1599-9326>,
+        <https://orcid.org/0000-0002-7792-8953>,
+        <https://orcid.org/0009-0000-4334-4557> ;
+    dcterms:description "Module of the Urban-Mobility-Ontology that represents disruptive events that may affect urban transport services, such as accidents, roadworks, vehicle breakdowns and road closures, and their impacts on places of the transport network, on actors and on travel plans. It reuses the Simple Event Model (SEM), the Transport Disruption ontology (Dtx), the Event Ontology and OWL-Time."@en ;
+    dcterms:identifier <https://doi.org/10.5281/zenodo.20054329> ;
+    dcterms:isPartOf <https://w3id.org/urbanmobility/> ;
+    dcterms:language "en" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-11-27"^^xsd:date ;
+    dcterms:title "Urban-Mobility-Ontology: Events and impacts module"@en ;
+    vann:preferredNamespacePrefix "Events" ;
+    vann:preferredNamespaceUri "https://w3id.org/urbanmobility/event#"^^xsd:anyURI ;
+    owl:imports <http://purl.org/td/transportdisruption> ;
+    owl:priorVersion <http://www.semanticweb.org/nelgad01/ontologies/2026/10/Event> ;
+    owl:versionIRI <https://w3id.org/urbanmobility/event/1.1.0> ;
+    owl:versionInfo "1.1.0" ;
+    foaf:homepage <https://nourelhoudaelgadi.github.io/UrbanMobility-Ontology/event.html> .
 
 sem:Type a owl:Class ;
     rdfs:label "Type" ;

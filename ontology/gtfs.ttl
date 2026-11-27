@@ -1,1046 +1,1502 @@
-@prefix GTFS: <http://www.semanticweb.org/hp/ontologies/2024/transport#> .
+@prefix GTFS: <https://w3id.org/urbanmobility/gtfs#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-swrla:isRuleEnabled a owl:AnnotationProperty .
+dcterms:bibliographicCitation a owl:AnnotationProperty .
 
-<http://www.semanticweb.org/hp/ontologies/2024/transport> a owl:Ontology ;
-    owl:imports <http://www.opengis.net/ont/geosparql> .
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:identifier a owl:AnnotationProperty .
+
+dcterms:isPartOf a owl:AnnotationProperty .
+
+dcterms:language a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:modified a owl:AnnotationProperty .
+
+dcterms:source a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+rdfs:seeAlso a owl:AnnotationProperty .
+
+foaf:homepage a owl:AnnotationProperty .
 
 GTFS:Agency_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the agency." ;
+    rdfs:label "agency ID"@en ;
+    rdfs:comment "Identifier of the agency."@en ;
     rdfs:domain GTFS:Agency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:AppliesToAgency a owl:ObjectProperty ;
-    rdfs:comment "indicating that the attribution is managed or applicable to the specific agency." ;
+    rdfs:label "applies to agency"@en ;
+    rdfs:comment "Links an attribution record to the agency it applies to."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Agency .
 
 GTFS:AppliesToTrip a owl:ObjectProperty ;
-    rdfs:comment "the attribution applies to the trip." ;
+    rdfs:label "attribution applies to trip"@en ;
+    rdfs:comment "Links an attribution record to the trip it applies to."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Trips .
 
 GTFS:ToStop a owl:ObjectProperty ;
-    rdfs:comment "Links a pathway to the stop where the pathway ends." ;
+    rdfs:label "to stop"@en ;
+    rdfs:comment "Links a pathway to the stop where the pathway ends."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Stops .
 
-GTFS:adress a owl:DatatypeProperty ;
+GTFS:address a owl:DatatypeProperty ;
+    rdfs:label "address"@en ;
+    rdfs:comment "Postal address of the stop. This property extends GTFS: it is not a field of the GTFS reference."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:agency_email a owl:DatatypeProperty ;
-    rdfs:comment "Email address of the agency." ;
+    rdfs:label "agency email"@en ;
+    rdfs:comment "Email address of the agency."@en ;
     rdfs:domain GTFS:Agency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:agency_fare_url a owl:DatatypeProperty ;
-    rdfs:comment "URL of a page describing fares for the agency." ;
+    rdfs:label "agency fare URL"@en ;
+    rdfs:comment "URL of a page describing fares for the agency."@en ;
     rdfs:domain GTFS:Agency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:agency_lang a owl:DatatypeProperty ;
-    rdfs:comment "Default language used by the agency." ;
+    rdfs:label "agency language"@en ;
+    rdfs:comment "Main language used by the agency, as an IETF BCP 47 language code (for example fr)."@en ;
     rdfs:domain GTFS:Agency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:agency_name a owl:DatatypeProperty ;
-    rdfs:comment "Public name of the agency." ;
+    rdfs:label "agency name"@en ;
+    rdfs:comment "Public name of the agency."@en ;
     rdfs:domain GTFS:Agency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:agency_phone a owl:DatatypeProperty ;
-    rdfs:comment "Phone number of the agency." ;
+    rdfs:label "agency phone"@en ;
+    rdfs:comment "Phone number of the agency."@en ;
     rdfs:domain GTFS:Agency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:agency_timezone a owl:DatatypeProperty ;
-    rdfs:comment "Timezone used by the agency." ;
+    rdfs:label "agency timezone"@en ;
+    rdfs:comment "Timezone used by the agency."@en ;
     rdfs:domain GTFS:Agency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:agency_url a owl:DatatypeProperty ;
-    rdfs:comment "Public website URL of the agency." ;
+    rdfs:label "agency URL"@en ;
+    rdfs:comment "Public website URL of the agency."@en ;
     rdfs:domain GTFS:Agency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:amount a owl:DatatypeProperty ;
-    rdfs:comment "The cost of the fare product. May be negative to represent transfer discounts. May be zero to represent a fare product that is free." ;
+    rdfs:label "amount"@en ;
+    rdfs:comment "The cost of the fare product. May be negative to represent transfer discounts. May be zero to represent a fare product that is free."@en ;
     rdfs:domain GTFS:FareProduct ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:decimal .
 
 GTFS:appliesToLegGroup a owl:ObjectProperty ;
-    rdfs:comment "Indicates which segment group (defined by fare_leg_rules.leg group_id) a transfer rule (fare_transfer_rules.from_leg_group_id and fare_transfer_rules.to_leg_group_id) applied" ;
+    rdfs:label "applies to leg group"@en ;
+    rdfs:comment "Links a fare transfer rule to the fare leg rules (leg group) between which the transfer applies."@en ;
     rdfs:domain GTFS:FareTransferRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:FareLegRule .
 
 GTFS:appliesToRoute a owl:ObjectProperty ;
-    rdfs:comment "Links an attribution record to the route to which it applies." ;
+    rdfs:label "attribution applies to route"@en ;
+    rdfs:comment "Links an attribution record to the route to which it applies."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Routes .
 
-GTFS:appliesTotrip a owl:ObjectProperty ;
-    rdfs:comment "Indicates that booking rules apply to trips" ;
-    rdfs:domain GTFS:BookingRule ;
-    rdfs:range GTFS:Trips .
-
 GTFS:area_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the area." ;
+    rdfs:label "area ID"@en ;
+    rdfs:comment "Identifier of the area."@en ;
     rdfs:domain GTFS:Area ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:area_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the area as presented to riders." ;
+    rdfs:label "area name"@en ;
+    rdfs:comment "Name of the area as presented to riders."@en ;
     rdfs:domain GTFS:Area ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:arrival_time a owl:DatatypeProperty ;
-    rdfs:comment "Scheduled arrival time at the stop." ;
+    rdfs:label "arrival time"@en ;
+    rdfs:comment "Arrival time of the trip at the stop, in local time (HH:MM:SS). Values greater than 24:00:00 are used for trips that end after midnight."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:attribution_email a owl:DatatypeProperty ;
-    rdfs:comment "Email address for the attribution record." ;
+    rdfs:label "attribution email"@en ;
+    rdfs:comment "Email address for the attribution record."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:attribution_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the attribution record." ;
+    rdfs:label "attribution ID"@en ;
+    rdfs:comment "Identifier of the attribution record."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:attribution_phone a owl:DatatypeProperty ;
-    rdfs:comment "Phone number for the attribution record." ;
+    rdfs:label "attribution phone"@en ;
+    rdfs:comment "Phone number of the organisation credited by the attribution."@en ;
     rdfs:domain GTFS:Attribution ;
-    rdfs:range xsd:integer .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:attribution_url a owl:DatatypeProperty ;
-    rdfs:comment "URL associated with the attribution record." ;
+    rdfs:label "attribution URL"@en ;
+    rdfs:comment "URL associated with the attribution record."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:belongsToTrip a owl:ObjectProperty ;
-    rdfs:comment "It indicates when the trips  passes through a stop" ;
+    rdfs:label "belongs to trip"@en ;
+    rdfs:comment "Links a stop time to the trip it belongs to."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Trips .
 
 GTFS:bikes_allowed a owl:DatatypeProperty ;
-    rdfs:comment """Indicates whether bikes are allowed. Valid options are:
-0 or empty - No bike information for the trip.
-1 - Vehicle being used on this particular trip can accommodate at least one bicycle.
-2 - No bicycles are allowed on this trip.""" ;
+    rdfs:label "bikes allowed"@en ;
+    rdfs:comment "Whether bicycles are allowed on the trip: 0 (or empty) = no information, 1 = at least one bicycle can be carried, 2 = no bicycles allowed."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:block_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifies the block to which the trip belongs. A block consists of a single trip or many sequential trips made using the same vehicle, defined by shared service days and block_id." ;
+    rdfs:label "block ID"@en ;
+    rdfs:comment "Identifies the block to which the trip belongs. A block consists of a single trip or many sequential trips made using the same vehicle, defined by shared service days and block_id."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
-GTFS:booking_rule_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the booking rule." ;
+GTFS:bookingRuleAppliesToTrip a owl:ObjectProperty ;
+    rdfs:label "booking rule applies to trip"@en ;
+    rdfs:comment "Links a booking rule to a trip it applies to."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range GTFS:Trips .
+
+GTFS:booking_rule_id a owl:DatatypeProperty ;
+    rdfs:label "booking rule ID"@en ;
+    rdfs:comment "Identifier of the booking rule."@en ;
+    rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:booking_type a owl:DatatypeProperty ;
-    rdfs:comment "Type of advance-booking policy applied to the service." ;
+    rdfs:label "booking type"@en ;
+    rdfs:comment "When the booking must be made: 0 = real-time booking, 1 = up to the same day with prior notice, 2 = up to one or more days before travel."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:booking_url a owl:DatatypeProperty ;
-    rdfs:comment "URL of the online booking interface." ;
+    rdfs:label "booking URL"@en ;
+    rdfs:comment "URL of the online booking interface."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:contains_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of a fare zone that must be traversed for the fare rule to apply." ;
+    rdfs:label "contains ID"@en ;
+    rdfs:comment "Identifier of a fare zone that must be traversed for the fare rule to apply."@en ;
     rdfs:domain GTFS:FareRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:continuous_drop_off a owl:DatatypeProperty ;
-    rdfs:comment "Continuous drop-off behavior defined for the route." ;
+    rdfs:label "continuous drop off"@en ;
+    rdfs:comment "Whether riders can alight anywhere along the path of the vehicle on the route: 0 = continuous stopping drop-off, 1 (or empty) = no continuous drop-off, 2 = phone the agency, 3 = coordinate with the driver."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:continuous_pickup a owl:DatatypeProperty ;
-    rdfs:comment "Continuous pickup behavior defined for the route." ;
+    rdfs:label "continuous pickup"@en ;
+    rdfs:comment "Whether riders can board anywhere along the path of the vehicle on the route: 0 = continuous stopping pickup, 1 (or empty) = no continuous pickup, 2 = phone the agency, 3 = coordinate with the driver."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:currency a owl:DatatypeProperty ;
-    rdfs:comment "Currency code of the fare product amount." ;
+    rdfs:label "currency"@en ;
+    rdfs:comment "Currency of the amount of the fare product, as an ISO 4217 code (for example EUR)."@en ;
     rdfs:domain GTFS:FareProduct ;
-    rdfs:range xsd:integer .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:currency_type a owl:DatatypeProperty ;
-    rdfs:comment "Currency code used for the fare attribute price." ;
+    rdfs:label "currency type"@en ;
+    rdfs:comment "Currency of the price of the fare, as an ISO 4217 code (for example EUR)."@en ;
     rdfs:domain GTFS:FareAttribute ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:date a owl:DatatypeProperty ;
-    rdfs:comment "Specific date to which the service exception applies." ;
+    rdfs:label "date"@en ;
+    rdfs:comment "Specific date to which the service exception applies."@en ;
     rdfs:domain GTFS:CalendarDates ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:date .
 
 GTFS:default_lang a owl:DatatypeProperty ;
-    rdfs:comment "Fallback language to use when the rider language is unknown" ;
+    rdfs:label "default language"@en ;
+    rdfs:comment "Language to use when the language of the rider is unknown, as an IETF BCP 47 language code."@en ;
     rdfs:domain GTFS:FeedInfo ;
-    rdfs:range xsd:integer .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:definesLevelFor a owl:ObjectProperty ;
-    rdfs:comment "indicating the specific level to which the stops belong." ;
+    rdfs:label "defines level for"@en ;
+    rdfs:comment "Links a level to a stop located on that level."@en ;
     rdfs:domain GTFS:Level ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Stops .
 
 GTFS:departure_time a owl:DatatypeProperty ;
-    rdfs:comment "Scheduled departure time from the stop." ;
+    rdfs:label "departure time"@en ;
+    rdfs:comment "Departure time of the trip from the stop, in local time (HH:MM:SS). Values greater than 24:00:00 are used for trips that run after midnight."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:destination_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the destination fare zone." ;
+    rdfs:label "destination ID"@en ;
+    rdfs:comment "Identifier of the destination fare zone."@en ;
     rdfs:domain GTFS:FareRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:direction_id a owl:DatatypeProperty ;
-    rdfs:comment "Direction identifier used to distinguish travel directions on a route." ;
+    rdfs:label "direction ID"@en ;
+    rdfs:comment "Direction of travel of the trip on its route: 0 = one direction (for example outbound), 1 = the opposite direction (for example inbound)."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:drop_off_message a owl:DatatypeProperty ;
-    rdfs:comment "Message shown to riders for on-demand drop-off booking." ;
+    rdfs:label "drop off message"@en ;
+    rdfs:comment "Message shown to riders for on-demand drop-off booking."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:drop_off_type a owl:DatatypeProperty ;
-    rdfs:comment "Drop-off behavior at the stop time." ;
+    rdfs:label "drop off type"@en ;
+    rdfs:comment "Drop-off method at the stop: 0 (or empty) = regularly scheduled drop-off, 1 = no drop-off, 2 = phone the agency to arrange a drop-off, 3 = coordinate with the driver."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:duration_limit a owl:DatatypeProperty ;
-    rdfs:comment "Duration limit, in seconds, for the transfer rule." ;
+    rdfs:label "duration limit"@en ;
+    rdfs:comment "Duration limit of the transfer, in seconds."@en ;
     rdfs:domain GTFS:FareTransferRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:positiveInteger .
 
 GTFS:duration_limit_type a owl:DatatypeProperty ;
-    rdfs:comment "Method used to interpret the transfer duration limit." ;
+    rdfs:label "duration limit type"@en ;
+    rdfs:comment "Which times define the duration limit of the transfer: 0 = departure of the current leg to arrival of the next leg, 1 = departure to departure, 2 = arrival to departure, 3 = arrival to arrival."@en ;
     rdfs:domain GTFS:FareTransferRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:end_date a owl:DatatypeProperty ;
-    rdfs:comment "Last date on which the service is active." ;
+    rdfs:label "end date"@en ;
+    rdfs:comment "Last date on which the service is active."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:date .
 
 GTFS:end_pickup_drop_off_window a owl:DatatypeProperty ;
-    rdfs:comment "End of the pickup or drop-off availability window." ;
+    rdfs:label "end pickup drop off window"@en ;
+    rdfs:comment "Time at which the on-demand pickup or drop-off service stops being available at the location, location group or stop (HH:MM:SS)."@en ;
     rdfs:domain GTFS:StopTimes ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:end_time a owl:DatatypeProperty ;
-    rdfs:comment "End time of the timeframe." ;
+    rdfs:label "end time (timeframe)"@en ;
+    rdfs:comment "End of the time of day of the timeframe (HH:MM:SS)."@en ;
     rdfs:domain GTFS:TimeFrame ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:endtime a owl:DatatypeProperty ;
+    rdfs:label "end time (frequency)"@en ;
+    rdfs:comment "Time at which the service changes to another headway or stops (HH:MM:SS)."@en ;
     rdfs:domain GTFS:Frequency ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:exact_times a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the trip is frequency-based or schedule-based within the frequency record." ;
+    rdfs:label "exact times"@en ;
+    rdfs:comment "Type of service of the frequency: false = frequency-based trips without exact schedule, true = schedule-based trips that run with exactly the same headway."@en ;
     rdfs:domain GTFS:Frequency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:boolean .
 
 GTFS:exception_type a owl:DatatypeProperty ;
-    rdfs:comment "Type of service exception applied on the given date." ;
+    rdfs:label "exception type"@en ;
+    rdfs:comment "Type of the exception on the given date: 1 = service added, 2 = service removed."@en ;
     rdfs:domain GTFS:CalendarDates ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:fare_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the fare definition" ;
+    rdfs:label "fare ID"@en ;
+    rdfs:comment "Identifier of the fare definition."@en ;
     rdfs:domain GTFS:FareAttribute ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:fare_media_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the fare media." ;
+    rdfs:label "fare media ID"@en ;
+    rdfs:comment "Identifier of the fare media."@en ;
     rdfs:domain GTFS:FareMedia ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:fare_media_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the fare media." ;
+    rdfs:label "fare media name"@en ;
+    rdfs:comment "Name of the fare media."@en ;
     rdfs:domain GTFS:FareMedia ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:fare_media_type a owl:DatatypeProperty ;
-    rdfs:comment "Type of fare media used to store or validate fare products." ;
+    rdfs:label "fare media type"@en ;
+    rdfs:comment "Type of fare medium: 0 = none (for example cash paid to the driver), 1 = paper ticket, 2 = transit card, 3 = contactless bank card or mobile wallet, 4 = mobile app."@en ;
     rdfs:domain GTFS:FareMedia ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:fare_product_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the fare product." ;
+    rdfs:label "fare product ID"@en ;
+    rdfs:comment "Identifier of the fare product."@en ;
     rdfs:domain GTFS:FareProduct ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:fare_product_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the fare product." ;
+    rdfs:label "fare product name"@en ;
+    rdfs:comment "Name of the fare product."@en ;
     rdfs:domain GTFS:FareProduct ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:fare_transfer_type a owl:DatatypeProperty ;
-    rdfs:comment "Cost-processing type applied when transferring between fare legs." ;
+    rdfs:label "fare transfer type"@en ;
+    rdfs:comment "How the cost of a transfer between two fare legs is computed: 0 = fare of the first leg plus the transfer fare, 1 = fare of the first leg plus the transfer fare plus the fare of the second leg, 2 = transfer fare only."@en ;
     rdfs:domain GTFS:FareTransferRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:feed_contact_email a owl:DatatypeProperty ;
-    rdfs:comment "Contact email address for the feed publisher." ;
+    rdfs:label "feed contact email"@en ;
+    rdfs:comment "Contact email address for the feed publisher."@en ;
     rdfs:domain GTFS:FeedInfo ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:feed_contact_url a owl:DatatypeProperty ;
-    rdfs:comment "Contact URL for the feed publisher." ;
+    rdfs:label "feed contact URL"@en ;
+    rdfs:comment "Contact URL for the feed publisher."@en ;
     rdfs:domain GTFS:FeedInfo ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:feed_end_date a owl:DatatypeProperty ;
-    rdfs:comment "Last date covered reliably by the feed." ;
+    rdfs:label "feed end date"@en ;
+    rdfs:comment "Last date of service covered by the feed."@en ;
     rdfs:domain GTFS:FeedInfo ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:date .
 
 GTFS:feed_lang a owl:DatatypeProperty ;
-    rdfs:comment "Default language of the feed." ;
+    rdfs:label "feed language"@en ;
+    rdfs:comment "Default language of the text of the feed, as an IETF BCP 47 language code."@en ;
     rdfs:domain GTFS:FeedInfo ;
-    rdfs:range xsd:integer .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:feed_publisher_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the feed publisher." ;
+    rdfs:label "feed publisher name"@en ;
+    rdfs:comment "Name of the feed publisher."@en ;
     rdfs:domain GTFS:FeedInfo ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:feed_publisher_url a owl:DatatypeProperty ;
-    rdfs:comment "Website URL of the feed publisher." ;
+    rdfs:label "feed publisher URL"@en ;
+    rdfs:comment "Website URL of the feed publisher."@en ;
     rdfs:domain GTFS:FeedInfo ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:feed_start_date a owl:DatatypeProperty ;
-    rdfs:comment "First date covered reliably by the feed." ;
+    rdfs:label "feed start date"@en ;
+    rdfs:comment "First date of service covered by the feed."@en ;
     rdfs:domain GTFS:FeedInfo ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:date .
 
 GTFS:feed_version a owl:DatatypeProperty ;
-    rdfs:comment "Version identifier of the feed." ;
+    rdfs:label "feed version"@en ;
+    rdfs:comment "Version identifier of the feed."@en ;
     rdfs:domain GTFS:FeedInfo ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:field_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the GTFS field being translated." ;
+    rdfs:label "field name"@en ;
+    rdfs:comment "Name of the GTFS field being translated."@en ;
     rdfs:domain GTFS:Translation ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:field_value a owl:DatatypeProperty ;
-    rdfs:comment "Original field value used as the basis for the translation." ;
+    rdfs:label "field value"@en ;
+    rdfs:comment "Original field value used as the basis for the translation."@en ;
     rdfs:domain GTFS:Translation ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:followsShape a owl:ObjectProperty ;
-    rdfs:comment "It indicates that the trip follows a geographical shape." ;
+    rdfs:label "follows shape"@en ;
+    rdfs:comment "Links a trip to the shape that its vehicle follows."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Shapes .
 
 GTFS:friday a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the service runs on Friday." ;
+    rdfs:label "friday"@en ;
+    rdfs:comment "Whether the service runs on all Fridays of the date range: 1 = yes, 0 = no."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:fromStop a owl:ObjectProperty ;
-    rdfs:comment "Links a pathway to the stop where the pathway starts." ;
+    rdfs:label "from stop"@en ;
+    rdfs:comment "Links a pathway to the stop where the pathway starts."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Stops .
 
 GTFS:hasAgency a owl:ObjectProperty ;
-    rdfs:comment "line of network transport has differents agency" ;
+    rdfs:label "has agency"@en ;
+    rdfs:comment "Links a route to the agency that operates it."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Agency .
 
 GTFS:hasBookingRule a owl:ObjectProperty ;
-    rdfs:comment "Links a stop time record to the booking rule that governs it." ;
+    rdfs:label "has booking rule"@en ;
+    rdfs:comment "Links a stop time record to the booking rule that governs it."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:BookingRule .
 
 GTFS:hasDestinationArea a owl:ObjectProperty ;
-    rdfs:comment "Links a fare leg rule to the destination area at which the fare leg ends" ;
+    rdfs:label "has destination area"@en ;
+    rdfs:comment "Links a fare leg rule to the destination area at which the fare leg ends."@en ;
     rdfs:domain GTFS:FareLegRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Area .
 
 GTFS:hasDestinationRoute a owl:ObjectProperty ;
-    rdfs:comment "Links a transfer rule to the destination route to which the transfer leads" ;
+    rdfs:label "has destination route"@en ;
+    rdfs:comment "Links a transfer rule to the destination route to which the transfer leads."@en ;
     rdfs:domain GTFS:Transfer ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Routes .
 
 GTFS:hasDestinationStop a owl:ObjectProperty ;
-    rdfs:comment "Links a transfer rule to the destination stop where the transfer ends" ;
+    rdfs:label "has destination stop"@en ;
+    rdfs:comment "Links a transfer rule to the destination stop where the transfer ends."@en ;
     rdfs:domain GTFS:Transfer ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Stops .
 
 GTFS:hasDestinationTrip a owl:ObjectProperty ;
-    rdfs:comment "Links a transfer rule to the destination trip to which the transfer leads" ;
+    rdfs:label "has destination trip"@en ;
+    rdfs:comment "Links a transfer rule to the destination trip to which the transfer leads."@en ;
     rdfs:domain GTFS:Transfer ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Trips .
 
 GTFS:hasEndTimeframeGroup a owl:ObjectProperty ;
-    rdfs:comment "Links a fare leg rule to the timeframe group that applies to the fare validation event at the end of the fare leg" ;
+    rdfs:label "has end timeframe group"@en ;
+    rdfs:comment "Links a fare leg rule to the timeframe group that applies to the fare validation event at the end of the fare leg."@en ;
     rdfs:domain GTFS:FareLegRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:TimeFrame .
 
+GTFS:hasException a owl:ObjectProperty ;
+    rdfs:label "has date exception"@en ;
+    rdfs:comment "Links a service calendar to a date exception that adds or removes the service on a given date."@en ;
+    rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range GTFS:CalendarDates .
+
 GTFS:hasFareProduct a owl:ObjectProperty ;
-    rdfs:comment "andicates the fare product applied in the leg rule." ;
+    rdfs:label "has fare product"@en ;
+    rdfs:comment "Links a fare leg rule to the fare product that it applies."@en ;
     rdfs:domain GTFS:FareLegRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:FareProduct .
 
 GTFS:hasFareRule a owl:ObjectProperty ;
-    rdfs:comment "It describes the fare rule applicable to a route." ;
+    rdfs:label "has fare rule"@en ;
+    rdfs:comment "Links a route to a fare rule that applies to it."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:FareRule .
 
 GTFS:hasLocation a owl:ObjectProperty ;
+    rdfs:label "has flex location"@en ;
+    rdfs:comment "Links a stop to a GTFS-Flex zone (location) associated with it."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Location .
 
 GTFS:hasOriginArea a owl:ObjectProperty ;
-    rdfs:comment "Links a fare leg rule to the origin area from which the fare leg starts." ;
+    rdfs:label "has origin area"@en ;
+    rdfs:comment "Links a fare leg rule to the origin area from which the fare leg starts."@en ;
     rdfs:domain GTFS:FareLegRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Area .
 
 GTFS:hasOriginRoute a owl:ObjectProperty ;
-    rdfs:comment "Links a transfer rule to the origin route from which the transfer starts" ;
+    rdfs:label "has origin route"@en ;
+    rdfs:comment "Links a transfer rule to the origin route from which the transfer starts."@en ;
     rdfs:domain GTFS:Transfer ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Routes .
 
 GTFS:hasOriginStop a owl:ObjectProperty ;
-    rdfs:comment "Links a transfer rule to the origin stop where the transfer begins" ;
+    rdfs:label "has origin stop"@en ;
+    rdfs:comment "Links a transfer rule to the origin stop where the transfer begins."@en ;
     rdfs:domain GTFS:Transfer ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Stops .
 
 GTFS:hasOriginTrip a owl:ObjectProperty ;
-    rdfs:comment "Links a transfer rule to the origin trip from which the transfer starts" ;
+    rdfs:label "has origin trip"@en ;
+    rdfs:comment "Links a transfer rule to the origin trip from which the transfer starts."@en ;
     rdfs:domain GTFS:Transfer ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Trips .
 
 GTFS:hasParentStation a owl:ObjectProperty ;
-    rdfs:comment "Associates a stop with a parent station . It indicates the main stop to which another stop is attached." ;
+    rdfs:label "has parent station"@en ;
+    rdfs:comment "Links a stop to its parent station."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Stops .
 
 GTFS:hasRoute a owl:ObjectProperty ;
+    rdfs:label "has route"@en ;
+    rdfs:comment "Links a trip to the route it belongs to."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Routes .
 
 GTFS:hasStartTimeframeGroup a owl:ObjectProperty ;
-    rdfs:comment "Links a fare leg rule to the timeframe group that applies to the fare validation event at the start of the fare leg" ;
+    rdfs:label "has start timeframe group"@en ;
+    rdfs:comment "Links a fare leg rule to the timeframe group that applies to the fare validation event at the start of the fare leg."@en ;
     rdfs:domain GTFS:FareLegRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:TimeFrame .
 
 GTFS:hasStop a owl:ObjectProperty ;
-    rdfs:comment "A group location has differents stops" ;
+    rdfs:label "has stop"@en ;
+    rdfs:comment "Links a location group to a stop that it contains."@en ;
     rdfs:domain GTFS:LocationGroup ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Stops .
 
 GTFS:hasStopTime a owl:ObjectProperty ;
-    rdfs:comment "a trips has a stop times" ;
+    rdfs:label "has stop time"@en ;
+    rdfs:comment "Links a trip to one of its stop times."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:StopTimes .
 
 GTFS:headway_secs a owl:DatatypeProperty ;
-    rdfs:comment "Headway, in seconds, between departures for the trip." ;
+    rdfs:label "headway seconds"@en ;
+    rdfs:comment "Headway, in seconds, between departures for the trip."@en ;
     rdfs:domain GTFS:Frequency ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:positiveInteger .
 
 GTFS:info_url a owl:DatatypeProperty ;
-    rdfs:comment "URL providing rider information about the booking rule." ;
+    rdfs:label "info URL"@en ;
+    rdfs:comment "URL providing rider information about the booking rule."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:isApplicableDuring a owl:ObjectProperty ;
-    rdfs:comment "Indicates that the time period described by timeframes applies to the service days defined in the calendar." ;
+    rdfs:label "is applicable during"@en ;
+    rdfs:comment "Indicates that the time period described by timeframes applies to the service days defined in the calendar."@en ;
     rdfs:domain GTFS:TimeFrame ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Calendar .
 
 GTFS:isDiverted a owl:DatatypeProperty ;
+    rdfs:label "is diverted"@en ;
+    rdfs:comment "Indicates whether the stop is diverted, that is temporarily moved because of a disruption. This property extends GTFS: it is not a field of the GTFS reference."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:boolean .
 
-GTFS:isExceptionOf a owl:ObjectProperty ;
-    rdfs:comment "indicates exceptions or variations in the Calendar" ;
-    rdfs:domain GTFS:CalendarDates ;
-    rdfs:range GTFS:Calendar .
-
 GTFS:isLocatedIn a owl:ObjectProperty ;
-    rdfs:comment "This relation defines that a stops is located in differents location" ;
+    rdfs:label "is located in"@en ;
+    rdfs:comment "Links a stop to a zone (location) in which it is located."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Location .
 
 GTFS:isScheduledBy a owl:ObjectProperty ;
-    rdfs:comment "A trip  is scheduled by a frequency." ;
+    rdfs:label "is scheduled by"@en ;
+    rdfs:comment "Links a trip to the frequency (headway) definition that schedules it."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Frequency .
 
 GTFS:isServedAtTime a owl:ObjectProperty ;
+    rdfs:label "is served at time"@en ;
+    rdfs:comment "Links a stop to a stop time at which it is served."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:StopTimes .
 
 GTFS:isUnavailable a owl:DatatypeProperty ;
-    rdfs:comment "indicate whether a stop is accessible or not" ;
+    rdfs:label "is unavailable"@en ;
+    rdfs:comment "Indicates whether the stop is unavailable, for example because of a disruption. This property extends GTFS: it is not a field of the GTFS reference."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:boolean .
 
 GTFS:is_authority a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the organization is a transport authority." ;
+    rdfs:label "is authority"@en ;
+    rdfs:comment "Whether the organisation is the transport authority of the service: 1 = yes, 0 (or empty) = no."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:is_bidirectional a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the pathway can be used in both directions." ;
+    rdfs:label "is bidirectional"@en ;
+    rdfs:comment "Direction in which the pathway can be used: 0 = only from the origin to the destination stop, 1 = in both directions."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:is_bookable a owl:DatatypeProperty ;
+    rdfs:label "is bookable"@en ;
+    rdfs:comment "Indicates whether the stop can be booked as a pickup or drop-off point of the DRT service. This property extends GTFS: it is not a field of the GTFS reference."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:boolean .
 
 GTFS:is_bus_stop a owl:DatatypeProperty ;
+    rdfs:label "is bus stop"@en ;
+    rdfs:comment "Indicates whether the stop is a stop of the regular bus network. This property extends GTFS: it is not a field of the GTFS reference."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:boolean .
 
 GTFS:is_operator a owl:DatatypeProperty ;
+    rdfs:label "is operator"@en ;
+    rdfs:comment "Whether the organisation operates the service: 1 = yes, 0 (or empty) = no."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:is_producer a owl:DatatypeProperty ;
+    rdfs:label "is producer"@en ;
+    rdfs:comment "Whether the organisation produced the data of the feed: 1 = yes, 0 (or empty) = no."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:language a owl:DatatypeProperty ;
-    rdfs:comment "Language code of the translation." ;
+    rdfs:label "language"@en ;
+    rdfs:comment "Language of the translation, as an IETF BCP 47 language code."@en ;
     rdfs:domain GTFS:Translation ;
-    rdfs:range xsd:integer .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:leg_group_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the fare leg rule group." ;
+    rdfs:label "leg group ID"@en ;
+    rdfs:comment "Identifier of the fare leg rule group."@en ;
     rdfs:domain GTFS:FareLegRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:length a owl:DatatypeProperty ;
-    rdfs:comment "Horizontal length of the pathway in meters." ;
+    rdfs:label "length"@en ;
+    rdfs:comment "Horizontal length of the pathway, in metres."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:float .
 
 GTFS:level_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the level." ;
+    rdfs:label "level ID"@en ;
+    rdfs:comment "Identifier of the level."@en ;
     rdfs:domain GTFS:Level ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:level_index a owl:DatatypeProperty ;
-    rdfs:comment "Relative index of the level within a facility or station." ;
+    rdfs:label "level index"@en ;
+    rdfs:comment "Numeric index that gives the relative position of the level: 0 = ground level, positive values above ground, negative values below ground."@en ;
     rdfs:domain GTFS:Level ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:float .
 
 GTFS:level_name a owl:DatatypeProperty ;
-    rdfs:comment "Public name of the level." ;
+    rdfs:label "level name"@en ;
+    rdfs:comment "Public name of the level."@en ;
     rdfs:domain GTFS:Level ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:location_group_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the location group." ;
+    rdfs:label "location group ID"@en ;
+    rdfs:comment "Identifier of the location group."@en ;
     rdfs:domain GTFS:LocationGroup ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:location_group_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the location group." ;
+    rdfs:label "location group name"@en ;
+    rdfs:comment "Name of the location group."@en ;
     rdfs:domain GTFS:LocationGroup ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:location_type a owl:DatatypeProperty ;
-    rdfs:comment "Type of location represented by the stop record." ;
+    rdfs:label "location type"@en ;
+    rdfs:comment "Type of the location: 0 (or empty) = stop or platform, 1 = station, 2 = entrance or exit, 3 = generic node, 4 = boarding area."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:managedBy a owl:ObjectProperty ;
-    rdfs:comment "indicates that the agency manages the fare attribute." ;
+    rdfs:label "managed by"@en ;
+    rdfs:comment "Links a fare to the agency that manages it."@en ;
     rdfs:domain GTFS:FareAttribute ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Agency .
 
 GTFS:max_slope a owl:DatatypeProperty ;
-    rdfs:comment "Maximum slope ratio of the pathway." ;
+    rdfs:label "max slope"@en ;
+    rdfs:comment "Maximum slope ratio of the pathway: positive upwards, negative downwards (for example 0.083 for an 8.3 % slope)."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:float .
 
 GTFS:message a owl:DatatypeProperty ;
-    rdfs:comment "General rider-facing message associated with the booking rule." ;
+    rdfs:label "message"@en ;
+    rdfs:comment "General rider-facing message associated with the booking rule."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:min_transfer_time a owl:DatatypeProperty ;
-    rdfs:comment "Minimum transfer time, in seconds, required between services." ;
+    rdfs:label "min transfer time"@en ;
+    rdfs:comment "Minimum transfer time, in seconds, required between services."@en ;
     rdfs:domain GTFS:Transfer ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:min_width a owl:DatatypeProperty ;
-    rdfs:comment "Minimum width of the pathway in meters." ;
+    rdfs:label "min width"@en ;
+    rdfs:comment "Minimum width of the pathway, in metres."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:float .
 
 GTFS:monday a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the service runs on Monday." ;
+    rdfs:label "monday"@en ;
+    rdfs:comment "Whether the service runs on all Mondays of the date range: 1 = yes, 0 = no."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:network_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the network." ;
+    rdfs:label "network ID"@en ;
+    rdfs:comment "Identifier of the network."@en ;
     rdfs:domain GTFS:Network ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:network_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the network." ;
+    rdfs:label "network name"@en ;
+    rdfs:comment "Name of the network."@en ;
     rdfs:domain GTFS:Network ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
-GTFS:offersupportTo a owl:ObjectProperty ;
-    rdfs:comment "It indicates the fare support type offered to the fare product." ;
+GTFS:offersSupportTo a owl:ObjectProperty ;
+    rdfs:label "offers support to"@en ;
+    rdfs:comment "Links a fare medium to a fare product that it can hold."@en ;
     rdfs:domain GTFS:FareMedia ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:FareProduct .
 
-GTFS:operatesOnRoute a owl:ObjectProperty ;
-    rdfs:comment "represents that Trips operate on a Route" ;
-    rdfs:domain GTFS:Trips ;
-    rdfs:range GTFS:Routes .
-
 GTFS:organization_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the organization referenced by the attribution." ;
+    rdfs:label "organization name"@en ;
+    rdfs:comment "Name of the organization referenced by the attribution."@en ;
     rdfs:domain GTFS:Attribution ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:origin_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the origin fare zone." ;
+    rdfs:label "origin ID"@en ;
+    rdfs:comment "Identifier of the origin fare zone."@en ;
     rdfs:domain GTFS:FareRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:parent_station a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the parent station or parent location." ;
+    rdfs:label "parent station"@en ;
+    rdfs:comment "Identifier of the parent station or parent location."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:partOfNetwork a owl:ObjectProperty ;
-    rdfs:comment "It indicates that the route is part of a network." ;
+    rdfs:label "part of network"@en ;
+    rdfs:comment "Links a route to the network it belongs to."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Network .
 
 GTFS:pathway_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the pathway." ;
+    rdfs:label "pathway ID"@en ;
+    rdfs:comment "Identifier of the pathway."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:pathway_mode a owl:DatatypeProperty ;
-    rdfs:comment "Type of pathway between the origin and destination stops." ;
+    rdfs:label "pathway mode"@en ;
+    rdfs:comment "Type of the pathway: 1 = walkway, 2 = stairs, 3 = moving sidewalk or travelator, 4 = escalator, 5 = elevator, 6 = fare gate, 7 = exit gate."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:payment_method a owl:DatatypeProperty ;
-    rdfs:comment "Indicates when the fare must be paid." ;
+    rdfs:label "payment method"@en ;
+    rdfs:comment "When the fare must be paid: 0 = on board, 1 = before boarding."@en ;
     rdfs:domain GTFS:FareAttribute ;
-    rdfs:range xsd:boolean .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:int .
 
 GTFS:phone_number a owl:DatatypeProperty ;
-    rdfs:comment "Phone number riders can call to make a booking request." ;
+    rdfs:label "phone number"@en ;
+    rdfs:comment "Phone number that riders call to make a booking."@en ;
     rdfs:domain GTFS:BookingRule ;
-    rdfs:range xsd:integer .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:pickup_message a owl:DatatypeProperty ;
-    rdfs:comment "Message shown to riders for on-demand pickup booking." ;
+    rdfs:label "pickup message"@en ;
+    rdfs:comment "Message shown to riders for on-demand pickup booking."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:pickup_type a owl:DatatypeProperty ;
-    rdfs:comment "Pickup behavior at the stop time." ;
+    rdfs:label "pickup type"@en ;
+    rdfs:comment "Pickup method at the stop: 0 (or empty) = regularly scheduled pickup, 1 = no pickup, 2 = phone the agency to arrange a pickup, 3 = coordinate with the driver."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:platform_code a owl:DatatypeProperty ;
-    rdfs:comment "Platform identifier shown to riders." ;
+    rdfs:label "platform code"@en ;
+    rdfs:comment "Platform identifier shown to riders."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:price a owl:DatatypeProperty ;
-    rdfs:comment "Price of the fare attribute." ;
+    rdfs:label "price"@en ;
+    rdfs:comment "Price of the fare attribute."@en ;
     rdfs:domain GTFS:FareAttribute ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:decimal .
 
 GTFS:prior_notice_duration_max a owl:DatatypeProperty ;
-    rdfs:comment "Maximum notice period, in minutes, before travel for booking." ;
+    rdfs:label "prior notice duration max"@en ;
+    rdfs:comment "Maximum number of minutes before travel at which the booking can be made."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:prior_notice_duration_min a owl:DatatypeProperty ;
-    rdfs:comment "Minimum notice period, in minutes, before travel for booking." ;
+    rdfs:label "prior notice duration min"@en ;
+    rdfs:comment "Minimum number of minutes before travel by which the booking must be made."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:prior_notice_last_day a owl:DatatypeProperty ;
-    rdfs:comment "Last eligible day before travel on which booking can be made." ;
+    rdfs:label "prior notice last day"@en ;
+    rdfs:comment "Last day before travel on which the booking can be made, counted in days before the day of service (for example 1 = the day before)."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:prior_notice_last_time a owl:DatatypeProperty ;
-    rdfs:comment "Latest time on the last eligible booking day." ;
+    rdfs:label "prior notice last time"@en ;
+    rdfs:comment "Latest time, on the last day on which a booking can be made, at which the booking must be made (HH:MM:SS)."@en ;
     rdfs:domain GTFS:BookingRule ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:prior_notice_start_day a owl:DatatypeProperty ;
-    rdfs:comment "Earliest day before travel when booking can start." ;
+    rdfs:label "prior notice start day"@en ;
+    rdfs:comment "First day before travel on which the booking can be made, counted in days before the day of service."@en ;
     rdfs:domain GTFS:BookingRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:prior_notice_start_time a owl:DatatypeProperty ;
-    rdfs:comment "Earliest time on the start day when booking can start." ;
+    rdfs:label "prior notice start time"@en ;
+    rdfs:comment "Earliest time, on the first day on which a booking can be made, at which the booking can be made (HH:MM:SS)."@en ;
     rdfs:domain GTFS:BookingRule ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:record_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the record containing the field to translate." ;
+    rdfs:label "record ID"@en ;
+    rdfs:comment "Identifier of the record containing the field to translate."@en ;
     rdfs:domain GTFS:Translation ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:record_sub_id a owl:DatatypeProperty ;
-    rdfs:comment "Secondary identifier used when a record needs additional disambiguation." ;
+    rdfs:label "record sub ID"@en ;
+    rdfs:comment "Secondary identifier used when a record needs additional disambiguation."@en ;
     rdfs:domain GTFS:Translation ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:reversed_signposted_as a owl:DatatypeProperty ;
-    rdfs:comment "Public-facing text shown when the pathway is used in the reverse direction." ;
+    rdfs:label "reversed signposted as"@en ;
+    rdfs:comment "Public-facing text shown when the pathway is used in the reverse direction."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:roadside_index a owl:DatatypeProperty ;
+    rdfs:label "roadside index"@en ;
+    rdfs:comment "Index that gives the side of the road on which the stop is located. This property extends GTFS: it is not a field of the GTFS reference."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:route_color a owl:DatatypeProperty ;
-    rdfs:comment "Presentation color associated with the route." ;
+    rdfs:label "route color"@en ;
+    rdfs:comment "Colour of the route, as a six-digit hexadecimal number (for example 00FFFF)."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:route_desc a owl:DatatypeProperty ;
-    rdfs:comment "Description of the route." ;
+    rdfs:label "route description"@en ;
+    rdfs:comment "Description of the route."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:route_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the route." ;
+    rdfs:label "route ID"@en ;
+    rdfs:comment "Identifier of the route."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:route_long_name a owl:DatatypeProperty ;
-    rdfs:comment "Long public name of the route." ;
+    rdfs:label "route long name"@en ;
+    rdfs:comment "Long public name of the route."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:route_short_name a owl:DatatypeProperty ;
-    rdfs:comment "Short public name or code of the route." ;
+    rdfs:label "route short name"@en ;
+    rdfs:comment "Short public name or code of the route."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:route_sort_order a owl:DatatypeProperty ;
-    rdfs:comment "Display order of the route for rider-facing presentation." ;
+    rdfs:label "route sort order"@en ;
+    rdfs:comment "Display order of the route for rider-facing presentation."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:nonNegativeInteger .
 
 GTFS:route_text_color a owl:DatatypeProperty ;
-    rdfs:comment "Text color to display on top of the route color." ;
+    rdfs:label "route text color"@en ;
+    rdfs:comment "Colour of the text drawn on the route colour, as a six-digit hexadecimal number."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:route_type a owl:DatatypeProperty ;
-    rdfs:comment "Mode or type of transportation used by the route." ;
+    rdfs:label "route type"@en ;
+    rdfs:comment "Type of transport used on the route: 0 = tram or light rail, 1 = metro, 2 = rail, 3 = bus, 4 = ferry, 5 = cable tram, 6 = aerial lift, 7 = funicular, 11 = trolleybus, 12 = monorail."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:route_url a owl:DatatypeProperty ;
-    rdfs:comment "Public web page for the route." ;
+    rdfs:label "route URL"@en ;
+    rdfs:comment "Public web page for the route."@en ;
     rdfs:domain GTFS:Routes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:rule_priority a owl:DatatypeProperty ;
-    rdfs:comment "Priority used to choose among multiple matching fare leg rules." ;
+    rdfs:label "rule priority"@en ;
+    rdfs:comment "Priority used to choose among multiple matching fare leg rules."@en ;
     rdfs:domain GTFS:FareLegRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:nonNegativeInteger .
 
 GTFS:saturday a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the service runs on Saturday." ;
+    rdfs:label "saturday"@en ;
+    rdfs:comment "Whether the service runs on all Saturdays of the date range: 1 = yes, 0 = no."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:servesStop a owl:ObjectProperty ;
-    rdfs:comment "indicates what time the stop is served" ;
+    rdfs:label "serves stop"@en ;
+    rdfs:comment "Links a stop time to the stop that it serves."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Stops .
 
 GTFS:service_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the service calendar." ;
+    rdfs:label "service ID"@en ;
+    rdfs:comment "Identifier of the service calendar."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:shape_dist_traveled a owl:DatatypeProperty ;
-    rdfs:comment "Distance traveled along the shape from its start to this point." ;
+    rdfs:label "shape distance traveled"@en ;
+    rdfs:comment "Distance travelled along the shape from its first point to this point."@en ;
     rdfs:domain GTFS:Shapes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:float .
 
 GTFS:shape_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the shape." ;
+    rdfs:label "shape ID"@en ;
+    rdfs:comment "Identifier of the shape."@en ;
     rdfs:domain GTFS:Shapes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:shape_pt_lat a owl:DatatypeProperty ;
-    rdfs:comment "Latitude of a point in the shape geometry." ;
+    rdfs:label "shape point latitude"@en ;
+    rdfs:comment "Latitude of a point in the shape geometry."@en ;
     rdfs:domain GTFS:Shapes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:double .
 
 GTFS:shape_pt_lon a owl:DatatypeProperty ;
-    rdfs:comment "Longitude of a point in the shape geometry." ;
+    rdfs:label "shape point longitude"@en ;
+    rdfs:comment "Longitude of a point in the shape geometry."@en ;
     rdfs:domain GTFS:Shapes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:double .
 
 GTFS:shape_pt_sequence a owl:DatatypeProperty,
         owl:FunctionalProperty ;
-    rdfs:comment "Sequence number of a point within the shape." ;
+    rdfs:label "shape point sequence"@en ;
+    rdfs:comment "Sequence number of a point within the shape."@en ;
     rdfs:domain GTFS:Shapes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:signposted_as a owl:DatatypeProperty ;
-    rdfs:comment "Public-facing text shown on signs for the pathway." ;
+    rdfs:label "signposted as"@en ;
+    rdfs:comment "Public-facing text shown on signs for the pathway."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:stair_count a owl:DatatypeProperty ;
-    rdfs:comment "Number of stairs along the pathway." ;
+    rdfs:label "stair count"@en ;
+    rdfs:comment "Number of stairs along the pathway."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:start_date a owl:DatatypeProperty ;
-    rdfs:comment "First date on which the service is active." ;
+    rdfs:label "start date"@en ;
+    rdfs:comment "First date on which the service is active."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:date .
 
 GTFS:start_pickup_drop_off_window a owl:DatatypeProperty ;
-    rdfs:comment "Start of the pickup or drop-off availability window." ;
+    rdfs:label "start pickup drop off window"@en ;
+    rdfs:comment "Time at which the on-demand pickup or drop-off service becomes available at the location, location group or stop (HH:MM:SS)."@en ;
     rdfs:domain GTFS:StopTimes ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:start_time a owl:DatatypeProperty ;
-    rdfs:comment "Start time of the timeframe." ;
+    rdfs:label "start time (timeframe)"@en ;
+    rdfs:comment "Start of the time of day of the timeframe (HH:MM:SS)."@en ;
     rdfs:domain GTFS:TimeFrame ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:starttime a owl:DatatypeProperty ;
+    rdfs:label "start time (frequency)"@en ;
+    rdfs:comment "Time at which the first vehicle departs from the first stop of the trip with the given headway (HH:MM:SS)."@en ;
     rdfs:domain GTFS:Frequency ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:stopInArea a owl:ObjectProperty ;
-    rdfs:comment "Links a stop to an area that contains or groups it." ;
+    rdfs:label "stop in area"@en ;
+    rdfs:comment "Links a stop to an area that contains or groups it."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Area .
 
 GTFS:stopInLocationGroup a owl:ObjectProperty ;
-    rdfs:comment "Links a stop to the location group to which it belongs." ;
+    rdfs:label "stop in location group"@en ;
+    rdfs:comment "Links a stop to the location group to which it belongs."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:LocationGroup .
 
 GTFS:stop_code a owl:DatatypeProperty ;
-    rdfs:comment "Short code used to identify the stop to riders." ;
+    rdfs:label "stop code"@en ;
+    rdfs:comment "Short code used to identify the stop to riders."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:stop_desc a owl:DatatypeProperty ;
-    rdfs:comment "Description of the stop or location." ;
+    rdfs:label "stop description"@en ;
+    rdfs:comment "Description of the stop or location."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:stop_headsign a owl:DatatypeProperty ;
-    rdfs:comment "Headsign displayed to riders for this stop time." ;
+    rdfs:label "stop headsign"@en ;
+    rdfs:comment "Headsign displayed to riders for this stop time."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:stop_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the stop or location." ;
+    rdfs:label "stop ID"@en ;
+    rdfs:comment "Identifier of the stop or location."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:stop_lat a owl:DatatypeProperty ;
-    rdfs:comment "Latitude of the stop or location." ;
+    rdfs:label "stop latitude"@en ;
+    rdfs:comment "Latitude of the stop or location."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:double .
 
 GTFS:stop_lon a owl:DatatypeProperty ;
-    rdfs:comment "Longitude of the stop or location." ;
+    rdfs:label "stop longitude"@en ;
+    rdfs:comment "Longitude of the stop or location."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:double .
 
 GTFS:stop_name a owl:DatatypeProperty ;
-    rdfs:comment "Public name of the stop or location." ;
+    rdfs:label "stop name"@en ;
+    rdfs:comment "Public name of the stop or location."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:stop_sequence a owl:DatatypeProperty ;
-    rdfs:comment "Sequence number of the stop within the trip." ;
+    rdfs:label "stop sequence"@en ;
+    rdfs:comment "Sequence number of the stop within the trip."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:stop_timezone a owl:DatatypeProperty ;
-    rdfs:comment "Timezone assigned to the stop or location." ;
+    rdfs:label "stop timezone"@en ;
+    rdfs:comment "Timezone assigned to the stop or location."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:stop_url a owl:DatatypeProperty ;
-    rdfs:comment "Public web page for the stop or location." ;
+    rdfs:label "stop URL"@en ;
+    rdfs:comment "Public web page for the stop or location."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:sunday a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the service runs on Sunday." ;
+    rdfs:label "sunday"@en ;
+    rdfs:comment "Whether the service runs on all Sundays of the date range: 1 = yes, 0 = no."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:table_name a owl:DatatypeProperty ;
-    rdfs:comment "Name of the GTFS table containing the translated field." ;
+    rdfs:label "table name"@en ;
+    rdfs:comment "Name of the GTFS table that contains the translated field: agency, stops, routes, trips, stop_times, pathways, levels, feed_info or attributions."@en ;
     rdfs:domain GTFS:Translation ;
-    rdfs:range xsd:int .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:string .
 
 GTFS:thursday a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the service runs on Thursday." ;
+    rdfs:label "thursday"@en ;
+    rdfs:comment "Whether the service runs on all Thursdays of the date range: 1 = yes, 0 = no."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:timeframe_group_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the timeframe group." ;
+    rdfs:label "timeframe group ID"@en ;
+    rdfs:comment "Identifier of the timeframe group."@en ;
     rdfs:domain GTFS:TimeFrame ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:timepoint a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the stop time is exact or approximate." ;
+    rdfs:label "timepoint"@en ;
+    rdfs:comment "Whether the arrival and departure times of the stop time are exact (1) or approximate or interpolated (0)."@en ;
     rdfs:domain GTFS:StopTimes ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:transfer_count a owl:DatatypeProperty ;
-    rdfs:comment "Number of consecutive transfers covered by the rule." ;
+    rdfs:label "transfer count"@en ;
+    rdfs:comment "Number of consecutive transfers covered by the rule."@en ;
     rdfs:domain GTFS:FareTransferRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:transfer_duration a owl:DatatypeProperty ;
-    rdfs:comment "Maximum time window during which transfers remain valid." ;
+    rdfs:label "transfer duration"@en ;
+    rdfs:comment "Length of time, in seconds, after which a transfer expires."@en ;
     rdfs:domain GTFS:FareAttribute ;
-    rdfs:range xsd:dateTime .
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:range xsd:nonNegativeInteger .
 
 GTFS:transfer_type a owl:DatatypeProperty ;
-    rdfs:comment "Type of transfer rule applied between the specified locations or trips." ;
+    rdfs:label "transfer type"@en ;
+    rdfs:comment "Type of connection: 0 (or empty) = recommended transfer point, 1 = timed transfer, 2 = transfer that requires a minimum time (min_transfer_time), 3 = transfer not possible, 4 = in-seat transfer, 5 = in-seat transfer not allowed."@en ;
     rdfs:domain GTFS:Transfer ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:transfers a owl:DatatypeProperty ;
-    rdfs:comment "Number of transfers allowed by the fare attribute." ;
+    rdfs:label "transfers"@en ;
+    rdfs:comment "Number of transfers allowed with the fare: 0 = none, 1 = one transfer, 2 = two transfers. No value means that unlimited transfers are allowed."@en ;
     rdfs:domain GTFS:FareAttribute ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:translation a owl:DatatypeProperty ;
-    rdfs:comment "Translated value provided for the selected field." ;
+    rdfs:label "translated value"@en ;
+    rdfs:comment "Translated value provided for the selected field."@en ;
     rdfs:domain GTFS:Translation ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:traversal_time a owl:DatatypeProperty ;
-    rdfs:comment "Average traversal time of the pathway in seconds." ;
+    rdfs:label "traversal time"@en ;
+    rdfs:comment "Average time needed to walk through the pathway, in seconds."@en ;
     rdfs:domain GTFS:Pathway ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:positiveInteger .
 
 GTFS:trip_headsign a owl:DatatypeProperty ;
-    rdfs:comment "Headsign displayed to riders for the trip." ;
+    rdfs:label "trip headsign"@en ;
+    rdfs:comment "Headsign displayed to riders for the trip."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:trip_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the trip." ;
+    rdfs:label "trip ID"@en ;
+    rdfs:comment "Identifier of the trip."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:trip_short_name a owl:DatatypeProperty ;
-    rdfs:comment "Short public name or code of the trip." ;
+    rdfs:label "trip short name"@en ;
+    rdfs:comment "Short public name or code of the trip."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:tts_stop_name a owl:DatatypeProperty ;
-    rdfs:comment "Text-to-speech friendly version of the stop name." ;
+    rdfs:label "text-to-speech stop name"@en ;
+    rdfs:comment "Text-to-speech friendly version of the stop name."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:string .
 
 GTFS:tuesday a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the service runs on Tuesday." ;
+    rdfs:label "tuesday"@en ;
+    rdfs:comment "Whether the service runs on all Tuesdays of the date range: 1 = yes, 0 = no."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:usesFareAttribute a owl:ObjectProperty ;
-    rdfs:comment "describes which attribute is used by the fare rule" ;
+    rdfs:label "uses fare attribute"@en ;
+    rdfs:comment "Links a fare rule to the fare that it applies."@en ;
     rdfs:domain GTFS:FareRule ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:FareAttribute .
 
 GTFS:usesService a owl:ObjectProperty ;
-    rdfs:comment "Represents that Trips use a Service (Calandar)" ;
+    rdfs:label "uses service"@en ;
+    rdfs:comment "Links a trip to the service calendar that says on which days it runs."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range GTFS:Calendar .
 
 GTFS:wednesday a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the service runs on Wednesday." ;
+    rdfs:label "wednesday"@en ;
+    rdfs:comment "Whether the service runs on all Wednesdays of the date range: 1 = yes, 0 = no."@en ;
     rdfs:domain GTFS:Calendar ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
 GTFS:wheelchair_accessible a owl:DatatypeProperty ;
-    rdfs:comment "Indicates whether the trip is wheelchair accessible." ;
+    rdfs:label "wheelchair accessible"@en ;
+    rdfs:comment "Wheelchair accessibility of the trip: 0 (or empty) = no information, 1 = at least one rider in a wheelchair can be accommodated, 2 = no rider in a wheelchair can be accommodated."@en ;
     rdfs:domain GTFS:Trips ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:wheelchair_boarding a owl:DatatypeProperty ;
-    rdfs:comment "Indicates wheelchair boarding accessibility at the stop or location." ;
+    rdfs:label "wheelchair boarding"@en ;
+    rdfs:comment "Wheelchair boarding at the stop: 0 (or empty) = no information, 1 = some vehicles at this stop can be boarded by a rider in a wheelchair, 2 = wheelchair boarding is not possible."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:int .
 
 GTFS:zone_id a owl:DatatypeProperty ;
-    rdfs:comment "Identifier of the fare zone associated with the stop." ;
+    rdfs:label "zone ID"@en ;
+    rdfs:comment "Identifier of the fare zone associated with the stop."@en ;
     rdfs:domain GTFS:Stops ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
     rdfs:range xsd:integer .
 
+<https://orcid.org/0000-0002-1599-9326> rdfs:label "Alain Bouju" .
+
+<https://orcid.org/0000-0002-7792-8953> rdfs:label "Esma Talhi" .
+
+<https://orcid.org/0009-0000-4334-4557> rdfs:label "Nourelhouda El Gadi" .
+
 GTFS:Location a owl:Class ;
-    rdfs:comment "Defines geographical areas where passengers can request pick-up or drop-off,( represented in GeoJSON format)." ;
+    rdfs:label "flex location"@en ;
+    rdfs:comment "A zone, given as a GeoJSON polygon, where riders can request a pickup or a drop-off (GTFS-Flex). It corresponds to the file locations.geojson of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#locationsgeojson> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty geosparql:hasGeometry ;
             owl:someValuesFrom geosparql:Geometry ],
         geosparql:Feature .
 
 GTFS:CalendarDates a owl:Class ;
-    rdfs:comment "specifying exceptions or adjustments to the schedules defined in calendar (e.g., holidays)." .
+    rdfs:label "calendar date exception"@en ;
+    rdfs:comment "An exception to a service calendar on a given date, for example a service added or removed on a public holiday. It corresponds to the file calendar_dates.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#calendar_datestxt> .
 
 GTFS:Network a owl:Class ;
-    rdfs:comment "Defines the transportation networks, such as route groups." .
-
-xsd:date a rdfs:Datatype .
+    rdfs:label "network"@en ;
+    rdfs:comment "A group of routes, used in particular to define fares by network. It corresponds to the file networks.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#networkstxt> .
 
 GTFS:FareMedia a owl:Class ;
-    rdfs:comment "Specifies the types of media used to pay the fare, such as smart cards or paper tickets" .
+    rdfs:label "fare medium"@en ;
+    rdfs:comment "A medium that holds or validates a fare product, such as a smart card, a paper ticket or a mobile app. It corresponds to the file fare_media.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#fare_mediatxt> .
 
 GTFS:Level a owl:Class ;
-    rdfs:comment """used to model the different physical levels of a station or transport building, such as :
-Floors in a multimodal station (basement, first floor, upper floor), The levels of a multi-storey parking lot. etc""" .
+    rdfs:label "level"@en ;
+    rdfs:comment "A physical level of a station, such as a floor of a multimodal station or of a multi-storey car park. It corresponds to the file levels.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#levelstxt> .
 
 GTFS:LocationGroup a owl:Class ;
-    rdfs:comment "Defines location groups, which are groups of stops where a rider may request pickup or drop off." ;
+    rdfs:label "location group"@en ;
+    rdfs:comment "A group of stops where a rider may request a pickup or a drop-off (GTFS-Flex). It corresponds to the file location_groups.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#location_groupstxt> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty geosparql:hasGeometry ;
             owl:someValuesFrom geosparql:Geometry ],
@@ -1051,82 +1507,169 @@ geosparql:Geometry a owl:Class ;
 
 geosparql:hasGeometry a owl:ObjectProperty .
 
+xsd:date a rdfs:Datatype .
+
 GTFS:Area a owl:Class ;
-    rdfs:comment "Describes the geographical areas within the transportation network" ;
+    rdfs:label "area"@en ;
+    rdfs:comment "A geographical area that groups stops, used to define fares by origin and destination areas. It corresponds to the file areas.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#areastxt> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty geosparql:hasGeometry ;
             owl:someValuesFrom geosparql:Geometry ],
         geosparql:Feature .
 
 GTFS:FareRule a owl:Class ;
-    rdfs:comment "Specifies the fare application rules based on routes, zones..." .
+    rdfs:label "fare rule"@en ;
+    rdfs:comment "A rule that says when a fare applies, based on the route, the origin, the destination or the zones a rider passes through (GTFS-Fares v1). It corresponds to the file fare_rules.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#fare_rulestxt> .
 
 GTFS:FareTransferRule a owl:Class ;
-    rdfs:comment "Defines the Fare rules for transfers between legs of trips" .
+    rdfs:label "fare transfer rule"@en ;
+    rdfs:comment "A rule for the cost of a transfer between two fare legs (GTFS-Fares v2). It corresponds to the file fare_transfer_rules.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#fare_transfer_rulestxt> .
 
 GTFS:Frequency a owl:Class ;
-    rdfs:comment "represents trips that operate on regular headways (time between trips)" .
+    rdfs:label "frequency"@en ;
+    rdfs:comment "A headway-based service, whose trips run at regular intervals instead of following a fixed timetable. It corresponds to the file frequencies.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#frequenciestxt> .
 
 geosparql:Feature a owl:Class ;
     rdfs:subClassOf geosparql:SpatialObject .
 
 GTFS:FareProduct a owl:Class ;
-    rdfs:comment "describe the range of fares available for purchase by riders" .
+    rdfs:label "fare product"@en ;
+    rdfs:comment "A fare product that riders can buy, such as a single ticket or a pass. It corresponds to the file fare_products.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#fare_productstxt> .
 
 GTFS:Shapes a owl:Class ;
-    rdfs:comment "Describes the geometry of routes as connected GPS points, to represent the paths on a map." ;
+    rdfs:label "shape"@en ;
+    rdfs:comment "The path that a vehicle travels along a route, as an ordered sequence of points. It corresponds to the file shapes.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#shapestxt> ;
     rdfs:subClassOf geosparql:Feature .
 
 GTFS:TimeFrame a owl:Class ;
-    rdfs:comment "Used to describe fares that can change depending on the time of day, day of the week, or specific dates throughout the year." .
+    rdfs:label "timeframe"@en ;
+    rdfs:comment "A time period (time of day and service days) during which a fare applies. It corresponds to the file timeframes.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#timeframestxt> .
 
 GTFS:Translation a owl:Class ;
-    rdfs:comment "Provides translations for text fields in multiple languages" .
+    rdfs:label "translation"@en ;
+    rdfs:comment "A translation of a rider-facing text field of the feed into another language. It corresponds to the file translations.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#translationstxt> .
 
 GTFS:FareAttribute a owl:Class ;
-    rdfs:comment "Defines the fare attributes of the services, including the price, payment method, validity etc" .
+    rdfs:label "fare attribute"@en ;
+    rdfs:comment "A fare (GTFS-Fares v1): its price, currency, payment method and transfer conditions. It corresponds to the file fare_attributes.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#fare_attributestxt> .
 
 GTFS:FareLegRule a owl:Class ;
-    rdfs:comment "Specifies the fare rules for each segment of the legs" .
+    rdfs:label "fare leg rule"@en ;
+    rdfs:comment "A fare rule for one leg of a journey (GTFS-Fares v2), defined by origin and destination areas, network and time frames. It corresponds to the file fare_leg_rules.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#fare_leg_rulestxt> .
 
 GTFS:Transfer a owl:Class ;
-    rdfs:comment "Defines the transfer rules between stops,routes and trips" .
+    rdfs:label "transfer"@en ;
+    rdfs:comment "A rule for connections between routes, trips or stops, such as a minimum transfer time. It corresponds to the file transfers.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#transferstxt> .
 
 GTFS:FeedInfo a owl:Class ;
-    rdfs:comment "Provides general information about the GTFS data feed, including the producer and validity period." .
+    rdfs:label "feed information"@en ;
+    rdfs:comment "Information about the GTFS feed itself: publisher, language, version and validity period. It corresponds to the file feed_info.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#feed_infotxt> .
 
 GTFS:Agency a owl:Class ;
-    rdfs:comment "Describes information about the transportation agency" .
+    rdfs:label "agency"@en ;
+    rdfs:comment "A transit agency whose services are described in the feed. It corresponds to the file agency.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#agencytxt> .
 
 GTFS:Attribution a owl:Class ;
-    rdfs:comment "describes the attributions for the provided data, such as copyrights and licenses etc .." .
+    rdfs:label "attribution"@en ;
+    rdfs:comment "An organisation credited for the data of the feed, such as its producer, operator or authority, with copyright and licence information. It corresponds to the file attributions.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#attributionstxt> .
 
 GTFS:Pathway a owl:Class ;
-    rdfs:comment "Provides a graphical representation to describe subway or train stations, with nodes representing locations and edges representing pathways" ;
+    rdfs:label "pathway"@en ;
+    rdfs:comment "A link between two locations of a station, such as a walkway, stairs, an escalator or an elevator. It corresponds to the file pathways.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#pathwaystxt> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty geosparql:hasGeometry ;
             owl:someValuesFrom geosparql:Geometry ],
         geosparql:Feature .
 
 GTFS:Calendar a owl:Class ;
-    rdfs:comment "Defines the service days for different route and schedules" .
+    rdfs:label "service calendar"@en ;
+    rdfs:comment "The days of the week on which a service runs, between a start date and an end date. It corresponds to the file calendar.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#calendartxt> .
 
 GTFS:StopTimes a owl:Class ;
-    rdfs:comment "Contains detailed schedules for each trip, with arrival and departure times for each stop on the trip's" .
+    rdfs:label "stop time"@en ;
+    rdfs:comment "The scheduled time at which a trip serves a stop: arrival time, departure time and position of the stop in the trip. It corresponds to the file stop_times.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#stop_timestxt> .
 
 GTFS:BookingRule a owl:Class ;
-    rdfs:comment "Specifies the rules for booking services requested by the passenger, e.g. in the case of transport on demand, the rules include a deadline for booking before departure" .
+    rdfs:label "booking rule"@en ;
+    rdfs:comment "The booking rules of a service that must be booked in advance, such as on-demand transport: how, when and how far ahead a pickup or drop-off must be booked. It corresponds to the file booking_rules.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#booking_rulestxt> .
 
 GTFS:Trips a owl:Class ;
-    rdfs:comment "Defines trips, which are specific journeys made on a  route at a particular time" .
+    rdfs:label "trip"@en ;
+    rdfs:comment "A journey of a vehicle along a route at a given time, serving a sequence of stops. It corresponds to the file trips.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#tripstxt> .
 
 GTFS:Routes a owl:Class ;
-    rdfs:comment "Routes describe the public transit lines." .
+    rdfs:label "route"@en ;
+    rdfs:comment "A public transit line: a group of trips shown to riders as a single service. It corresponds to the file routes.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#routestxt> .
 
 GTFS:Stops a owl:Class ;
-    rdfs:comment "the stops or stations served by the transportation network" ;
+    rdfs:label "stop"@en ;
+    rdfs:comment "A stop or a station where vehicles pick up or drop off riders. Stops of the regular network and stops of the DRT service are both instances of this class, so both services share the same stops. It corresponds to the file stops.txt of the GTFS reference."@en ;
+    rdfs:isDefinedBy <https://w3id.org/urbanmobility/gtfs> ;
+    rdfs:seeAlso <https://gtfs.org/documentation/schedule/reference/#stopstxt> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty geosparql:hasGeometry ;
             owl:someValuesFrom geosparql:Geometry ],
         geosparql:Feature .
+
+<https://w3id.org/urbanmobility/gtfs> a owl:Ontology ;
+    dcterms:bibliographicCitation "Nourelhouda El Gadi, Esma Talhi, Alain Bouju (2026). Urban-Mobility-Ontology (version 1.1.0). Zenodo. https://doi.org/10.5281/zenodo.20054329" ;
+    dcterms:created "2024"^^xsd:gYear ;
+    dcterms:creator <https://orcid.org/0000-0002-1599-9326>,
+        <https://orcid.org/0000-0002-7792-8953>,
+        <https://orcid.org/0009-0000-4334-4557> ;
+    dcterms:description "Module of the Urban-Mobility-Ontology that represents scheduled and flexible public transport services according to the General Transit Feed Specification (GTFS): agencies, routes, trips, stops, stop times, service calendars, fares, transfers, booking rules and pickup and drop-off areas (GTFS-Flex). Spatial classes are GeoSPARQL features, so that transport services can be related to their geographical environment."@en ;
+    dcterms:identifier <https://doi.org/10.5281/zenodo.20054329> ;
+    dcterms:isPartOf <https://w3id.org/urbanmobility/> ;
+    dcterms:language "en" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-11-27"^^xsd:date ;
+    dcterms:source <https://gtfs.org/documentation/schedule/reference/> ;
+    dcterms:title "Urban-Mobility-Ontology: GTFS service module"@en ;
+    vann:preferredNamespacePrefix "GTFS" ;
+    vann:preferredNamespaceUri "https://w3id.org/urbanmobility/gtfs#"^^xsd:anyURI ;
+    owl:imports <http://www.opengis.net/ont/geosparql> ;
+    owl:priorVersion <http://www.semanticweb.org/hp/ontologies/2024/transport> ;
+    owl:versionIRI <https://w3id.org/urbanmobility/gtfs/1.1.0> ;
+    owl:versionInfo "1.1.0" ;
+    foaf:homepage <https://nourelhoudaelgadi.github.io/UrbanMobility-Ontology/gtfs.html> .
 
