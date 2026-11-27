@@ -394,3 +394,9 @@ table.dtx th[scope=row], table.dtx td:first-child { white-space: nowrap; }
 
 /* v2.5: space between "prefix" and the prefix itself (kept when the page is translated by the browser) */
 .pfx-line > code:first-of-type, .eyebrow code { margin-left: .3em; }
+
+/* SWRL rules page */
+pre.swrl{white-space:pre-wrap;line-height:1.9}
+pre.swrl code{color:#14212b;font-size:.9rem}
+pre.swrl .var{color:#8a2f9e;font-weight:600}
+pre.swrl .kw{color:#5a6977;margin:0 .15em}
